@@ -1,26 +1,37 @@
 #include"InfoAndType.h"
+#include"Util.h"
+#include"Annual.h"
 
+
+void ClearWindow(GtkWidget * wid,gpointer data){
+    GtkWidget **p = (GtkWidget **)data;
+    printf("ready to clear\n");
+    printf("%d",p[1]);
+    for(int i = 0;i<7;i++) gtk_entry_set_text(GTK_ENTRY(p[i]),"");
+    printf("cleared\n");
+}
 
 void CreateAddAnnualPage(){
-GtkWidget * button_ensure;
-GtkWidget * button_clear;
+    GtkWidget * button_ensure;
+    GtkWidget * button_clear;
 
-GtkWidget * window1;
-//输入域
-GtkWidget * CSNo;
-GtkWidget * MoneyInput;
-GtkWidget * Respeople;
-GtkWidget * pjApply;
-GtkWidget * pjEnd;
-GtkWidget * timebg;
-GtkWidget * timeed;
-GtkBuilder *builder = gtk_builder_new();
+    GtkWidget * window1;
+    //输入域
+    GtkWidget * CSNo;
+    GtkWidget * MoneyInput;
+    GtkWidget * Respeople;
+    GtkWidget * pjApply;
+    GtkWidget * pjEnd;
+    GtkWidget * timebg;
+    GtkWidget * timeed;
+    GtkBuilder *builder = gtk_builder_new();
 
 	if ( !gtk_builder_add_from_file(builder,"config/AddAnnualPage.glade", NULL)) {
-		printf("connot load file!");return NULL;
+		printf("connot load file!");return ;
 	}
+	printf("Load!\n");
 	//获得窗体
-	GtkWidget *window1 = GTK_WIDGET(gtk_builder_get_object(builder,"window1"));
+	window1 = GTK_WIDGET(gtk_builder_get_object(builder,"window1"));
     g_signal_connect(G_OBJECT(window1),"delete_event",G_CALLBACK(SubExitEvent),NULL);
     //获得输入域
     CSNo = GTK_ENTRY(gtk_builder_get_object(builder,"entry1"));
@@ -32,22 +43,15 @@ GtkBuilder *builder = gtk_builder_new();
     timeed = GTK_ENTRY(gtk_builder_get_object(builder,"entry7"));
     //获得按钮
 	button_ensure = GTK_BUTTON(gtk_builder_get_object(builder, "button1"));
-	char * entry[7] = {
-        gtk_entry_get_text(CSNo),
-        gtk_entry_get_text(MoneyInput),
-        gtk_entry_get_text(Respeople),
-        gtk_entry_get_text(pjApply),
-        gtk_entry_get_text(pjEnd),
-        gtk_entry_get_text(timebg),
-        gtk_entry_get_text(timeed)
-	}
-    g_signal_connect(G_OBJECT(button_ensure),"clicked",G_CALLBACK(AddAnnual),entry);
+    GtkWidget * entries[7] = {CSNo,MoneyInput,Respeople,pjApply,pjEnd,timebg,timeed};
 
-    GtkWidget * entries[7] = {CSNo,MoneyInput,Respeople,pjApply,pjEnd,timebg,timeed}
+    g_signal_connect(G_OBJECT(button_ensure),"clicked",G_CALLBACK(AddAnnual),entries);
 	button_clear = GTK_BUTTON(gtk_builder_get_object(builder, "button2"));
     g_signal_connect(G_OBJECT(button_clear),"clicked",G_CALLBACK(ClearWindow),entries);
 	gtk_widget_show_all(window1);
 }
+
+
 
 void CreateChangeAnnualPage(){
 

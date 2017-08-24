@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1503579346 source:c:\users\administrator\desktop\projectsmanage\main.c
+1503588837 source:c:\users\administrator\desktop\projectsmanage\main.c
 	"InfoAndType.h"
 	"Util.h"
 	"MainPage.h"
@@ -2248,27 +2248,57 @@
 1328708100 d:\program files\codeblocks\gtk\include\gtk-2.0\gtk\gtktipsquery.h
 	<gtk/gtk.h>
 
-1503579361 source:c:\users\administrator\desktop\projectsmanage\loadandexit.c
+1503588589 source:c:\users\administrator\desktop\projectsmanage\loadandexit.c
 	"InfoAndType.h"
 
-1503578498 c:\users\administrator\desktop\projectsmanage\infoandtype.h
+1503588403 c:\users\administrator\desktop\projectsmanage\infoandtype.h
 	<gtk/gtk.h>
 	<stdio.h>
 	<stdlib.h>
 
-1503578498 c:\users\administrator\desktop\projectsmanage\util.h
+1503588068 c:\users\administrator\desktop\projectsmanage\util.h
 
 1503578498 c:\users\administrator\desktop\projectsmanage\mainpage.h
 
-1503579706 source:c:\users\administrator\desktop\projectsmanage\mainpage.c
+1503588875 source:c:\users\administrator\desktop\projectsmanage\mainpage.c
 	"InfoAndType.h"
 	"ShowPage.h"
+	"LoadAndExit.h"
+	"Util.h"
 
 1503579706 c:\users\administrator\desktop\projectsmanage\showpage.h
 
-1503579706 source:c:\users\administrator\desktop\projectsmanage\showpage.c
+1503588980 source:c:\users\administrator\desktop\projectsmanage\showpage.c
+	"InfoAndType.h"
+	"CrtAnnualPage.h"
+	"CrtProjectPage.h"
+	"CrtStaffPage.h"
+
+1503587693 source:c:\users\administrator\desktop\projectsmanage\util.c
+	"InfoAndType.h"
+	"Util.h"
+
+1503581468 source:c:\users\administrator\desktop\projectsmanage\crtprojectpage.c
 	"InfoAndType.h"
 
-1503578498 source:c:\users\administrator\desktop\projectsmanage\util.c
+1503581468 source:c:\users\administrator\desktop\projectsmanage\crtstaffpage.c
 	"InfoAndType.h"
+
+1503587928 source:c:\users\administrator\desktop\projectsmanage\annual.c
+	"InfoAndType.h"
+
+1503588131 source:c:\users\administrator\desktop\projectsmanage\crtannualpage.c
+	"InfoAndType.h"
+	"Util.h"
+	"Annual.h"
+
+1503587928 c:\users\administrator\desktop\projectsmanage\annual.h
+
+1503578498 c:\users\administrator\desktop\projectsmanage\loadandexit.h
+
+1503581468 c:\users\administrator\desktop\projectsmanage\crtannualpage.h
+
+1503581468 c:\users\administrator\desktop\projectsmanage\crtprojectpage.h
+
+1503581468 c:\users\administrator\desktop\projectsmanage\crtstaffpage.h
 

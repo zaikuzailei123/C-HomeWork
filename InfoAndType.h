@@ -63,7 +63,5 @@ typedef struct annual{
     struct project * pjhead;
 }annual;
 
-
-
 extern annual * ahead;
 extern GtkWidget * window;

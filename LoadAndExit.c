@@ -109,7 +109,7 @@ void SaveData(GtkWidget* widget,gpointer data){
         project * headp = heada->pjhead;
         while(headp!=NULL){
 
-            staff * heads = headp->sthead
+            staff * heads = headp->sthead;
             while(heads!=NULL){
                 fwrite(&heads->data,1,sizeof(datas),fs);
                 heads = heads->next;

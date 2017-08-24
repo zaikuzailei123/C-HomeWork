@@ -11,7 +11,7 @@ GtkWidget * window;
 
     ahead = LoadData();
 	window = CreateMainPage();
-
+    printf("in main window is %d\n",window);
 
 
 	gtk_main();
