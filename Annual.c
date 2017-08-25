@@ -110,5 +110,122 @@ void ChangeAnnual(GtkWidget * wid , gpointer data){
     SaveData();
 
 }
+//判断条件
+int Judge(annual * cur,pipe * A){
+    int flagAnd = 1;int flagOr = 0;
+    if(gtk_toggle_button_get_active(A->widget[5])){
+        if(Correspond(cur->data.CSNo,gtk_entry_get_text(A->widget[0]))){
+            flagOr = 1;
+        }
+        else{
+            flagAnd = 0;
+        }
+    }
+    if(gtk_toggle_button_get_active(A->widget[6])){
+        if(cur->data.moneyInput>=atof(gtk_entry_get_text(A->widget[1]))&&
+           cur->data.moneyInput<=atof(gtk_entry_get_text(A->widget[2]))){
+            flagOr = 1;
+        }
+        else{
+            flagAnd = 0;
+        }
+    }
+    if(gtk_toggle_button_get_active(A->widget[7])){
+        if(cur->data.pjSupportNum>=atoi(gtk_entry_get_text(A->widget[3]))&&
+           cur->data.pjSupportNum<=atoi(gtk_entry_get_text(A->widget[4]))){
+            flagOr = 1;
+        }
+        else{
+            flagAnd = 0;
+        }
+    }
+    if(gtk_toggle_button_get_active(A->widget[8])){
+        return flagAnd;
+    }
+    else{
+        return flagOr;
+    }
+}
+//删除的时候直接调用这条函数
+//注意：
+/*1.项目删除pjsupport-1
+2.pipe里面传参索引相对*/
+point *QueryForList(pipe * A){
+    annual * heada = ahead;
+    point *head = NULL;
+    point * cur = NULL;
+    while(heada!=NULL){
+        if(Judge(heada,A)!=0){
+            point * tmp = (point *)malloc(sizeof(point));
+            tmp->next = NULL;
+            tmp->add.adda = heada;
+            //处理头节点
+            if(head==NULL){
+                head = tmp;
+                cur = head;
+            }
+            else{
+                cur->next = tmp;
+                cur = cur->next;
+            }
+        }
+        heada = heada->next;
+    }
+    return head;
+}
+
+void QueryAnnual(GtkWidget * wid , gpointer data){
+    pipe * A = (pipe *)data;
+    point *head = QueryForList(A);
+    //输出head到clist；
+    GtkWidget * clist = A->widget[9];
+
+    while(head!=NULL){
+        annual * ann = head->add.adda;
+        char money[10];char pja[10];char pjs[10];char pje[10];
+        gcvt(ann->data.moneyInput,6,money);
+        itoa(ann->data.pjApplyNum,pja,10);
+        itoa(ann->data.pjSupportNum,pjs,10);
+        itoa(ann->data.pjEndNum,pje,10);
+        char * text[] = {
+            ann->data.CSNo,
+            money,
+            ann->data.resPeople,
+            pja,pjs,pje,
+            ann->data.timgBg,
+            ann->data.timeEnd
+        };
+        gtk_clist_append(GTK_CLIST(clist),text);
+        head = head->next;
+    }
+    FreeAllPoint(head);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 

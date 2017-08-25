@@ -4,47 +4,120 @@
   <!-- interface-naming-policy project-wide -->
   <object class="GtkListStore" id="liststore1">
     <columns>
-      <!-- column-name 年度编号 -->
+      <!-- column-name Index -->
+      <column type="gint"/>
+      <!-- column-name CNo -->
       <column type="gchar"/>
-      <!-- column-name 投入资金 -->
+      <!-- column-name pjname -->
+      <column type="gchar"/>
+      <!-- column-name money -->
       <column type="gfloat"/>
-      <!-- column-name 负责人 -->
+      <!-- column-name timeBg -->
       <column type="gchar"/>
-      <!-- column-name 申请项目数 -->
-      <column type="gint"/>
-      <!-- column-name 支持项目数 -->
-      <column type="gint"/>
-      <!-- column-name 结题项目数 -->
-      <column type="gint"/>
-      <!-- column-name 计划开始时间 -->
+      <!-- column-name timeEnd -->
       <column type="gchar"/>
-      <!-- column-name 计划结束时间 -->
+      <!-- column-name evaluate -->
+      <column type="gchar"/>
+      <!-- column-name resPeople -->
+      <column type="gchar"/>
+      <!-- column-name ResPeoTel -->
+      <column type="gchar"/>
+      <!-- column-name resultType -->
+      <column type="gchar"/>
+      <!-- column-name resultName -->
       <column type="gchar"/>
     </columns>
+    <data>
+      <row>
+        <col id="0">0</col>
+        <col id="1"/>
+        <col id="2"/>
+        <col id="3">0</col>
+        <col id="4"/>
+        <col id="5"/>
+        <col id="6"/>
+        <col id="7"/>
+        <col id="8"/>
+        <col id="9"/>
+        <col id="10"/>
+      </row>
+      <row>
+        <col id="0">0</col>
+        <col id="1"/>
+        <col id="2"/>
+        <col id="3">0</col>
+        <col id="4"/>
+        <col id="5"/>
+        <col id="6"/>
+        <col id="7"/>
+        <col id="8"/>
+        <col id="9"/>
+        <col id="10"/>
+      </row>
+      <row>
+        <col id="0">0</col>
+        <col id="1"/>
+        <col id="2"/>
+        <col id="3">0</col>
+        <col id="4"/>
+        <col id="5"/>
+        <col id="6"/>
+        <col id="7"/>
+        <col id="8"/>
+        <col id="9"/>
+        <col id="10"/>
+      </row>
+      <row>
+        <col id="0">0</col>
+        <col id="1"/>
+        <col id="2"/>
+        <col id="3">0</col>
+        <col id="4"/>
+        <col id="5"/>
+        <col id="6"/>
+        <col id="7"/>
+        <col id="8"/>
+        <col id="9"/>
+        <col id="10"/>
+      </row>
+      <row>
+        <col id="0">0</col>
+        <col id="1"/>
+        <col id="2"/>
+        <col id="3">0</col>
+        <col id="4"/>
+        <col id="5"/>
+        <col id="6"/>
+        <col id="7"/>
+        <col id="8"/>
+        <col id="9"/>
+        <col id="10"/>
+      </row>
+    </data>
   </object>
   <object class="GtkListStore" id="liststore2">
     <columns>
-      <!-- column-name 所属项目 -->
+      <!-- column-name CNo -->
       <column type="gchar"/>
-      <!-- column-name 学号 -->
+      <!-- column-name SNo -->
       <column type="gchar"/>
-      <!-- column-name 姓名 -->
+      <!-- column-name name -->
       <column type="gchar"/>
-      <!-- column-name 年龄 -->
+      <!-- column-name old -->
       <column type="gint"/>
-      <!-- column-name 类别 -->
+      <!-- column-name status -->
       <column type="gchar"/>
-      <!-- column-name 专业 -->
+      <!-- column-name profession -->
       <column type="gchar"/>
-      <!-- column-name 班级 -->
+      <!-- column-name classNo -->
       <column type="gchar"/>
-      <!-- column-name 本人特长 -->
+      <!-- column-name telent -->
       <column type="gchar"/>
-      <!-- column-name 承担任务 -->
+      <!-- column-name task -->
       <column type="gchar"/>
-      <!-- column-name 联系电话 -->
+      <!-- column-name tel -->
       <column type="gchar"/>
-      <!-- column-name 贡献排名 -->
+      <!-- column-name que -->
       <column type="gint"/>
     </columns>
   </object>
@@ -75,22 +148,6 @@
           <packing>
             <property name="x">420</property>
             <property name="y">32</property>
-          </packing>
-        </child>
-        <child>
-          <object class="GtkTreeView" id="treeview1">
-            <property name="width_request">895</property>
-            <property name="height_request">241</property>
-            <property name="visible">True</property>
-            <property name="can_focus">True</property>
-            <property name="enable_search">False</property>
-            <property name="fixed_height_mode">True</property>
-            <property name="rubber_banding">True</property>
-            <property name="enable_grid_lines">horizontal</property>
-          </object>
-          <packing>
-            <property name="x">3</property>
-            <property name="y">281</property>
           </packing>
         </child>
         <child>
@@ -361,22 +418,6 @@
           </packing>
         </child>
         <child>
-          <object class="GtkTreeView" id="treeview2">
-            <property name="width_request">895</property>
-            <property name="height_request">244</property>
-            <property name="visible">True</property>
-            <property name="can_focus">True</property>
-            <property name="enable_search">False</property>
-            <property name="fixed_height_mode">True</property>
-            <property name="rubber_banding">True</property>
-            <property name="enable_grid_lines">horizontal</property>
-          </object>
-          <packing>
-            <property name="x">1</property>
-            <property name="y">556</property>
-          </packing>
-        </child>
-        <child>
           <object class="GtkToggleButton" id="togglebutton1">
             <property name="label" translatable="yes">且方式</property>
             <property name="width_request">47</property>
@@ -389,6 +430,139 @@
           <packing>
             <property name="x">424</property>
             <property name="y">220</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkScrolledWindow" id="scrolledwindow1">
+            <property name="width_request">895</property>
+            <property name="height_request">241</property>
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="hscrollbar_policy">automatic</property>
+            <property name="vscrollbar_policy">automatic</property>
+            <child>
+              <object class="GtkTreeView" id="treeview1">
+                <property name="width_request">895</property>
+                <property name="height_request">241</property>
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="model">liststore1</property>
+                <property name="enable_search">False</property>
+                <property name="fixed_height_mode">True</property>
+                <property name="rubber_banding">True</property>
+                <property name="enable_grid_lines">vertical</property>
+                <property name="tooltip_column">1</property>
+                <child>
+                  <object class="GtkTreeViewColumn" id="treeviewcolumn1">
+                    <property name="spacing">1</property>
+                    <property name="sizing">fixed</property>
+                    <property name="fixed_width">40</property>
+                    <property name="title" translatable="yes"> 序号</property>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkTreeViewColumn" id="treeviewcolumn2">
+                    <property name="sizing">fixed</property>
+                    <property name="fixed_width">80</property>
+                    <property name="title" translatable="yes">   项目编号</property>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkTreeViewColumn" id="treeviewcolumn3">
+                    <property name="sizing">fixed</property>
+                    <property name="fixed_width">230</property>
+                    <property name="title" translatable="yes">                  项目名称</property>
+                    <child>
+                      <object class="GtkCellRendererText" id="cellrenderertext1"/>
+                    </child>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkTreeViewColumn" id="treeviewcolumn4">
+                    <property name="sizing">fixed</property>
+                    <property name="fixed_width">60</property>
+                    <property name="title" translatable="yes"> 经费(万）</property>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkTreeViewColumn" id="treeviewcolumn5">
+                    <property name="sizing">fixed</property>
+                    <property name="fixed_width">80</property>
+                    <property name="title" translatable="yes">   立项时间</property>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkTreeViewColumn" id="treeviewcolumn6">
+                    <property name="sizing">fixed</property>
+                    <property name="fixed_width">80</property>
+                    <property name="title" translatable="yes">   结题时间</property>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkTreeViewColumn" id="treeviewcolumn7">
+                    <property name="sizing">fixed</property>
+                    <property name="fixed_width">80</property>
+                    <property name="title" translatable="yes">结题评价</property>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkTreeViewColumn" id="treeviewcolumn8">
+                    <property name="sizing">fixed</property>
+                    <property name="fixed_width">50</property>
+                    <property name="title" translatable="yes">负责人</property>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkTreeViewColumn" id="treeviewcolumn9">
+                    <property name="sizing">fixed</property>
+                    <property name="title" translatable="yes">电话</property>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkTreeViewColumn" id="treeviewcolumn10">
+                    <property name="sizing">fixed</property>
+                    <property name="fixed_width">60</property>
+                    <property name="title" translatable="yes">结果类型</property>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkTreeViewColumn" id="treeviewcolumn11">
+                    <property name="sizing">fixed</property>
+                    <property name="title" translatable="yes">结果名称</property>
+                  </object>
+                </child>
+              </object>
+            </child>
+          </object>
+          <packing>
+            <property name="x">3</property>
+            <property name="y">282</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkScrolledWindow" id="scrolledwindow2">
+            <property name="width_request">895</property>
+            <property name="height_request">244</property>
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="hscrollbar_policy">automatic</property>
+            <property name="vscrollbar_policy">automatic</property>
+            <child>
+              <object class="GtkTreeView" id="treeview2">
+                <property name="width_request">895</property>
+                <property name="height_request">244</property>
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="model">liststore2</property>
+                <property name="enable_search">False</property>
+                <property name="fixed_height_mode">True</property>
+                <property name="rubber_banding">True</property>
+                <property name="enable_grid_lines">horizontal</property>
+              </object>
+            </child>
+          </object>
+          <packing>
+            <property name="y">556</property>
           </packing>
         </child>
       </object>

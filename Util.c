@@ -27,4 +27,16 @@ void ClearWindow(GtkWidget * wid,gpointer data){
     }
 }
 
+void FreeAllPoint(point * head){
+    while(head!=NULL){
+        point * tmp = head;
+        head = head->next;
+        free(tmp);
+    }
+}
+int Correspond(char * Main,char *beTest){
+
+}
+
+
 

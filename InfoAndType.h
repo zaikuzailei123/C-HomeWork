@@ -71,6 +71,17 @@ typedef struct pipe{
 }pipe;
 
 
+union Add{
+    annual * adda;
+    project * addp;
+    staff * adds;
+};
+typedef struct point{
+    union Add add;
+    struct point * next;
+}point;
+
+
 
 extern annual * ahead;
 extern GtkWidget * window;
