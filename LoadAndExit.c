@@ -6,7 +6,7 @@ annual *LoadData(){
     fa = fopen("data/annual.bin","rb");
     fp = fopen("data/project.bin","rb");
     fs = fopen("data/staff.bin","rb");
-    //´´½¨ÎÄ¼ş
+    //åˆ›å»ºæ–‡ä»¶
     if(fa==NULL){
         fclose(fa);fclose(fp);fclose(fs);
         fa = fopen("data/annual.bin","wb");
@@ -68,7 +68,7 @@ annual *LoadData(){
         }
     }
     fclose(fa);fclose(fp);fclose(fs);
-    if(heada==NULL) {Msg(1,"ÏµÍ³¼ì²âµ½Ã»ÓĞĞÅÏ¢£¬ÇëÌí¼ÓĞÅÏ¢£¡");return NULL;}
+    if(heada==NULL) {Msg(1,"ç³»ç»Ÿæ£€æµ‹åˆ°æ²¡æœ‰ä¿¡æ¯ï¼Œè¯·æ·»åŠ ä¿¡æ¯ï¼");return NULL;}
     else return heada;
 }
 
@@ -95,10 +95,14 @@ void UnLoadData(){
 
 void ExitEvent (GtkWidget* widget,gpointer data){
     UnLoadData();
+    free(pipes);
     gtk_main_quit();
 }
-
-void SaveData(GtkWidget* widget,gpointer data){
+void SubExitEvent(GtkWidget * wid,gpointer data){
+    gtk_widget_destroy(wid);
+    window = CreateMainPage();
+}
+void SaveData(){
     annual * heada = ahead;
     FILE * fa,*fp,*fs;
     fa = fopen("data/annual.bin","wb");

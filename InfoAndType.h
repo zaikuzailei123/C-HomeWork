@@ -10,6 +10,7 @@
 #include <gtk/gtk.h>
 #include<stdio.h>
 #include<stdlib.h>
+#include<string.h>
 
 struct datas{
     char SNo[12];
@@ -63,5 +64,14 @@ typedef struct annual{
     struct project * pjhead;
 }annual;
 
+
+typedef struct pipe{
+    GtkWidget * widget[15];
+    int n;
+}pipe;
+
+
+
 extern annual * ahead;
 extern GtkWidget * window;
+extern pipe * pipes;

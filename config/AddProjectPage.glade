@@ -3,10 +3,10 @@
   <requires lib="gtk+" version="2.24"/>
   <!-- interface-naming-policy project-wide -->
   <object class="GtkWindow" id="window1">
-    <property name="width_request">400</property>
-    <property name="height_request">530</property>
+    <property name="width_request">770</property>
+    <property name="height_request">480</property>
     <property name="can_focus">False</property>
-    <property name="title" translatable="yes">录入年度信息</property>
+    <property name="title" translatable="yes">录入项目信息</property>
     <property name="resizable">False</property>
     <property name="modal">True</property>
     <property name="window_position">center</property>
@@ -22,15 +22,15 @@
             <property name="can_focus">False</property>
             <property name="xpad">1</property>
             <property name="ypad">1</property>
-            <property name="label" translatable="yes">录 入 年 度 信 息</property>
+            <property name="label" translatable="yes">录 入 项 目 信 息</property>
             <attributes>
               <attribute name="weight" value="semibold"/>
               <attribute name="size" value="100"/>
             </attributes>
           </object>
           <packing>
-            <property name="x">125</property>
-            <property name="y">19</property>
+            <property name="x">299</property>
+            <property name="y">15</property>
           </packing>
         </child>
         <child>
@@ -46,8 +46,8 @@
             </attributes>
           </object>
           <packing>
-            <property name="x">21</property>
-            <property name="y">72</property>
+            <property name="x">30</property>
+            <property name="y">76</property>
           </packing>
         </child>
         <child>
@@ -73,24 +73,7 @@
             <property name="height_request">30</property>
             <property name="visible">True</property>
             <property name="can_focus">False</property>
-            <property name="label" translatable="yes">投入资金：</property>
-            <attributes>
-              <attribute name="absolute-size" value="2"/>
-              <attribute name="scale" value="2"/>
-            </attributes>
-          </object>
-          <packing>
-            <property name="x">21</property>
-            <property name="y">130</property>
-          </packing>
-        </child>
-        <child>
-          <object class="GtkLabel" id="label4">
-            <property name="width_request">100</property>
-            <property name="height_request">30</property>
-            <property name="visible">True</property>
-            <property name="can_focus">False</property>
-            <property name="label" translatable="yes">负责人：</property>
+            <property name="label" translatable="yes">项目名称：</property>
             <attributes>
               <attribute name="absolute-size" value="2"/>
               <attribute name="scale" value="2"/>
@@ -98,7 +81,7 @@
           </object>
           <packing>
             <property name="x">29</property>
-            <property name="y">184</property>
+            <property name="y">130</property>
           </packing>
         </child>
         <child>
@@ -115,7 +98,7 @@
           </object>
           <packing>
             <property name="x">160</property>
-            <property name="y">181</property>
+            <property name="y">125</property>
           </packing>
         </child>
         <child>
@@ -124,15 +107,15 @@
             <property name="height_request">35</property>
             <property name="visible">True</property>
             <property name="can_focus">False</property>
-            <property name="label" translatable="yes">申请项目数：</property>
+            <property name="label" translatable="yes">立项时间：</property>
             <attributes>
               <attribute name="absolute-size" value="2"/>
               <attribute name="scale" value="2"/>
             </attributes>
           </object>
           <packing>
-            <property name="x">7</property>
-            <property name="y">237</property>
+            <property name="x">20</property>
+            <property name="y">176</property>
           </packing>
         </child>
         <child>
@@ -148,8 +131,8 @@
             <property name="secondary_icon_sensitive">True</property>
           </object>
           <packing>
-            <property name="x">160</property>
-            <property name="y">237</property>
+            <property name="x">537</property>
+            <property name="y">125</property>
           </packing>
         </child>
         <child>
@@ -158,32 +141,15 @@
             <property name="height_request">30</property>
             <property name="visible">True</property>
             <property name="can_focus">False</property>
-            <property name="label" translatable="yes">结题项目数：</property>
+            <property name="label" translatable="yes">结题时间：</property>
             <attributes>
               <attribute name="absolute-size" value="2"/>
               <attribute name="scale" value="2"/>
             </attributes>
           </object>
           <packing>
-            <property name="x">8</property>
-            <property name="y">295</property>
-          </packing>
-        </child>
-        <child>
-          <object class="GtkEntry" id="entry5">
-            <property name="width_request">180</property>
-            <property name="height_request">35</property>
-            <property name="visible">True</property>
-            <property name="can_focus">True</property>
-            <property name="invisible_char">●</property>
-            <property name="primary_icon_activatable">False</property>
-            <property name="secondary_icon_activatable">False</property>
-            <property name="primary_icon_sensitive">True</property>
-            <property name="secondary_icon_sensitive">True</property>
-          </object>
-          <packing>
-            <property name="x">160</property>
-            <property name="y">293</property>
+            <property name="x">395</property>
+            <property name="y">184</property>
           </packing>
         </child>
         <child>
@@ -192,14 +158,15 @@
             <property name="height_request">30</property>
             <property name="visible">True</property>
             <property name="can_focus">False</property>
-            <property name="label" translatable="yes">计划开始时间：</property>
+            <property name="label" translatable="yes">完成评价：</property>
             <attributes>
               <attribute name="absolute-size" value="2"/>
               <attribute name="scale" value="2"/>
             </attributes>
           </object>
           <packing>
-            <property name="y">353</property>
+            <property name="x">7</property>
+            <property name="y">236</property>
           </packing>
         </child>
         <child>
@@ -216,23 +183,24 @@
           </object>
           <packing>
             <property name="x">160</property>
-            <property name="y">351</property>
+            <property name="y">179</property>
           </packing>
         </child>
         <child>
           <object class="GtkLabel" id="label8">
-            <property name="width_request">140</property>
+            <property name="width_request">120</property>
             <property name="height_request">30</property>
             <property name="visible">True</property>
             <property name="can_focus">False</property>
-            <property name="label" translatable="yes">计划结束时间：</property>
+            <property name="label" translatable="yes">负责人：</property>
             <attributes>
               <attribute name="absolute-size" value="2"/>
               <attribute name="scale" value="2"/>
             </attributes>
           </object>
           <packing>
-            <property name="y">414</property>
+            <property name="x">403</property>
+            <property name="y">239</property>
           </packing>
         </child>
         <child>
@@ -248,8 +216,8 @@
             <property name="secondary_icon_sensitive">True</property>
           </object>
           <packing>
-            <property name="x">160</property>
-            <property name="y">410</property>
+            <property name="x">537</property>
+            <property name="y">179</property>
           </packing>
         </child>
         <child>
@@ -264,8 +232,8 @@
             <accelerator key="Return" signal="clicked"/>
           </object>
           <packing>
-            <property name="x">68</property>
-            <property name="y">460</property>
+            <property name="x">237</property>
+            <property name="y">408</property>
           </packing>
         </child>
         <child>
@@ -278,8 +246,8 @@
             <property name="receives_default">True</property>
           </object>
           <packing>
-            <property name="x">235</property>
-            <property name="y">460</property>
+            <property name="x">424</property>
+            <property name="y">408</property>
           </packing>
         </child>
         <child>
@@ -296,8 +264,182 @@
             <property name="secondary_icon_sensitive">True</property>
           </object>
           <packing>
+            <property name="x">537</property>
+            <property name="y">70</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkLabel" id="label9">
+            <property name="width_request">100</property>
+            <property name="height_request">30</property>
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+            <property name="label" translatable="yes">项目编号：</property>
+            <attributes>
+              <attribute name="absolute-size" value="2"/>
+              <attribute name="scale" value="2"/>
+            </attributes>
+          </object>
+          <packing>
+            <property name="x">400</property>
+            <property name="y">75</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkLabel" id="label10">
+            <property name="width_request">100</property>
+            <property name="height_request">30</property>
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+            <property name="label" translatable="yes">经费数：</property>
+            <attributes>
+              <attribute name="absolute-size" value="2"/>
+              <attribute name="scale" value="2"/>
+            </attributes>
+          </object>
+          <packing>
+            <property name="x">412</property>
+            <property name="y">129</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkEntry" id="entry8">
+            <property name="width_request">180</property>
+            <property name="height_request">35</property>
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="invisible_char">●</property>
+            <property name="invisible_char_set">True</property>
+            <property name="primary_icon_activatable">False</property>
+            <property name="secondary_icon_activatable">False</property>
+            <property name="primary_icon_sensitive">True</property>
+            <property name="secondary_icon_sensitive">True</property>
+          </object>
+          <packing>
             <property name="x">160</property>
-            <property name="y">124</property>
+            <property name="y">235</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkEntry" id="entry9">
+            <property name="width_request">180</property>
+            <property name="height_request">35</property>
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="invisible_char">●</property>
+            <property name="primary_icon_activatable">False</property>
+            <property name="secondary_icon_activatable">False</property>
+            <property name="primary_icon_sensitive">True</property>
+            <property name="secondary_icon_sensitive">True</property>
+          </object>
+          <packing>
+            <property name="x">537</property>
+            <property name="y">235</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkLabel" id="label11">
+            <property name="width_request">120</property>
+            <property name="height_request">30</property>
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+            <property name="label" translatable="yes">负责人电话：</property>
+            <attributes>
+              <attribute name="absolute-size" value="2"/>
+              <attribute name="scale" value="2"/>
+            </attributes>
+          </object>
+          <packing>
+            <property name="x">8</property>
+            <property name="y">289</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkEntry" id="entry10">
+            <property name="width_request">180</property>
+            <property name="height_request">35</property>
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="invisible_char">●</property>
+            <property name="invisible_char_set">True</property>
+            <property name="primary_icon_activatable">False</property>
+            <property name="secondary_icon_activatable">False</property>
+            <property name="primary_icon_sensitive">True</property>
+            <property name="secondary_icon_sensitive">True</property>
+          </object>
+          <packing>
+            <property name="x">160</property>
+            <property name="y">290</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkLabel" id="label12">
+            <property name="width_request">100</property>
+            <property name="height_request">30</property>
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+            <property name="label" translatable="yes">结果形式：</property>
+            <attributes>
+              <attribute name="absolute-size" value="2"/>
+              <attribute name="scale" value="2"/>
+            </attributes>
+          </object>
+          <packing>
+            <property name="x">405</property>
+            <property name="y">298</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkEntry" id="entry11">
+            <property name="width_request">180</property>
+            <property name="height_request">35</property>
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="invisible_char">●</property>
+            <property name="invisible_char_set">True</property>
+            <property name="primary_icon_activatable">False</property>
+            <property name="secondary_icon_activatable">False</property>
+            <property name="primary_icon_sensitive">True</property>
+            <property name="secondary_icon_sensitive">True</property>
+          </object>
+          <packing>
+            <property name="x">538</property>
+            <property name="y">290</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkEntry" id="entry12">
+            <property name="width_request">180</property>
+            <property name="height_request">35</property>
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="invisible_char">●</property>
+            <property name="invisible_char_set">True</property>
+            <property name="primary_icon_activatable">False</property>
+            <property name="secondary_icon_activatable">False</property>
+            <property name="primary_icon_sensitive">True</property>
+            <property name="secondary_icon_sensitive">True</property>
+          </object>
+          <packing>
+            <property name="x">160</property>
+            <property name="y">345</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkLabel" id="label13">
+            <property name="width_request">100</property>
+            <property name="height_request">30</property>
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+            <property name="label" translatable="yes">结果名称：</property>
+            <attributes>
+              <attribute name="absolute-size" value="2"/>
+              <attribute name="scale" value="2"/>
+            </attributes>
+          </object>
+          <packing>
+            <property name="x">18</property>
+            <property name="y">348</property>
           </packing>
         </child>
       </object>

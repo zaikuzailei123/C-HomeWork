@@ -6,7 +6,7 @@
     <property name="width_request">400</property>
     <property name="height_request">530</property>
     <property name="can_focus">False</property>
-    <property name="title" translatable="yes">录入年度信息</property>
+    <property name="title" translatable="yes">修改年度信息</property>
     <property name="resizable">False</property>
     <property name="modal">True</property>
     <property name="window_position">center</property>
@@ -22,7 +22,7 @@
             <property name="can_focus">False</property>
             <property name="xpad">1</property>
             <property name="ypad">1</property>
-            <property name="label" translatable="yes">录 入 年 度 信 息</property>
+            <property name="label" translatable="yes">修 改 年 度 信 息</property>
             <attributes>
               <attribute name="weight" value="semibold"/>
               <attribute name="size" value="100"/>
@@ -254,14 +254,13 @@
         </child>
         <child>
           <object class="GtkButton" id="button1">
-            <property name="label" translatable="yes">增加</property>
+            <property name="label" translatable="yes">修改</property>
             <property name="width_request">100</property>
             <property name="height_request">50</property>
             <property name="visible">True</property>
             <property name="can_focus">True</property>
             <property name="receives_default">True</property>
-            <property name="tooltip_text" translatable="yes">增加（ENTER）</property>
-            <accelerator key="Return" signal="clicked"/>
+            <property name="tooltip_text" translatable="yes">查询</property>
           </object>
           <packing>
             <property name="x">68</property>
@@ -298,6 +297,22 @@
           <packing>
             <property name="x">160</property>
             <property name="y">124</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkButton" id="button3">
+            <property name="label" translatable="yes">查询</property>
+            <property name="width_request">50</property>
+            <property name="height_request">30</property>
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="receives_default">True</property>
+            <property name="tooltip_text" translatable="yes">查询</property>
+            <accelerator key="Return" signal="clicked"/>
+          </object>
+          <packing>
+            <property name="x">346</property>
+            <property name="y">72</property>
           </packing>
         </child>
       </object>

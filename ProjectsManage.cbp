@@ -94,11 +94,25 @@
 		<Unit filename="MainPage.h">
 			<Option virtualFolder="headers/" />
 		</Unit>
+		<Unit filename="Project.c">
+			<Option compilerVar="CC" />
+			<Option virtualFolder="src/code/" />
+		</Unit>
+		<Unit filename="Project.h">
+			<Option virtualFolder="headers/" />
+		</Unit>
 		<Unit filename="ShowPage.c">
 			<Option compilerVar="CC" />
 			<Option virtualFolder="src/ui/" />
 		</Unit>
 		<Unit filename="ShowPage.h">
+			<Option virtualFolder="headers/" />
+		</Unit>
+		<Unit filename="Staff.c">
+			<Option compilerVar="CC" />
+			<Option virtualFolder="src/code/" />
+		</Unit>
+		<Unit filename="Staff.h">
 			<Option virtualFolder="headers/" />
 		</Unit>
 		<Unit filename="Util.c">

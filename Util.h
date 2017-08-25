@@ -6,6 +6,5 @@
 #endif // UTIL_H_INCLUDED
 extern void Msg(int mode,char * msg);
 extern void ClearWindow(GtkWidget * wid,gpointer data);
-extern void SubExitEvent(GtkWidget * wid,gpointer data);
-void ExitEvent (GtkWidget* widget,gpointer data);
+
 
