@@ -5,3 +5,5 @@
 
 #endif // PROJECT_H_INCLUDED
 void AddProject(GtkWidget *wid,gpointer data);
+void FindProject(GtkWidget *wid,gpointer data);
+void ChangeProject(GtkWidget *wid,gpointer data);

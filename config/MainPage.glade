@@ -4,7 +4,7 @@
   <!-- interface-naming-policy project-wide -->
   <object class="GtkWindow" id="window1">
     <property name="width_request">300</property>
-    <property name="height_request">350</property>
+    <property name="height_request">420</property>
     <property name="can_focus">False</property>
     <property name="title" translatable="yes">大创项目信息管理系统</property>
     <property name="resizable">False</property>
@@ -95,8 +95,8 @@
             <accelerator key="a" signal="clicked" modifiers="GDK_MOD1_MASK"/>
           </object>
           <packing>
-            <property name="x">36</property>
-            <property name="y">143</property>
+            <property name="x">35</property>
+            <property name="y">130</property>
           </packing>
         </child>
         <child>
@@ -111,8 +111,8 @@
             <accelerator key="z" signal="clicked" modifiers="GDK_MOD1_MASK"/>
           </object>
           <packing>
-            <property name="x">169</property>
-            <property name="y">143</property>
+            <property name="x">164</property>
+            <property name="y">130</property>
           </packing>
         </child>
         <child>
@@ -127,8 +127,8 @@
             <accelerator key="x" signal="clicked" modifiers="GDK_MOD1_MASK"/>
           </object>
           <packing>
-            <property name="x">36</property>
-            <property name="y">213</property>
+            <property name="x">35</property>
+            <property name="y">198</property>
           </packing>
         </child>
         <child>
@@ -143,8 +143,8 @@
             <accelerator key="d" signal="clicked" modifiers="GDK_MOD1_MASK"/>
           </object>
           <packing>
-            <property name="x">168</property>
-            <property name="y">212</property>
+            <property name="x">164</property>
+            <property name="y">198</property>
           </packing>
         </child>
         <child>
@@ -158,8 +158,8 @@
             <property name="tooltip_text" translatable="yes">统计信息（Alt+s)</property>
           </object>
           <packing>
-            <property name="x">36</property>
-            <property name="y">284</property>
+            <property name="x">35</property>
+            <property name="y">268</property>
           </packing>
         </child>
         <child>
@@ -174,8 +174,40 @@
             <accelerator key="f" signal="clicked" modifiers="GDK_MOD1_MASK"/>
           </object>
           <packing>
-            <property name="x">168</property>
-            <property name="y">284</property>
+            <property name="x">164</property>
+            <property name="y">268</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkButton" id="button7">
+            <property name="label" translatable="yes">数据备份</property>
+            <property name="width_request">100</property>
+            <property name="height_request">50</property>
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="receives_default">True</property>
+            <property name="tooltip_text" translatable="yes">数据备份（Alt+p)</property>
+            <accelerator key="p" signal="clicked" modifiers="GDK_MOD1_MASK"/>
+          </object>
+          <packing>
+            <property name="x">35</property>
+            <property name="y">339</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkButton" id="button8">
+            <property name="label" translatable="yes">数据恢复</property>
+            <property name="width_request">100</property>
+            <property name="height_request">50</property>
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="receives_default">True</property>
+            <property name="tooltip_text" translatable="yes">数据恢复(Alt+R)</property>
+            <accelerator key="r" signal="clicked" modifiers="GDK_MOD1_MASK"/>
+          </object>
+          <packing>
+            <property name="x">164</property>
+            <property name="y">339</property>
           </packing>
         </child>
       </object>

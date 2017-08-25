@@ -222,13 +222,13 @@
         </child>
         <child>
           <object class="GtkButton" id="button1">
-            <property name="label" translatable="yes">增加</property>
+            <property name="label" translatable="yes">修改</property>
             <property name="width_request">100</property>
             <property name="height_request">50</property>
             <property name="visible">True</property>
             <property name="can_focus">True</property>
             <property name="receives_default">True</property>
-            <property name="tooltip_text" translatable="yes">增加</property>
+            <property name="tooltip_text" translatable="yes">修改</property>
           </object>
           <packing>
             <property name="x">442</property>
@@ -495,6 +495,7 @@
             <property name="visible">True</property>
             <property name="can_focus">True</property>
             <property name="receives_default">True</property>
+            <property name="tooltip_text" translatable="yes">立即查询（Enter)</property>
             <accelerator key="Return" signal="clicked"/>
           </object>
           <packing>
