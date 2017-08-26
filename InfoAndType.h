@@ -78,6 +78,7 @@ union Add{
 };
 typedef struct point{
     union Add add;
+    union Add parent;
     struct point * next;
 }point;
 

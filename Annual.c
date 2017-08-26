@@ -114,7 +114,7 @@ void ChangeAnnual(GtkWidget * wid , gpointer data){
 int Judge(annual * cur,pipe * A){
     int flagAnd = 1;int flagOr = 0;
     if(gtk_toggle_button_get_active(A->widget[5])){
-        if(Correspond(cur->data.CSNo,gtk_entry_get_text(A->widget[0]))){
+        if(Correspond1(cur->data.CSNo,gtk_entry_get_text(A->widget[0]))){
             flagOr = 1;
         }
         else{
@@ -157,7 +157,7 @@ point *QueryForList(pipe * A){
     while(heada!=NULL){
         if(Judge(heada,A)!=0){
             point * tmp = (point *)malloc(sizeof(point));
-            tmp->next = NULL;
+            tmp->next = NULL;tmp->parent = NULL;
             tmp->add.adda = heada;
             //处理头节点
             if(head==NULL){

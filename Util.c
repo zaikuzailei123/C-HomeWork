@@ -34,9 +34,45 @@ void FreeAllPoint(point * head){
         free(tmp);
     }
 }
-int Correspond(char * Main,char *beTest){
-
+int Correspond1(char * Main,char *beTest){
+    if(strlen(Main)<strlen(beTest)) return 0;
+    char c;int flag = 1;
+    for(int i = 0;beTest[i]!='\0'&&Main[i]!='\0';i++){
+        c = beTest[i];
+        if(c=='*') continue;
+        else if(c!=Main[i]){
+            flag = 0;
+            break;
+        }
+    }
+    return flag;
 }
+
+int Correspond2(char * Main,char *beTest){
+    char block[5];int i = 0;int count = 0;
+    int suc = 0;int total = 0;
+    while(beTest[i++]!='\0'){
+        if(count <=2){
+            block[count++] = beTest[i];
+        }
+        else{
+            block[count] = '\0';
+            count = 0;
+            total ++;
+            if(strstr(Main,block)!=NULL) suc ++;
+
+        }
+    }
+    double a = (double)suc;
+    double b= (double)total;
+    if(a/b>=0.4) return 1;
+    else return 0;
+}
+
+
+
+
+
 
 
 

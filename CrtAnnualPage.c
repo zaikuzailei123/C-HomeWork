@@ -103,7 +103,28 @@ void CreateChangeAnnualPage(){
     g_signal_connect(G_OBJECT(button_clear),"clicked",G_CALLBACK(ClearWindow),pipes);
 	gtk_widget_show_all(addwindow);
 }
+void QueryAnnualSwitch(GtkWidget *wid,gpointer data){
+    pipe*A = (pipe *)data;
+    gtk_clist_clear(A->widget[9]);
+    int flag = 0;
+    if(gtk_toggle_button_get_active(A->widget[5])){
+       flag = 1;
+       if(strcmp(gtk_entry_get_text(A->widget[0]),"")==0){Msg(1,"请输入年度编号！");return ;}
 
+    }
+    if(gtk_toggle_button_get_active(A->widget[6])){
+        flag = 1;
+        if(strcmp(gtk_entry_get_text(A->widget[1]),"")==0){Msg(1,"请输入投入资金下限！");return ;}
+        if(strcmp(gtk_entry_get_text(A->widget[2]),"")==0){Msg(1,"请输入投入资金上限！");return ;}
+    }
+    if(gtk_toggle_button_get_active(A->widget[7])){
+       flag = 1;
+        if(strcmp(gtk_entry_get_text(A->widget[3]),"")==0){Msg(1,"请输入支持项目数下限！");return ;}
+        if(strcmp(gtk_entry_get_text(A->widget[4]),"")==0){Msg(1,"请输入支持项目数上限！");return ;}
+    }
+    if(flag==0){Msg(1,"请至少选择一种方式查询");return ;}
+    QueryAnnual(wid,A);
+}
 void CreateQueryAnnualPage(){
     //button
     GtkWidget * button_ensure;
@@ -126,19 +147,6 @@ void CreateQueryAnnualPage(){
     GtkWidget * pjApplyC;
 
     GtkWidget * Scroll;
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
     GtkWidget * clist;
@@ -164,7 +172,7 @@ void CreateQueryAnnualPage(){
     pjSupportCk = GTK_CHECK_BUTTON(gtk_builder_get_object(builder,"checkbutton3"));
     AndOrCk = GTK_CHECK_BUTTON(gtk_builder_get_object(builder,"checkbutton4"));
     //
-
+    printf("OK");
     //创建Clist
     clist=gtk_clist_new(8);
     gtk_clist_set_column_title(GTK_CLIST(clist),0,"年度编号");
@@ -176,6 +184,15 @@ void CreateQueryAnnualPage(){
     gtk_clist_set_column_title(GTK_CLIST(clist),6,"计划开始时间");
     gtk_clist_set_column_title(GTK_CLIST(clist),7,"计划结束时间");
     gtk_clist_column_titles_show(GTK_CLIST(clist));
+    gtk_clist_set_column_auto_resize(clist,0,TRUE);
+    gtk_clist_set_column_auto_resize(clist,1,TRUE);
+    gtk_clist_set_column_auto_resize(clist,2,TRUE);
+    gtk_clist_set_column_auto_resize(clist,3,TRUE);
+    gtk_clist_set_column_auto_resize(clist,4,TRUE);
+    gtk_clist_set_column_auto_resize(clist,5,TRUE);
+    gtk_clist_set_column_auto_resize(clist,6,TRUE);
+    gtk_clist_set_column_auto_resize(clist,7,TRUE);
+    Scroll = GTK_SCROLLED_WINDOW(gtk_builder_get_object(builder,"scrolledwindow1"));
     gtk_container_add(GTK_CONTAINER(Scroll),clist);
 
 	pipes->widget[0]= CSNo;
@@ -192,7 +209,7 @@ void CreateQueryAnnualPage(){
 
     //获得按钮
 	button_ensure = GTK_BUTTON(gtk_builder_get_object(builder, "button1"));
-    g_signal_connect(G_OBJECT(button_ensure),"clicked",G_CALLBACK(QueryAnnual),pipes);
+    g_signal_connect(G_OBJECT(button_ensure),"clicked",G_CALLBACK(QueryAnnualSwitch),pipes);
 	button_clear = GTK_BUTTON(gtk_builder_get_object(builder, "button2"));
     g_signal_connect(G_OBJECT(button_clear),"clicked",G_CALLBACK(ClearWindow),pipes);
 

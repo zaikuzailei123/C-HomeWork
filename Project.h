@@ -7,3 +7,4 @@
 void AddProject(GtkWidget *wid,gpointer data);
 void FindProject(GtkWidget *wid,gpointer data);
 void ChangeProject(GtkWidget *wid,gpointer data);
+void QueryProject(GtkWidget* wid, gpointer data);

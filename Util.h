@@ -7,4 +7,4 @@
 extern void Msg(int mode,char * msg);
 extern void ClearWindow(GtkWidget * wid,gpointer data);
 extern void FreeAllPoint(point * head);
-extern int Correspond(char * Main,char *beTest);
+extern int Correspond1(char * Main,char *beTest);
