@@ -71,6 +71,7 @@ void AddProject(GtkWidget *wid,gpointer data){
     }
     heada->data.pjSupportNum++;
     SaveData();
+    ClearWindow(NULL,A);
 }
 
 void FindProject(GtkWidget *wid,gpointer data){

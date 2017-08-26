@@ -53,6 +53,7 @@ void AddAnnual(GtkWidget *wid,gpointer data) {
         }
     }
     SaveData();
+    ClearWindow(NULL,A);
 }
 
 void FindAnnual(GtkWidget * wid , gpointer data){

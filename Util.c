@@ -23,7 +23,6 @@ void ClearWindow(GtkWidget * wid,gpointer data){
     pipe * A = (pipe *)data;
     for(int i = 0;i<A->n;i++){
      gtk_entry_set_text(A->widget[i],"");
-
     }
 }
 

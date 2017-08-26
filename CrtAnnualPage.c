@@ -232,6 +232,7 @@ void DeleteAnnualEnsure(GtkWidget * wid , gpointer data){
     gtk_widget_show_all (dialog);
     if (gtk_dialog_run (GTK_DIALOG (dialog)) == GTK_RESPONSE_OK){
         DeleteAnnual(NULL,clist);
+        gtk_clist_clear(clist);
     }
     gtk_widget_destroy (dialog);
 

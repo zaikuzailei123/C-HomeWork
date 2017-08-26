@@ -80,6 +80,7 @@ void AddStaff(GtkWidget *wid,gpointer data){
     }
     headp->data.people++;
     SaveData();
+    ClearWindow(NULL,A);
 }
 
 void FindStaff(GtkWidget *wid,gpointer data){
@@ -307,5 +308,6 @@ void DeleteStaff(GtkWidget* wid, gpointer data){
         }
     }
     SaveData();
+
 }
 

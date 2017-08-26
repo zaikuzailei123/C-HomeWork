@@ -2,6 +2,7 @@
 #include"CrtAnnualPage.h"
 #include"CrtProjectPage.h"
 #include"CrtStaffPage.h"
+#include"LoadAndExit.h"
 
 
 GtkWidget * check;
@@ -64,6 +65,21 @@ void ShowTuoguanPage(GtkWidget *button, gpointer data){
     gtk_widget_destroy(window);
     //托管页面必须释放节点，然后调用gtk_main_quit
     //编写托管界面
+    gtk_widget_destroy(window);
+    GtkWidget * addwindow;
+    GtkWidget * image;
+
+    GtkBuilder *builder = gtk_builder_new();
+	if ( !gtk_builder_add_from_file(builder,"config/Tuoguan.glade", NULL)) {
+		printf("connot load file!");return ;
+	}
+    addwindow = GTK_WIDGET(gtk_builder_get_object(builder,"window1"));
+    g_signal_connect(G_OBJECT(addwindow),"delete_event",G_CALLBACK(ExitEvent),NULL);
+
+    image = GTK_IMAGE(gtk_builder_get_object(builder,"image1"));
+    gtk_image_set_from_file (image,"image/Tuoguan.png");
+
+    gtk_widget_show_all(addwindow);
 
 
 }
