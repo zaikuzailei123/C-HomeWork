@@ -249,7 +249,7 @@ void CreateQueryProjectPage(){
     gtk_clist_set_column_auto_resize(clist2,4,TRUE);gtk_clist_set_column_auto_resize(clist2,5,TRUE);
     gtk_clist_set_column_auto_resize(clist2,6,TRUE);gtk_clist_set_column_auto_resize(clist2,7,TRUE);
     gtk_clist_set_column_auto_resize(clist2,8,TRUE);gtk_clist_set_column_auto_resize(clist2,9,TRUE);
-    gtk_clist_set_column_auto_resize(clist2,10,TRUE);gtk_clist_set_column_auto_resize(clist2,11,TRUE);
+    gtk_clist_set_column_auto_resize(clist2,10,TRUE);
     Scroll2 = GTK_SCROLLED_WINDOW(gtk_builder_get_object(builder,"scrolledwindow2"));
     gtk_container_add(GTK_CONTAINER(Scroll2),clist2);
 

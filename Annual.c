@@ -157,7 +157,7 @@ point *QueryForList(pipe * A){
     while(heada!=NULL){
         if(Judge(heada,A)!=0){
             point * tmp = (point *)malloc(sizeof(point));
-            tmp->next = NULL;tmp->parent = NULL;
+            tmp->next = NULL;tmp->parent.adda = NULL;
             tmp->add.adda = heada;
             //处理头节点
             if(head==NULL){

@@ -146,7 +146,7 @@ void ChangeProject(GtkWidget *wid,gpointer data){
 
 
 //判断条件
-int Judge(project * cur,pipe * A){
+int Judgep(project * cur,pipe * A){
     int flagAnd = 1;int flagOr = 0;
     if(gtk_toggle_button_get_active(A->widget[5])){
         if(Correspond1(cur->data.CNo,gtk_entry_get_text(A->widget[0]))){
@@ -164,6 +164,7 @@ int Judge(project * cur,pipe * A){
         else{
             flagAnd = 0;
         }
+        printf("***%d   %d**",flagAnd,flagOr);
     }
     if(gtk_toggle_button_get_active(A->widget[7])){
         if(Correspond2(cur->data.pjName,gtk_entry_get_text(A->widget[3]))){
@@ -181,7 +182,7 @@ int Judge(project * cur,pipe * A){
             flagAnd = 0;
         }
     }
-    if(gtk_toggle_button_get_active(A->widget[8])){
+    if(gtk_toggle_button_get_active(A->widget[9])){
         return flagAnd;
     }
     else{
@@ -193,16 +194,16 @@ int Judge(project * cur,pipe * A){
 /*1.项目删除pjsupport-1
 2.pipe里面传参索引相对*/
 
-point *QueryForList(pipe * A){
+point *QueryForListp(pipe * A){
     annual * heada = ahead;
     point *head = NULL;
     point * cur = NULL;
     while(heada!=NULL){
         project * headp =heada->pjhead;
         while(headp!=NULL){
-            if(Judge(headp,A)!=0){
+            if(Judgep(headp,A)!=0){
                 point * tmp = (point *)malloc(sizeof(point));
-                tmp->next = NULL;
+                tmp->next = NULL;tmp->parent.adda = heada;
                 tmp->add.addp = headp;
                 //处理头节点
                 if(head==NULL){
@@ -223,31 +224,62 @@ point *QueryForList(pipe * A){
 
 void QueryProject(GtkWidget* wid, gpointer data){
     pipe * A = (pipe *)data;
-    point *head = QueryForList(A);
+    point *head = QueryForListp(A);
     //输出head到clist；
     GtkWidget * clist1 = A->widget[10];
     GtkWidget * clist2 = A->widget[11];
 
     while(head!=NULL){
         project * prj = head->add.addp;
-        char money[10];char people[10];
+        annual * ann = head->parent.adda;
+        printf("%d   %d",prj,ann);
+        char money[12];char people[12];
         gcvt(prj->data.Money,6,money);
         itoa(prj->data.people,people,10);
-        char * text[] = {
-
-            prj->data.CSNo,
-            money,
-            ann->data.resPeople,
-            pja,pjs,pje,
-            ann->data.timgBg,
-            ann->data.timeEnd
+        printf("\n\n%s\n\n",ann->data.CSNo);
+        printf("%s\n\n",prj->data.pjName);
+        char * text1[] = {
+            ann->data.CSNo,
+            prj->data.CNo,
+            prj->data.pjName,
+            money,people,
+            prj->data.timeBg,
+            prj->data.timeEnd,
+            prj->data.evaluate,
+            prj->data.resPeople,
+            prj->data.ResPeoTel,
+            prj->data.resultType,
+            prj->data.resultName
         };
-        gtk_clist_append(GTK_CLIST(clist),text);
+        gtk_clist_append(GTK_CLIST(clist1),text1);
+
+        staff * heads = prj->sthead;
+        for(int i = 1;i<=prj->data.people;i++){
+            while(heads!=NULL){
+                if(heads->data.que==i){
+                    char old[10];char que[10];
+                    itoa(heads->data.old,old,10);
+                    itoa(heads->data.que,que,10);
+                    char * text2[] = {
+                        prj->data.CNo,
+                        heads->data.SNo,
+                        heads->data.name,
+                        old,heads->data.status,
+                        heads->data.profession,
+                        heads->data.classNo,
+                        heads->data.talent,
+                        heads->data.task,
+                        heads->data.tel,
+                        que
+                    };
+                    gtk_clist_append(GTK_CLIST(clist2),text2);
+                }
+                heads = heads->next;
+            }
+        }
         head = head->next;
     }
     FreeAllPoint(head);
-
-
 }
 
 

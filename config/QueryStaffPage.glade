@@ -2,37 +2,11 @@
 <interface>
   <requires lib="gtk+" version="2.24"/>
   <!-- interface-naming-policy project-wide -->
-  <object class="GtkListStore" id="liststore1">
-    <columns>
-      <!-- column-name 项目编号 -->
-      <column type="gchar"/>
-      <!-- column-name 学号 -->
-      <column type="gchar"/>
-      <!-- column-name 姓名 -->
-      <column type="gchar"/>
-      <!-- column-name 年龄 -->
-      <column type="gint"/>
-      <!-- column-name 类别 -->
-      <column type="gchar"/>
-      <!-- column-name 专业 -->
-      <column type="gchar"/>
-      <!-- column-name 班级 -->
-      <column type="gchar"/>
-      <!-- column-name 本人特长 -->
-      <column type="gchar"/>
-      <!-- column-name 承担任务 -->
-      <column type="gchar"/>
-      <!-- column-name 联系电话 -->
-      <column type="gchar"/>
-      <!-- column-name 贡献排名 -->
-      <column type="gint"/>
-    </columns>
-  </object>
   <object class="GtkWindow" id="window1">
     <property name="width_request">900</property>
     <property name="height_request">600</property>
     <property name="can_focus">False</property>
-    <property name="title" translatable="yes">修改人员信息</property>
+    <property name="title" translatable="yes">人员信息查询</property>
     <property name="resizable">False</property>
     <property name="modal">True</property>
     <property name="window_position">center</property>
@@ -55,21 +29,6 @@
           <packing>
             <property name="x">420</property>
             <property name="y">32</property>
-          </packing>
-        </child>
-        <child>
-          <object class="GtkTreeView" id="treeview1">
-            <property name="width_request">900</property>
-            <property name="height_request">318</property>
-            <property name="visible">True</property>
-            <property name="can_focus">True</property>
-            <property name="enable_search">False</property>
-            <property name="fixed_height_mode">True</property>
-            <property name="rubber_banding">True</property>
-            <property name="enable_grid_lines">horizontal</property>
-          </object>
-          <packing>
-            <property name="y">282</property>
           </packing>
         </child>
         <child>
@@ -101,8 +60,8 @@
             <property name="border_width">1</property>
             <property name="relief">none</property>
             <property name="draw_indicator">True</property>
-            <accelerator key="1" signal="clicked" modifiers="GDK_CONTROL_MASK"/>
             <accelerator key="KP_1" signal="clicked" modifiers="GDK_CONTROL_MASK"/>
+            <accelerator key="1" signal="clicked" modifiers="GDK_CONTROL_MASK"/>
           </object>
           <packing>
             <property name="x">52</property>
@@ -118,8 +77,8 @@
             <property name="can_focus">True</property>
             <property name="receives_default">False</property>
             <property name="draw_indicator">True</property>
-            <accelerator key="2" signal="clicked" modifiers="GDK_CONTROL_MASK"/>
             <accelerator key="KP_2" signal="clicked" modifiers="GDK_CONTROL_MASK"/>
+            <accelerator key="2" signal="clicked" modifiers="GDK_CONTROL_MASK"/>
           </object>
           <packing>
             <property name="x">273</property>
@@ -135,11 +94,11 @@
             <property name="can_focus">True</property>
             <property name="receives_default">False</property>
             <property name="draw_indicator">True</property>
-            <accelerator key="3" signal="clicked" modifiers="GDK_CONTROL_MASK"/>
             <accelerator key="KP_3" signal="clicked" modifiers="GDK_CONTROL_MASK"/>
+            <accelerator key="3" signal="clicked" modifiers="GDK_CONTROL_MASK"/>
           </object>
           <packing>
-            <property name="x">460</property>
+            <property name="x">470</property>
             <property name="y">95</property>
           </packing>
         </child>
@@ -173,7 +132,7 @@
             <property name="secondary_icon_sensitive">True</property>
           </object>
           <packing>
-            <property name="x">273</property>
+            <property name="x">267</property>
             <property name="y">150</property>
           </packing>
         </child>
@@ -191,7 +150,7 @@
             <property name="secondary_icon_sensitive">True</property>
           </object>
           <packing>
-            <property name="x">458</property>
+            <property name="x">474</property>
             <property name="y">150</property>
           </packing>
         </child>
@@ -221,6 +180,7 @@
             <property name="visible">True</property>
             <property name="can_focus">True</property>
             <property name="receives_default">True</property>
+            <property name="tooltip_text" translatable="yes">点击查询</property>
             <accelerator key="Return" signal="clicked"/>
           </object>
           <packing>
@@ -251,27 +211,12 @@
             <property name="can_focus">True</property>
             <property name="receives_default">False</property>
             <property name="draw_indicator">True</property>
-            <accelerator key="KP_4" signal="clicked" modifiers="GDK_CONTROL_MASK"/>
             <accelerator key="4" signal="clicked" modifiers="GDK_CONTROL_MASK"/>
+            <accelerator key="KP_4" signal="clicked" modifiers="GDK_CONTROL_MASK"/>
           </object>
           <packing>
             <property name="x">679</property>
             <property name="y">95</property>
-          </packing>
-        </child>
-        <child>
-          <object class="GtkToggleButton" id="togglebutton1">
-            <property name="label" translatable="yes">且</property>
-            <property name="width_request">50</property>
-            <property name="height_request">33</property>
-            <property name="visible">True</property>
-            <property name="can_focus">True</property>
-            <property name="receives_default">True</property>
-            <property name="active">True</property>
-          </object>
-          <packing>
-            <property name="x">425</property>
-            <property name="y">219</property>
           </packing>
         </child>
         <child>
@@ -288,6 +233,34 @@
           </object>
           <packing>
             <property name="y">282</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkCheckButton" id="checkbutton5">
+            <property name="label" translatable="yes">且</property>
+            <property name="width_request">50</property>
+            <property name="height_request">30</property>
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="receives_default">False</property>
+            <property name="tooltip_text" translatable="yes">选择是否以“且”的方式查询</property>
+            <property name="active">True</property>
+            <property name="draw_indicator">True</property>
+          </object>
+          <packing>
+            <property name="x">437</property>
+            <property name="y">222</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkHSeparator" id="hseparator1">
+            <property name="width_request">900</property>
+            <property name="height_request">20</property>
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+          </object>
+          <packing>
+            <property name="y">268</property>
           </packing>
         </child>
       </object>

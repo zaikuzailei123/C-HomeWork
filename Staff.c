@@ -165,8 +165,114 @@ void ChangeStaff(GtkWidget *wid,gpointer data){
     SaveData();
     A->widget[12] = NULL;
 }
+int Judges(staff * cur,pipe * A){
+    int flagAnd = 1;int flagOr = 0;
+    if(gtk_toggle_button_get_active(A->widget[4])){
+        if(Correspond1(cur->data.SNo,gtk_entry_get_text(A->widget[0]))){
+            flagOr = 1;
+        }
+        else{
+            flagAnd = 0;
+        }
+    }
+    if(gtk_toggle_button_get_active(A->widget[5])){
+        if(Correspond2(cur->data.name,gtk_entry_get_text(A->widget[1]))){
+            flagOr = 1;
+        }
+        else{
+            flagAnd = 0;
+        }
+    }
+    if(gtk_toggle_button_get_active(A->widget[6])){
+        if(Correspond2(cur->data.profession,gtk_entry_get_text(A->widget[2]))){
+            flagOr = 1;
+        }
+        else{
+            flagAnd = 0;
+        }
+    }
+    if(gtk_toggle_button_get_active(A->widget[7])){
+        if(Correspond2(cur->data.talent,gtk_entry_get_text(A->widget[3]))){
+            flagOr = 1;
+        }
+        else{
+            flagAnd = 0;
+        }
+    }
+    if(gtk_toggle_button_get_active(A->widget[8])){
+        return flagAnd;
+    }
+    else{
+        return flagOr;
+    }
+}
+//删除的时候直接调用这条函数
+//注意：
+/*1.项目删除pjsupport-1
+2.pipe里面传参索引相对*/
+point *QueryForLists(pipe * A){
+    annual * heada = ahead;
+    point *head = NULL;
+    point * cur = NULL;
+    while(heada!=NULL){
+        project * headp = heada->pjhead;
+        while(headp!=NULL){
+            staff * heads = headp->sthead;
+            while(heads !=NULL){
+                if(Judges(heads,A)!=0){
+                    point * tmp = (point *)malloc(sizeof(point));
+                    tmp->next = NULL;tmp->parent.addp = headp;
+                    tmp->add.adds = heads;
+                    //处理头节点
+                    if(head==NULL){
+                        head = tmp;
+                        cur = head;
+                    }
+                    else{
+                        cur->next = tmp;
+                        cur = cur->next;
+                    }
+                }
+
+                heads = heads->next;
+            }
+            headp = headp->next;
+        }
+        heada = heada->next;
+    }
+    return head;
+}
 
 
 
+void QueryStaff(GtkWidget * wid,gpointer data){
+    pipe * A = (pipe *)data;
+    point *head = QueryForLists(A);
+    //输出head到clist；
+    GtkWidget * clist = A->widget[9];
+
+    while(head!=NULL){
+        staff * heads = head->add.adds;
+        char old[10];char que[10];
+        itoa(heads->data.old,old,10);
+        itoa(heads->data.que,que,10);
+        char * text[] = {
+            head->parent.addp->data.CNo,
+            heads->data.SNo,
+            heads->data.name,
+            old,
+            heads->data.status,
+            heads->data.profession,
+            heads->data.classNo,
+            heads->data.talent,
+            heads->data.task,
+            heads->data.tel,
+            que
+        };
+        gtk_clist_append(GTK_CLIST(clist),text);
+        head = head->next;
+    }
+    FreeAllPoint(head);
+}
 
 

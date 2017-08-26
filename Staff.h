@@ -7,7 +7,7 @@
 void AddStaff(GtkWidget *wid,gpointer data);
 void FindStaff(GtkWidget *wid,gpointer data);
 void ChangeStaff(GtkWidget *wid,gpointer data);
-
+void QueryStaff(GtkWidget * wid,gpointer data);
 
 
 

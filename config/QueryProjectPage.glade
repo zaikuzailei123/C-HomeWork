@@ -245,7 +245,7 @@
         </child>
         <child>
           <object class="GtkCheckButton" id="checkbutton4">
-            <property name="label" translatable="yes">按照结果形式</property>
+            <property name="label" translatable="yes">按照成果形式</property>
             <property name="width_request">100</property>
             <property name="height_request">30</property>
             <property name="visible">True</property>

@@ -134,10 +134,118 @@ void CreateChangeStaffPage(){
 	gtk_widget_show_all(addwindow);
 }
 
+void QueryStaffSwitch(GtkWidget *wid,gpointer data){
+    pipe*A = (pipe *)data;
+    gtk_clist_clear(A->widget[9]);
+    int flag = 0;
+    if(gtk_toggle_button_get_active(A->widget[4])){
+       flag = 1;
+       if(strcmp(gtk_entry_get_text(A->widget[0]),"")==0){Msg(1,"请输入学号！");return ;}
+    }
+    if(gtk_toggle_button_get_active(A->widget[5])){
+        flag = 1;
+        if(strcmp(gtk_entry_get_text(A->widget[1]),"")==0){Msg(1,"请输入姓名！");return ;}
+    }
+    if(gtk_toggle_button_get_active(A->widget[6])){
+       flag = 1;
+        if(strcmp(gtk_entry_get_text(A->widget[2]),"")==0){Msg(1,"请输入专业！");return ;}
+    }
+    if(gtk_toggle_button_get_active(A->widget[7])){
+       flag = 1;
+        if(strcmp(gtk_entry_get_text(A->widget[3]),"")==0){Msg(1,"请输入特长！");return ;}
+    }
+    if(flag==0){Msg(1,"请至少选择一种方式查询");return ;}
+    QueryStaff(wid,A);
+}
+
 void CreateQueryStaffPage(){
+    //button
+    GtkWidget * button_ensure;
+    GtkWidget * button_clear;
 
+    //check
+    GtkWidget * SNoCk;
+    GtkWidget * NameCk;
+    GtkWidget * ProfessionCk;
+    GtkWidget * TalentCk;
+    GtkWidget * AndOrCk;
 
+    //window
+    GtkWidget * addwindow;
+    //输入域
+    GtkWidget * SNo;
+    GtkWidget * Name;
+    GtkWidget * Profession;
+    GtkWidget * Talent;
 
+    GtkWidget * Scroll;
+
+    GtkWidget * clist;
+    GtkBuilder *builder = gtk_builder_new();
+	if ( !gtk_builder_add_from_file(builder,"config/QueryStaffPage.glade", NULL)) {
+		printf("connot load file!");return ;
+	}
+	printf("Load!\n");
+	//获得窗体
+	addwindow = GTK_WIDGET(gtk_builder_get_object(builder,"window1"));
+    g_signal_connect(G_OBJECT(addwindow),"delete_event",G_CALLBACK(SubExitEvent),addwindow);
+    //获得输入域
+    SNo = GTK_ENTRY(gtk_builder_get_object(builder,"entry1"));
+    Name = GTK_ENTRY(gtk_builder_get_object(builder,"entry2"));
+    Profession = GTK_ENTRY(gtk_builder_get_object(builder,"entry3"));
+    Talent = GTK_ENTRY(gtk_builder_get_object(builder,"entry4"));
+
+    //获得check
+    SNoCk = GTK_CHECK_BUTTON(gtk_builder_get_object(builder,"checkbutton1"));
+    NameCk = GTK_CHECK_BUTTON(gtk_builder_get_object(builder,"checkbutton2"));
+    ProfessionCk = GTK_CHECK_BUTTON(gtk_builder_get_object(builder,"checkbutton3"));
+    TalentCk = GTK_CHECK_BUTTON(gtk_builder_get_object(builder,"checkbutton4"));
+    AndOrCk = GTK_CHECK_BUTTON(gtk_builder_get_object(builder,"checkbutton5"));
+    //
+    printf("OK");
+    //创建Clist
+    clist=gtk_clist_new(11);
+    gtk_clist_set_column_title(GTK_CLIST(clist),0,"项目编号");
+    gtk_clist_set_column_title(GTK_CLIST(clist),1,"学号");
+    gtk_clist_set_column_title(GTK_CLIST(clist),2,"姓名");
+    gtk_clist_set_column_title(GTK_CLIST(clist),3,"年龄");
+    gtk_clist_set_column_title(GTK_CLIST(clist),4,"类别");
+    gtk_clist_set_column_title(GTK_CLIST(clist),5,"学院专业");
+    gtk_clist_set_column_title(GTK_CLIST(clist),6,"班级");
+    gtk_clist_set_column_title(GTK_CLIST(clist),7,"本人特长");
+    gtk_clist_set_column_title(GTK_CLIST(clist),8,"承担任务");
+    gtk_clist_set_column_title(GTK_CLIST(clist),9,"联系电话");
+    gtk_clist_set_column_title(GTK_CLIST(clist),10,"贡献排名");
+    gtk_clist_column_titles_show(GTK_CLIST(clist));
+    gtk_clist_set_column_auto_resize(clist,0,TRUE);    gtk_clist_set_column_auto_resize(clist,1,TRUE);
+    gtk_clist_set_column_auto_resize(clist,2,TRUE);    gtk_clist_set_column_auto_resize(clist,3,TRUE);
+    gtk_clist_set_column_auto_resize(clist,4,TRUE);    gtk_clist_set_column_auto_resize(clist,5,TRUE);
+    gtk_clist_set_column_auto_resize(clist,6,TRUE);    gtk_clist_set_column_auto_resize(clist,7,TRUE);
+    gtk_clist_set_column_auto_resize(clist,8,TRUE);    gtk_clist_set_column_auto_resize(clist,9,TRUE);
+    gtk_clist_set_column_auto_resize(clist,10,TRUE);
+    Scroll = GTK_SCROLLED_WINDOW(gtk_builder_get_object(builder,"scrolledwindow1"));
+    gtk_container_add(GTK_CONTAINER(Scroll),clist);
+
+	pipes->widget[0]= SNo;
+	pipes->widget[1]= Name;
+	pipes->widget[2]= Profession;
+	pipes->widget[3]= Talent;
+
+    pipes->n = 4;
+    pipes->widget[4]= SNoCk;
+    pipes->widget[5]= NameCk;
+    pipes->widget[6]= ProfessionCk;
+    pipes->widget[7]= TalentCk;
+    pipes->widget[8]= AndOrCk;
+    pipes->widget[9] = clist;
+
+    //获得按钮
+	button_ensure = GTK_BUTTON(gtk_builder_get_object(builder, "button1"));
+    g_signal_connect(G_OBJECT(button_ensure),"clicked",G_CALLBACK(QueryStaffSwitch),pipes);
+	button_clear = GTK_BUTTON(gtk_builder_get_object(builder, "button2"));
+    g_signal_connect(G_OBJECT(button_clear),"clicked",G_CALLBACK(ClearWindow),pipes);
+
+	gtk_widget_show_all(addwindow);
 }
 
 void CreateDeleteStaffPage(){
