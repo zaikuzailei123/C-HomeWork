@@ -202,6 +202,44 @@ void QueryAnnual(GtkWidget * wid , gpointer data){
 }
 
 
+void DeleteAnnual(GtkWidget * wid , gpointer data){
+    GtkWidget * clist = (GtkWidget *)data;
+    int i = 0;char * ptext;
+    while(gtk_clist_get_text (clist,i++,0,&ptext)){
+        annual * heada = ahead;
+        project * headp = NULL;
+        if(strcmp(ptext,ahead->data.CSNo)==0){
+            annual * tmp = ahead;
+            project * headp = tmp->pjhead;
+            ahead = ahead->next;
+            free(tmp);
+        }
+        else{
+            while(heada->next!=NULL){
+                if(strcmp(heada->next->data.CSNo,ptext)==0){
+                    annual * tmp = heada->next;
+                    project * headp = tmp->pjhead;
+                    heada->next = tmp->next;
+                    free(tmp);
+                    break;
+                }
+                heada = heada->next;
+            }
+        }
+        while(headp!=NULL){
+            staff * heads = headp->sthead;
+            while(heads!=NULL){
+                staff * tmp = heads;
+                heads = heads->next;
+                free(tmp);
+            }
+            project * tmp = headp;
+            headp = headp->next;
+            free(tmp);
+        }
+    }
+    SaveData();
+}
 
 
 

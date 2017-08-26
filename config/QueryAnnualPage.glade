@@ -59,8 +59,8 @@
             <property name="tooltip_text" translatable="yes">Ctri+1</property>
             <property name="border_width">1</property>
             <property name="draw_indicator">True</property>
-            <accelerator key="1" signal="clicked" modifiers="GDK_CONTROL_MASK"/>
             <accelerator key="KP_1" signal="clicked" modifiers="GDK_CONTROL_MASK"/>
+            <accelerator key="1" signal="clicked" modifiers="GDK_CONTROL_MASK"/>
           </object>
           <packing>
             <property name="x">93</property>
@@ -76,8 +76,8 @@
             <property name="can_focus">True</property>
             <property name="receives_default">False</property>
             <property name="draw_indicator">True</property>
-            <accelerator key="2" signal="clicked" modifiers="GDK_CONTROL_MASK"/>
             <accelerator key="KP_2" signal="clicked" modifiers="GDK_CONTROL_MASK"/>
+            <accelerator key="2" signal="clicked" modifiers="GDK_CONTROL_MASK"/>
           </object>
           <packing>
             <property name="x">357</property>
@@ -93,8 +93,8 @@
             <property name="can_focus">True</property>
             <property name="receives_default">False</property>
             <property name="draw_indicator">True</property>
-            <accelerator key="3" signal="clicked" modifiers="GDK_CONTROL_MASK"/>
             <accelerator key="KP_3" signal="clicked" modifiers="GDK_CONTROL_MASK"/>
+            <accelerator key="3" signal="clicked" modifiers="GDK_CONTROL_MASK"/>
           </object>
           <packing>
             <property name="x">600</property>
@@ -253,8 +253,8 @@
             <property name="receives_default">True</property>
           </object>
           <packing>
-            <property name="x">543</property>
-            <property name="y">210</property>
+            <property name="x">551</property>
+            <property name="y">212</property>
           </packing>
         </child>
         <child>
@@ -298,8 +298,23 @@
             <property name="draw_indicator">True</property>
           </object>
           <packing>
-            <property name="x">430</property>
-            <property name="y">223</property>
+            <property name="x">450</property>
+            <property name="y">224</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkButton" id="button3">
+            <property name="label" translatable="yes">删除
+所有</property>
+            <property name="width_request">56</property>
+            <property name="height_request">47</property>
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="receives_default">True</property>
+          </object>
+          <packing>
+            <property name="x">828</property>
+            <property name="y">218</property>
           </packing>
         </child>
       </object>

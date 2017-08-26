@@ -158,11 +158,13 @@ void QueryStaffSwitch(GtkWidget *wid,gpointer data){
     QueryStaff(wid,A);
 }
 
+void DeleteStaffEnsure(GtkWidget* wid,gpointer data);
+static GtkWidget * t;
 void CreateQueryStaffPage(){
     //button
     GtkWidget * button_ensure;
     GtkWidget * button_clear;
-
+    GtkWidget * button_delete;
     //check
     GtkWidget * SNoCk;
     GtkWidget * NameCk;
@@ -238,18 +240,29 @@ void CreateQueryStaffPage(){
     pipes->widget[7]= TalentCk;
     pipes->widget[8]= AndOrCk;
     pipes->widget[9] = clist;
-
+    t = addwindow;
     //获得按钮
 	button_ensure = GTK_BUTTON(gtk_builder_get_object(builder, "button1"));
     g_signal_connect(G_OBJECT(button_ensure),"clicked",G_CALLBACK(QueryStaffSwitch),pipes);
 	button_clear = GTK_BUTTON(gtk_builder_get_object(builder, "button2"));
     g_signal_connect(G_OBJECT(button_clear),"clicked",G_CALLBACK(ClearWindow),pipes);
+	button_delete = GTK_BUTTON(gtk_builder_get_object(builder, "button3"));
+    g_signal_connect(G_OBJECT(button_delete),"clicked",G_CALLBACK(DeleteStaffEnsure),clist);
+
 
 	gtk_widget_show_all(addwindow);
 }
 
-void CreateDeleteStaffPage(){
+void DeleteStaffEnsure(GtkWidget* wid,gpointer data){
+    GtkWidget*clist = (GtkWidget * )data;
 
-
-
+    GtkWidget*dialog = gtk_dialog_new_with_buttons ("删除列表中的数据", t,GTK_DIALOG_MODAL,
+                                          GTK_STOCK_DELETE, GTK_RESPONSE_OK,GTK_STOCK_CANCEL, GTK_RESPONSE_CANCEL,NULL);
+    GtkWidget * label = gtk_label_new ("          确定要删除列表中的所有数据吗？         \n                (子项也将会被删除！)    ");
+    gtk_box_pack_start_defaults (GTK_BOX (GTK_DIALOG (dialog)->vbox), label);
+    gtk_widget_show_all (dialog);
+    if (gtk_dialog_run (GTK_DIALOG (dialog)) == GTK_RESPONSE_OK){
+        DeleteStaff(NULL,clist);
+    }
+    gtk_widget_destroy (dialog);
 }

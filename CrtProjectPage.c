@@ -156,11 +156,14 @@ void QueryProjectSwitch(GtkWidget *wid,gpointer data){
     if(flag==0){Msg(1,"请至少选择一种方式查询");return ;}
     QueryProject(wid,A);
 }
+
+void DeleteProjectEnsure(GtkWidget* wid,gpointer data);
+static GtkWidget *t;
 void CreateQueryProjectPage(){
     //button
     GtkWidget * button_ensure;
     GtkWidget * button_clear;
-
+    GtkWidget * button_delete;
     //check
     GtkWidget * CNoCk;
     GtkWidget * MoneyCk;
@@ -266,18 +269,34 @@ void CreateQueryProjectPage(){
     pipes->widget[9]= AndOrCk;
     pipes->widget[10] = clist1;
     pipes->widget[11] = clist2;
-
+    t = addwindow;
     //获得按钮
 	button_ensure = GTK_BUTTON(gtk_builder_get_object(builder, "button1"));
     g_signal_connect(G_OBJECT(button_ensure),"clicked",G_CALLBACK(QueryProjectSwitch),pipes);
 	button_clear = GTK_BUTTON(gtk_builder_get_object(builder, "button2"));
     g_signal_connect(G_OBJECT(button_clear),"clicked",G_CALLBACK(ClearWindow),pipes);
-
+	button_delete = GTK_BUTTON(gtk_builder_get_object(builder, "button3"));
+    g_signal_connect(G_OBJECT(button_delete),"clicked",G_CALLBACK(DeleteProjectEnsure),clist1);
 	gtk_widget_show_all(addwindow);
 }
+void DeleteProjectEnsure(GtkWidget* wid,gpointer data){
+    GtkWidget*clist = (GtkWidget * )data;
 
-void CreateDeleteProjectPage(){
-
-
-
+    GtkWidget*dialog = gtk_dialog_new_with_buttons ("删除列表中的数据", t,GTK_DIALOG_MODAL,
+                                          GTK_STOCK_DELETE, GTK_RESPONSE_OK,GTK_STOCK_CANCEL, GTK_RESPONSE_CANCEL,NULL);
+    GtkWidget * label = gtk_label_new ("          确定要删除列表中的所有数据吗？         \n                (子项也将会被删除！)    ");
+    gtk_box_pack_start_defaults (GTK_BOX (GTK_DIALOG (dialog)->vbox), label);
+    gtk_widget_show_all (dialog);
+    if (gtk_dialog_run (GTK_DIALOG (dialog)) == GTK_RESPONSE_OK){
+        DeleteProject(NULL,clist);
+    }
+    gtk_widget_destroy (dialog);
 }
+
+
+
+
+
+
+
+

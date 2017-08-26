@@ -50,20 +50,10 @@ void ShowQueryPage(GtkWidget *button, gpointer data){
         CreateQueryStaffPage();
     }
 }
-void ShowDeletePage(GtkWidget *button, gpointer data){
-    GtkWidget ** check = (GtkWidget **)data;
-    gtk_widget_destroy(window);
-    if(gtk_toggle_button_get_active(check[0])){
-        CreateDeleteAnnualPage();
-    }
-    if(gtk_toggle_button_get_active(check[1])){
-        CreateDeleteProjectPage();
-    }
-    if(gtk_toggle_button_get_active(check[2])){
-        CreateDeleteStaffPage();
-    }
-}
 
+void ShowBeiFenPage(GtkWidget *button, gpointer data){
+
+}
 
 void ShowStaticPage(GtkWidget *button, gpointer data){
     gtk_widget_destroy(window);

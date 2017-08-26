@@ -274,5 +274,38 @@ void QueryStaff(GtkWidget * wid,gpointer data){
     }
     FreeAllPoint(head);
 }
+void DeleteStaff(GtkWidget* wid, gpointer data){
+    GtkWidget *clist = (GtkWidget *)data;
+    int i = 0;char * ptext;
+    while(gtk_clist_get_text (clist,i++,1,&ptext)){
+        annual * heada = ahead;
+        while(heada!=NULL){
+            project * headp = heada->pjhead;
+            while(headp!=NULL){
+                staff * heads = headp->sthead;
+                if(strcmp(heads->data.SNo,ptext)==0){
+                    staff * tmp = heads;
+                    headp->sthead = tmp->next;
+                    free(tmp);
+                    headp->data.people--;
+                }
+                else{
+                    while(heads->next!=NULL){
+                        if(strcmp(heads->next->data.SNo,ptext)==0){
+                            staff * tmp = heads->next;
+                            heads->next = tmp->next;
+                            free(tmp);
+                            headp->data.people--;
+                        }
 
+                        heads = heads->next;
+                    }
+                }
+                headp = headp->next;
+            }
+            heada = heada->next;
+        }
+    }
+    SaveData();
+}
 

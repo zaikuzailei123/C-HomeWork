@@ -9,4 +9,4 @@ extern void CreateAddAnnualPage();
 extern void CreateChangeAnnualPage();
 
 extern void CreateQueryAnnualPage();
-extern void CreateDeleteAnnualPage();
+

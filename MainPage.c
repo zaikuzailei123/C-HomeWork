@@ -6,9 +6,9 @@
 static GtkWidget * button_add;
 static GtkWidget * button_change;
 static GtkWidget * button_query;
-static GtkWidget * button_delete;
 static GtkWidget * button_static;
 static GtkWidget * button_tuoguan;
+static GtkWidget * button_dump;
 
 static GtkWidget * check[3];
 GtkWidget *CreateMainPage(){
@@ -22,6 +22,7 @@ GtkWidget *CreateMainPage(){
 	window = GTK_WIDGET(gtk_builder_get_object(builder,"window1"));
     g_signal_connect(G_OBJECT(window),"delete_event",G_CALLBACK(ExitEvent),NULL);
 	//»ñµÃ¼ì²é¿ò
+	printf("1");
 	check[0] = GTK_RADIO_BUTTON(gtk_builder_get_object(builder,"radiobutton1"));
 	check[1] = GTK_RADIO_BUTTON(gtk_builder_get_object(builder,"radiobutton2"));
 	check[2] = GTK_RADIO_BUTTON(gtk_builder_get_object(builder,"radiobutton3"));
@@ -31,17 +32,18 @@ GtkWidget *CreateMainPage(){
 
 	button_change = GTK_BUTTON(gtk_builder_get_object(builder, "button2"));
     g_signal_connect(G_OBJECT(button_change),"clicked",G_CALLBACK(ShowChangePage),check);
-
+    printf("2");
 	button_query = GTK_BUTTON(gtk_builder_get_object(builder, "button3"));
     g_signal_connect(G_OBJECT(button_query),"clicked",G_CALLBACK(ShowQueryPage),check);
-
-	button_delete = GTK_BUTTON(gtk_builder_get_object(builder, "button4"));
-    g_signal_connect(G_OBJECT(button_delete),"clicked",G_CALLBACK(ShowDeletePage),check);
-
+    printf("3");
 	button_static = GTK_BUTTON(gtk_builder_get_object(builder, "button5"));
     g_signal_connect(G_OBJECT(button_static),"clicked",G_CALLBACK(ShowStaticPage),NULL);
 	button_tuoguan = GTK_BUTTON(gtk_builder_get_object(builder, "button6"));
     g_signal_connect(G_OBJECT(button_tuoguan),"clicked",G_CALLBACK(ShowTuoguanPage),NULL);
+	button_dump = GTK_BUTTON(gtk_builder_get_object(builder, "button7"));
+    g_signal_connect(G_OBJECT(button_dump),"clicked",G_CALLBACK(ShowBeiFenPage),NULL);
+
+
 
 	gtk_widget_show_all(window);
 	return window;

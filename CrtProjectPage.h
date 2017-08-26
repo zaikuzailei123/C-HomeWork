@@ -10,4 +10,4 @@ void CreateChangeProjectPage();
 
 void CreateQueryProjectPage();
 
-void CreateDeleteProjectPage();
+

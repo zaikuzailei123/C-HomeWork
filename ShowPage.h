@@ -7,6 +7,6 @@
 extern void ShowAddPage(GtkWidget *button, gpointer data);
 extern void ShowChangePage(GtkWidget *button, gpointer data);
 extern void ShowQueryPage(GtkWidget *button, gpointer data);
-extern void ShowDeletePage(GtkWidget *button, gpointer data);
 extern void ShowTuoguanPage(GtkWidget *button, gpointer data);
 extern void ShowStaticPage(GtkWidget *button, gpointer data);
+extern void ShowBeiFenPage(GtkWidget *button, gpointer data);

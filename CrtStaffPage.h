@@ -10,4 +10,4 @@ void CreateAddStaffPage();
 void CreateChangeStaffPage();
 void CreateQueryStaffPage();
 
-void CreateDeleteStaffPage();
+

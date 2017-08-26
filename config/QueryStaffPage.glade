@@ -60,8 +60,8 @@
             <property name="border_width">1</property>
             <property name="relief">none</property>
             <property name="draw_indicator">True</property>
-            <accelerator key="KP_1" signal="clicked" modifiers="GDK_CONTROL_MASK"/>
             <accelerator key="1" signal="clicked" modifiers="GDK_CONTROL_MASK"/>
+            <accelerator key="KP_1" signal="clicked" modifiers="GDK_CONTROL_MASK"/>
           </object>
           <packing>
             <property name="x">52</property>
@@ -77,8 +77,8 @@
             <property name="can_focus">True</property>
             <property name="receives_default">False</property>
             <property name="draw_indicator">True</property>
-            <accelerator key="KP_2" signal="clicked" modifiers="GDK_CONTROL_MASK"/>
             <accelerator key="2" signal="clicked" modifiers="GDK_CONTROL_MASK"/>
+            <accelerator key="KP_2" signal="clicked" modifiers="GDK_CONTROL_MASK"/>
           </object>
           <packing>
             <property name="x">273</property>
@@ -94,8 +94,8 @@
             <property name="can_focus">True</property>
             <property name="receives_default">False</property>
             <property name="draw_indicator">True</property>
-            <accelerator key="KP_3" signal="clicked" modifiers="GDK_CONTROL_MASK"/>
             <accelerator key="3" signal="clicked" modifiers="GDK_CONTROL_MASK"/>
+            <accelerator key="KP_3" signal="clicked" modifiers="GDK_CONTROL_MASK"/>
           </object>
           <packing>
             <property name="x">470</property>
@@ -211,8 +211,8 @@
             <property name="can_focus">True</property>
             <property name="receives_default">False</property>
             <property name="draw_indicator">True</property>
-            <accelerator key="4" signal="clicked" modifiers="GDK_CONTROL_MASK"/>
             <accelerator key="KP_4" signal="clicked" modifiers="GDK_CONTROL_MASK"/>
+            <accelerator key="4" signal="clicked" modifiers="GDK_CONTROL_MASK"/>
           </object>
           <packing>
             <property name="x">679</property>
@@ -261,6 +261,21 @@
           </object>
           <packing>
             <property name="y">268</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkButton" id="button3">
+            <property name="label" translatable="yes">删除
+所有</property>
+            <property name="width_request">60</property>
+            <property name="height_request">50</property>
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="receives_default">True</property>
+          </object>
+          <packing>
+            <property name="x">830</property>
+            <property name="y">222</property>
           </packing>
         </child>
       </object>

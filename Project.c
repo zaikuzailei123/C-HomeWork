@@ -281,7 +281,46 @@ void QueryProject(GtkWidget* wid, gpointer data){
     }
     FreeAllPoint(head);
 }
+void DeleteProject(GtkWidget * wid,gpointer data){
+    GtkWidget * clist = (GtkWidget *)data;
+    int i = 0;char * ptext;
+    while(gtk_clist_get_text (clist,i++,1,&ptext)){
+        annual * heada = ahead;
+        while(heada!=NULL){
+            project * headp = heada->pjhead;
+            staff * heads = NULL;
+            if(strcmp(heada->pjhead->data.CNo,ptext)==0){
+                project * tmp = heada->pjhead;
+                heads = tmp->sthead;
+                heada->pjhead = tmp->next;
+                free(tmp);
+                heada->data.pjSupportNum--;
+                break;
+            }
+            else{
+                while(headp->next!=NULL){
+                    if(strcmp(headp->next->data.CNo,ptext)==0){
+                        project * tmp = headp->next;
+                        heads = tmp->sthead;
+                        headp->next = tmp->next;
+                        free(tmp);
+                        heada->data.pjSupportNum--;
+                        break;
+                    }
+                    headp = headp->next;
+                }
+            }
 
+            while(heads!=NULL){
+                staff * tmp = heads;
+                heads = heads->next;
+                free(tmp);
+            }
+            heada = heada->next;
+        }
+    }
+    SaveData();
+}
 
 
 

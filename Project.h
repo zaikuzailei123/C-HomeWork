@@ -9,3 +9,4 @@ void FindProject(GtkWidget *wid,gpointer data);
 void ChangeProject(GtkWidget *wid,gpointer data);
 void QueryProject(GtkWidget* wid, gpointer data);
 point *QueryForListp(pipe * A);
+void DeleteProject(GtkWidget * wid , gpointer data);
