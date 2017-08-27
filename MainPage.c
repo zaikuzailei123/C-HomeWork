@@ -37,7 +37,7 @@ GtkWidget *CreateMainPage(){
     g_signal_connect(G_OBJECT(button_query),"clicked",G_CALLBACK(ShowQueryPage),check);
     printf("3");
 	button_static = GTK_BUTTON(gtk_builder_get_object(builder, "button5"));
-    g_signal_connect(G_OBJECT(button_static),"clicked",G_CALLBACK(ShowStaticPage),NULL);
+    g_signal_connect(G_OBJECT(button_static),"clicked",G_CALLBACK(ShowStaticPage),check);
 	button_tuoguan = GTK_BUTTON(gtk_builder_get_object(builder, "button6"));
     g_signal_connect(G_OBJECT(button_tuoguan),"clicked",G_CALLBACK(ShowTuoguanPage),NULL);
 	button_dump = GTK_BUTTON(gtk_builder_get_object(builder, "button7"));

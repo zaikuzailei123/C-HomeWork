@@ -53,13 +53,21 @@ void ShowQueryPage(GtkWidget *button, gpointer data){
 }
 
 void ShowBeiFenPage(GtkWidget *button, gpointer data){
-
+    gtk_widget_destroy(window);
 }
 
 void ShowStaticPage(GtkWidget *button, gpointer data){
+    GtkWidget ** check = (GtkWidget **)data;
     gtk_widget_destroy(window);
-    //±‡–¥
-
+    if(gtk_toggle_button_get_active(check[0])){
+        CreateStaticAnnualPage();
+    }
+    if(gtk_toggle_button_get_active(check[1])){
+        CreateStaticProjectPage();
+    }
+    if(gtk_toggle_button_get_active(check[2])){
+        CreateStaticStaffPage();
+    }
 }
 void ShowTuoguanPage(GtkWidget *button, gpointer data){
     gtk_widget_destroy(window);
@@ -78,10 +86,7 @@ void ShowTuoguanPage(GtkWidget *button, gpointer data){
 
     image = GTK_IMAGE(gtk_builder_get_object(builder,"image1"));
     gtk_image_set_from_file (image,"image/Tuoguan.png");
-
     gtk_widget_show_all(addwindow);
-
-
 }
 
 

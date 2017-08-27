@@ -10,3 +10,5 @@ extern void CreateChangeAnnualPage();
 
 extern void CreateQueryAnnualPage();
 
+extern void CreateStaticAnnualPage();
+

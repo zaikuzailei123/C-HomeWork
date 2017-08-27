@@ -237,9 +237,134 @@ void DeleteAnnualEnsure(GtkWidget * wid , gpointer data){
     gtk_widget_destroy (dialog);
 
 }
+void Changeto(GtkWidget * wid,gpointer data);
+
+static GtkWidget * eventbox[9];
+static GtkWidget * addwindow;
+
+static GtkWidget * scrollwindow;
+
+static GtkWidget * checkMethod;
+
+static GtkWidget * combobox1;
+static GtkWidget * combobox2;
+
+static GtkWidget * image[9];
+
+static GtkWidget * clist;
+static int imageTest;
+
+
+char filea[40];
+void CreateStaticAnnualPage(){
+
+
+    GtkBuilder *builder = gtk_builder_new();
+	if ( !gtk_builder_add_from_file(builder,"config/StaticAnnualPage.glade", NULL)) {
+		printf("connot load file!");return ;
+	}
+	printf("Load!\n");
+	//获得窗体
+	addwindow = GTK_WIDGET(gtk_builder_get_object(builder,"window1"));
+    g_signal_connect(G_OBJECT(addwindow),"delete_event",G_CALLBACK(SubExitEvent),addwindow);
+
+    checkMethod = GTK_CHECK_BUTTON(gtk_builder_get_object(builder,"checkbutton1"));
+
+    combobox1 = GTK_COMBO_BOX(gtk_builder_get_object(builder,"comboboxtext1"));
+    combobox2 = GTK_COMBO_BOX(gtk_builder_get_object(builder,"comboboxtext2"));
+
+    //创建表格
+    clist=gtk_clist_new(10);
+    gtk_clist_set_column_title(GTK_CLIST(clist),0,"年度编号");
+    gtk_clist_set_column_title(GTK_CLIST(clist),1,"申报项目数");
+    gtk_clist_set_column_title(GTK_CLIST(clist),2,"支持项目数");
+    gtk_clist_set_column_title(GTK_CLIST(clist),3,"投入资金");
+    gtk_clist_set_column_title(GTK_CLIST(clist),4,"支持率");
+    gtk_clist_set_column_title(GTK_CLIST(clist),5,"验收通过率");
+    gtk_clist_set_column_title(GTK_CLIST(clist),6,"优良率");
+    gtk_clist_set_column_title(GTK_CLIST(clist),7,"合格率");
+    gtk_clist_set_column_title(GTK_CLIST(clist),8,"未结题率");
+    gtk_clist_set_column_title(GTK_CLIST(clist),9,"参与人数");
+
+    gtk_clist_column_titles_show(GTK_CLIST(clist));    gtk_clist_set_column_auto_resize(clist,8,TRUE);
+    gtk_clist_set_column_auto_resize(clist,0,TRUE);    gtk_clist_set_column_auto_resize(clist,9,TRUE);
+    gtk_clist_set_column_auto_resize(clist,1,TRUE);    gtk_clist_set_column_auto_resize(clist,2,TRUE);
+    gtk_clist_set_column_auto_resize(clist,3,TRUE);    gtk_clist_set_column_auto_resize(clist,4,TRUE);
+    gtk_clist_set_column_auto_resize(clist,5,TRUE);    gtk_clist_set_column_auto_resize(clist,6,TRUE);
+    gtk_clist_set_column_auto_resize(clist,7,TRUE);
+    scrollwindow = GTK_SCROLLED_WINDOW(gtk_builder_get_object(builder,"scrolledwindow1"));
+    gtk_container_add(GTK_CONTAINER(scrollwindow),clist);
+
+
+    for(int i = 0;i<9;i++){
+        char aa[10];char num[10];
+        strcpy(aa,"image");strcat(aa,itoa(i+1,num,10));
+        image[i] = GTK_IMAGE(gtk_builder_get_object(builder,aa));
+        strcpy(filea,"image/Annual/");strcat(filea,itoa(i*2+1,num,10));
+        strcat(filea,".png");
+        gtk_image_set_from_file(image[i],filea);
+
+    }
+
+
+    for(int i = 0;i<9;i++){
+        char evn[10];char num[3];
+        strcpy(evn,"eventbox");strcat(evn,itoa(i+1,num,10));
+        eventbox[i] = GTK_EVENT_BOX(gtk_builder_get_object(builder,evn));
+        g_signal_connect (G_OBJECT (eventbox[i]), "button_press_event",G_CALLBACK (Changeto), NULL);
+    }
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    gtk_widget_show_all(addwindow);
+
+
+
+
+
+
+}
+
+void changePix(){
+    gtk_image_clear(image[imageTest]);
+    char num[10];
+    strcpy(filea,"image/Annual/");strcat(filea,itoa(imageTest*2+1,num,10));
+    strcat(filea,".png");
+    gtk_image_set_from_file(image[imageTest],filea);
+}
+
+
+
+void Changeto(GtkWidget * wid,gpointer data){
+    pipe * A = (pipe *)data;
+    for(int i = 0;i<9;i++){
+        if(wid==eventbox[i]){
+            changePix();char num[10];
+            imageTest = i;
+            gtk_image_clear(image[i]);
+            strcpy(filea,"image/Annual/");strcat(filea,itoa(2*i+2,num,10));
+            strcat(filea,".png");
+            gtk_image_set_from_file(image[i],filea);
+        }
+
+    }
+
+
+}
 
 
 

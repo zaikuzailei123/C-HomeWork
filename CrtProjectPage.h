@@ -10,4 +10,5 @@ void CreateChangeProjectPage();
 
 void CreateQueryProjectPage();
 
+extern void CreateStaticProjectPage();
 

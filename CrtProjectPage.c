@@ -294,7 +294,9 @@ void DeleteProjectEnsure(GtkWidget* wid,gpointer data){
     gtk_widget_destroy (dialog);
 }
 
+void CreateStaticProjectPage(){
 
+}
 
 
 

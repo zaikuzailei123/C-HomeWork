@@ -267,3 +267,12 @@ void DeleteStaffEnsure(GtkWidget* wid,gpointer data){
     }
     gtk_widget_destroy (dialog);
 }
+
+void CreateStaticStaffPage(){
+
+
+}
+
+
+
+
