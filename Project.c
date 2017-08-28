@@ -256,26 +256,27 @@ void QueryProject(GtkWidget* wid, gpointer data){
 
         staff * heads = prj->sthead;
         for(int i = 1;i<=prj->data.people;i++){
-            while(heads!=NULL){
-                if(heads->data.que==i){
+            staff * cur = heads;
+            while(cur!=NULL){
+                if(cur->data.que==i){
                     char old[10];char que[10];
-                    itoa(heads->data.old,old,10);
-                    itoa(heads->data.que,que,10);
+                    itoa(cur->data.old,old,10);
+                    itoa(cur->data.que,que,10);
                     char * text2[] = {
                         prj->data.CNo,
-                        heads->data.SNo,
-                        heads->data.name,
-                        old,heads->data.status,
-                        heads->data.profession,
-                        heads->data.classNo,
-                        heads->data.talent,
-                        heads->data.task,
-                        heads->data.tel,
+                        cur->data.SNo,
+                        cur->data.name,
+                        old,cur->data.status,
+                        cur->data.profession,
+                        cur->data.classNo,
+                        cur->data.talent,
+                        cur->data.task,
+                        cur->data.tel,
                         que
                     };
                     gtk_clist_append(GTK_CLIST(clist2),text2);
                 }
-                heads = heads->next;
+                cur = cur->next;
             }
         }
         head = head->next;

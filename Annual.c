@@ -277,7 +277,8 @@ void DeleteAnnual(GtkWidget * wid, gpointer data) {
             project * headp = tmp->pjhead;
             ahead = ahead->next;
             free(tmp);
-        } else {
+        }
+        else {
             while(heada->next!=NULL) {
                 if(strcmp(heada->next->data.CSNo,ptext)==0) {
                     annual * tmp = heada->next;

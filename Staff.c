@@ -42,6 +42,7 @@ void AddStaff(GtkWidget *wid,gpointer data){
         if(strcmp(cur->data.SNo,gtk_entry_get_text(A->widget[2]))==0){
             flag_e = 1;break;
         }
+        cur = cur->next;
     }
     if(flag_e == 1) {Msg(1,"该人员已有信息！");return ;}
 
@@ -61,18 +62,23 @@ void AddStaff(GtkWidget *wid,gpointer data){
     printf("1.\n");
     staff * heads = headp->sthead;
     if(heads == NULL){
+        printf("6.\n");
         headp->sthead = tmp;
         heads = tmp;
     }
     else{
-        if(strcmp(heads->data.SNo,gtk_entry_get_text(A->widget[2]))<0){
+        printf("7.\n");
+        char * p = gtk_entry_get_text(A->widget[2]);
+        if(strcmp(heads->data.SNo,p)<0){
             tmp->next = heads;
             headp->sthead = tmp;
+            printf("5.\n");
         }
-        else{
+        else{//gtk_entry_get_text(A->widget[2])<0)
             while(heads->next!=NULL){
-                if(strcmp(heads->next->data.SNo,gtk_entry_get_text(A->widget[2])<0)) break;
+                if(strcmp(heads->next->data.SNo,"U200847892"))  break;
                 heads = heads->next;
+                printf("4.\n");
             }
             tmp->next = heads->next;
             heads->next = tmp;
