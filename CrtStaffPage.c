@@ -62,7 +62,7 @@ void CreateAddStaffPage(){
 	button_ensure = GTK_BUTTON(gtk_builder_get_object(builder, "button1"));
     g_signal_connect(G_OBJECT(button_ensure),"clicked",G_CALLBACK(AddStaff),pipes);
 	button_clear = GTK_BUTTON(gtk_builder_get_object(builder, "button2"));
-
+    chang_background(button_clear, 770, 480, "image/Project/Addbg.jpg");
     g_signal_connect(G_OBJECT(button_clear),"clicked",G_CALLBACK(ClearWindow),pipes);
 	gtk_widget_show_all(addwindow);
 }
@@ -130,7 +130,7 @@ void CreateChangeStaffPage(){
     g_signal_connect(G_OBJECT(button_clear),"clicked",G_CALLBACK(ClearWindow),pipes);
 	button_query = GTK_BUTTON(gtk_builder_get_object(builder, "button3"));
     g_signal_connect(G_OBJECT(button_query),"clicked",G_CALLBACK(FindStaff),pipes);
-
+    chang_background(button_ensure, 770, 510, "image/Project/Addbg.jpg");
 	gtk_widget_show_all(addwindow);
 }
 
@@ -248,7 +248,7 @@ void CreateQueryStaffPage(){
     g_signal_connect(G_OBJECT(button_clear),"clicked",G_CALLBACK(ClearWindow),pipes);
 	button_delete = GTK_BUTTON(gtk_builder_get_object(builder, "button3"));
     g_signal_connect(G_OBJECT(button_delete),"clicked",G_CALLBACK(DeleteStaffEnsure),clist);
-
+    chang_background(button_ensure, 900, 600, "image/Annual/Querybg.jpg");
 
 	gtk_widget_show_all(addwindow);
 }

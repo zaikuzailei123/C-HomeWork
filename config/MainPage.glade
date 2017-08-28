@@ -3,8 +3,8 @@
   <requires lib="gtk+" version="2.24"/>
   <!-- interface-naming-policy project-wide -->
   <object class="GtkWindow" id="window1">
-    <property name="width_request">305</property>
-    <property name="height_request">350</property>
+    <property name="width_request">280</property>
+    <property name="height_request">400</property>
     <property name="can_focus">False</property>
     <property name="title" translatable="yes">大创项目信息管理系统</property>
     <property name="resizable">False</property>
@@ -26,7 +26,7 @@
             <property name="draw_indicator">True</property>
           </object>
           <packing>
-            <property name="x">26</property>
+            <property name="x">16</property>
             <property name="y">78</property>
           </packing>
         </child>
@@ -43,8 +43,8 @@
             </attributes>
           </object>
           <packing>
-            <property name="x">39</property>
-            <property name="y">30</property>
+            <property name="x">27</property>
+            <property name="y">31</property>
           </packing>
         </child>
         <child>
@@ -61,7 +61,7 @@
             <property name="group">radiobutton1</property>
           </object>
           <packing>
-            <property name="x">114</property>
+            <property name="x">97</property>
             <property name="y">78</property>
           </packing>
         </child>
@@ -79,103 +79,129 @@
             <property name="group">radiobutton1</property>
           </object>
           <packing>
-            <property name="x">195</property>
-            <property name="y">79</property>
+            <property name="x">178</property>
+            <property name="y">78</property>
           </packing>
         </child>
         <child>
-          <object class="GtkButton" id="button1">
-            <property name="label" translatable="yes">增加</property>
-            <property name="width_request">100</property>
-            <property name="height_request">50</property>
+          <object class="GtkEventBox" id="eventbox1">
+            <property name="width_request">80</property>
+            <property name="height_request">80</property>
             <property name="visible">True</property>
-            <property name="can_focus">True</property>
-            <property name="receives_default">True</property>
-            <property name="tooltip_text" translatable="yes">增加信息（Alt+a)</property>
-            <accelerator key="a" signal="clicked" modifiers="GDK_MOD1_MASK"/>
+            <property name="can_focus">False</property>
+            <property name="visible_window">False</property>
+            <child>
+              <object class="GtkImage" id="image1">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="tooltip_text" translatable="yes">录入信息（Alt + A）</property>
+                <property name="stock">gtk-missing-image</property>
+              </object>
+            </child>
           </object>
           <packing>
-            <property name="x">35</property>
-            <property name="y">130</property>
+            <property name="x">37</property>
+            <property name="y">113</property>
           </packing>
         </child>
         <child>
-          <object class="GtkButton" id="button2">
-            <property name="label" translatable="yes">修改</property>
-            <property name="width_request">100</property>
-            <property name="height_request">50</property>
+          <object class="GtkEventBox" id="eventbox2">
+            <property name="width_request">80</property>
+            <property name="height_request">80</property>
             <property name="visible">True</property>
-            <property name="can_focus">True</property>
-            <property name="receives_default">True</property>
-            <property name="tooltip_text" translatable="yes">修改信息（Alt+z)</property>
-            <accelerator key="z" signal="clicked" modifiers="GDK_MOD1_MASK"/>
+            <property name="can_focus">False</property>
+            <property name="visible_window">False</property>
+            <child>
+              <object class="GtkImage" id="image2">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="stock">gtk-missing-image</property>
+              </object>
+            </child>
           </object>
           <packing>
-            <property name="x">164</property>
-            <property name="y">130</property>
+            <property name="x">151</property>
+            <property name="y">113</property>
           </packing>
         </child>
         <child>
-          <object class="GtkButton" id="button3">
-            <property name="label" translatable="yes">查询</property>
-            <property name="width_request">100</property>
-            <property name="height_request">50</property>
+          <object class="GtkEventBox" id="eventbox3">
+            <property name="width_request">80</property>
+            <property name="height_request">80</property>
             <property name="visible">True</property>
-            <property name="can_focus">True</property>
-            <property name="receives_default">True</property>
-            <property name="tooltip_text" translatable="yes">查询信息（Alt+x)</property>
-            <accelerator key="x" signal="clicked" modifiers="GDK_MOD1_MASK"/>
+            <property name="can_focus">False</property>
+            <property name="visible_window">False</property>
+            <child>
+              <object class="GtkImage" id="image3">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="stock">gtk-missing-image</property>
+              </object>
+            </child>
           </object>
           <packing>
-            <property name="x">35</property>
-            <property name="y">198</property>
+            <property name="x">37</property>
+            <property name="y">207</property>
           </packing>
         </child>
         <child>
-          <object class="GtkButton" id="button5">
-            <property name="label" translatable="yes">统计</property>
-            <property name="width_request">100</property>
-            <property name="height_request">50</property>
+          <object class="GtkEventBox" id="eventbox4">
+            <property name="width_request">80</property>
+            <property name="height_request">80</property>
             <property name="visible">True</property>
-            <property name="can_focus">True</property>
-            <property name="receives_default">True</property>
-            <property name="tooltip_text" translatable="yes">统计信息（Alt+s)</property>
+            <property name="can_focus">False</property>
+            <property name="visible_window">False</property>
+            <child>
+              <object class="GtkImage" id="image4">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="stock">gtk-missing-image</property>
+              </object>
+            </child>
           </object>
           <packing>
-            <property name="x">164</property>
-            <property name="y">198</property>
+            <property name="x">152</property>
+            <property name="y">208</property>
           </packing>
         </child>
         <child>
-          <object class="GtkButton" id="button6">
-            <property name="label" translatable="yes">托管</property>
-            <property name="width_request">100</property>
-            <property name="height_request">50</property>
+          <object class="GtkEventBox" id="eventbox5">
+            <property name="width_request">80</property>
+            <property name="height_request">80</property>
             <property name="visible">True</property>
-            <property name="can_focus">True</property>
-            <property name="receives_default">True</property>
-            <property name="tooltip_text" translatable="yes">托管（Alt+f)</property>
-            <accelerator key="f" signal="clicked" modifiers="GDK_MOD1_MASK"/>
+            <property name="can_focus">False</property>
+            <property name="visible_window">False</property>
+            <child>
+              <object class="GtkImage" id="image5">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="stock">gtk-missing-image</property>
+              </object>
+            </child>
           </object>
           <packing>
-            <property name="x">164</property>
-            <property name="y">270</property>
+            <property name="x">37</property>
+            <property name="y">301</property>
           </packing>
         </child>
         <child>
-          <object class="GtkButton" id="button7">
-            <property name="label" translatable="yes">数据备份</property>
-            <property name="width_request">100</property>
-            <property name="height_request">50</property>
+          <object class="GtkEventBox" id="eventbox6">
+            <property name="width_request">80</property>
+            <property name="height_request">80</property>
             <property name="visible">True</property>
-            <property name="can_focus">True</property>
-            <property name="receives_default">True</property>
-            <property name="tooltip_text" translatable="yes">数据备份（Alt+p)</property>
-            <accelerator key="p" signal="clicked" modifiers="GDK_MOD1_MASK"/>
+            <property name="can_focus">False</property>
+            <property name="visible_window">False</property>
+            <child>
+              <object class="GtkImage" id="image6">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="stock">gtk-missing-image</property>
+              </object>
+            </child>
           </object>
           <packing>
-            <property name="x">35</property>
-            <property name="y">270</property>
+            <property name="x">151</property>
+            <property name="y">301</property>
           </packing>
         </child>
       </object>

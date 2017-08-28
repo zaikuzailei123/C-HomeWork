@@ -58,7 +58,7 @@ void AddStaff(GtkWidget *wid,gpointer data){
     strcpy(tmp->data.task,gtk_entry_get_text(A->widget[9]));
     strcpy(tmp->data.tel,gtk_entry_get_text(A->widget[10]));
     tmp->data.que = atoi(gtk_entry_get_text(A->widget[11]));
-
+    printf("1.\n");
     staff * heads = headp->sthead;
     if(heads == NULL){
         headp->sthead = tmp;
@@ -76,11 +76,13 @@ void AddStaff(GtkWidget *wid,gpointer data){
             }
             tmp->next = heads->next;
             heads->next = tmp;
+            printf("2.\n");
         }
     }
+    printf("3.");
     headp->data.people++;
     SaveData();
-    ClearWindow(NULL,A);
+   // ClearWindow(NULL,A);
 }
 
 void FindStaff(GtkWidget *wid,gpointer data){

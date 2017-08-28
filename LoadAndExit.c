@@ -31,6 +31,7 @@ annual *LoadData(){
             cur->next = tmp;
             cur = cur->next;
         }
+        //int pjSupportNum = 0;
         int pjSupportNum = da.pjSupportNum;
         struct datap dp;
         project * cur_p = NULL;

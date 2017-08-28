@@ -28,6 +28,7 @@ void CreateAddAnnualPage(){
 	//获得窗体
 	addwindow = GTK_WIDGET(gtk_builder_get_object(builder,"window1"));
     g_signal_connect(G_OBJECT(addwindow),"delete_event",G_CALLBACK(SubExitEvent),addwindow);
+    chang_background(addwindow, 280, 400, "image/MainPage/background.jpg");
     //获得输入域
     CSNo = GTK_ENTRY(gtk_builder_get_object(builder,"entry1"));
     MoneyInput = GTK_ENTRY(gtk_builder_get_object(builder,"entry2"));
@@ -48,7 +49,7 @@ void CreateAddAnnualPage(){
 	button_ensure = GTK_BUTTON(gtk_builder_get_object(builder, "button1"));
     g_signal_connect(G_OBJECT(button_ensure),"clicked",G_CALLBACK(AddAnnual),pipes);
 	button_clear = GTK_BUTTON(gtk_builder_get_object(builder, "button2"));
-
+    chang_background(button_clear, 400, 530, "image/Annual/Addbg.jpg");
     g_signal_connect(G_OBJECT(button_clear),"clicked",G_CALLBACK(ClearWindow),pipes);
 	gtk_widget_show_all(addwindow);
 }
@@ -98,7 +99,7 @@ void CreateChangeAnnualPage(){
 
 	button_ensure = GTK_BUTTON(gtk_builder_get_object(builder, "button1"));
     g_signal_connect(G_OBJECT(button_ensure),"clicked",G_CALLBACK(ChangeAnnual),pipes);
-
+    chang_background(button_ensure, 400, 530, "image/Annual/Changebg.jpg");
 	button_clear = GTK_BUTTON(gtk_builder_get_object(builder, "button2"));
     g_signal_connect(G_OBJECT(button_clear),"clicked",G_CALLBACK(ClearWindow),pipes);
 	gtk_widget_show_all(addwindow);
@@ -219,6 +220,7 @@ void CreateQueryAnnualPage(){
 	button_delete = GTK_BUTTON(gtk_builder_get_object(builder, "button3"));
     g_signal_connect(G_OBJECT(button_delete),"clicked",G_CALLBACK(DeleteAnnualEnsure),clist);
 
+    chang_background(button_ensure, 900, 600, "image/Annual/Querybg.jpg");
 	gtk_widget_show_all(addwindow);
 }
 
@@ -239,6 +241,7 @@ void DeleteAnnualEnsure(GtkWidget * wid , gpointer data){
 }
 void Changeto(GtkWidget * wid,gpointer data);
 
+
 static GtkWidget * eventbox[9];
 static GtkWidget * addwindow;
 
@@ -253,7 +256,6 @@ static GtkWidget * image[9];
 
 static GtkWidget * clist;
 static int imageTest;
-
 
 char filea[40];
 void CreateStaticAnnualPage(){
@@ -272,7 +274,7 @@ void CreateStaticAnnualPage(){
 
     combobox1 = GTK_COMBO_BOX(gtk_builder_get_object(builder,"comboboxtext1"));
     combobox2 = GTK_COMBO_BOX(gtk_builder_get_object(builder,"comboboxtext2"));
-
+    chang_background(combobox2, 850, 540, "image/Annual/staticbg.jpg");
     //创建表格
     clist=gtk_clist_new(10);
     gtk_clist_set_column_title(GTK_CLIST(clist),0,"年度编号");
@@ -295,7 +297,6 @@ void CreateStaticAnnualPage(){
     scrollwindow = GTK_SCROLLED_WINDOW(gtk_builder_get_object(builder,"scrolledwindow1"));
     gtk_container_add(GTK_CONTAINER(scrollwindow),clist);
 
-
     for(int i = 0;i<9;i++){
         char aa[10];char num[10];
         strcpy(aa,"image");strcat(aa,itoa(i+1,num,10));
@@ -305,38 +306,19 @@ void CreateStaticAnnualPage(){
         gtk_image_set_from_file(image[i],filea);
 
     }
-
-
     for(int i = 0;i<9;i++){
         char evn[10];char num[3];
         strcpy(evn,"eventbox");strcat(evn,itoa(i+1,num,10));
         eventbox[i] = GTK_EVENT_BOX(gtk_builder_get_object(builder,evn));
         g_signal_connect (G_OBJECT (eventbox[i]), "button_press_event",G_CALLBACK (Changeto), NULL);
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    pipes->widget[0] = checkMethod;
+    pipes->widget[1] = combobox1;
+    pipes->widget[2] = combobox2;
+    pipes->widget[3] = clist;
 
 
     gtk_widget_show_all(addwindow);
-
-
-
-
-
-
 }
 
 void changePix(){
@@ -347,23 +329,23 @@ void changePix(){
     gtk_image_set_from_file(image[imageTest],filea);
 }
 
-
-
 void Changeto(GtkWidget * wid,gpointer data){
     pipe * A = (pipe *)data;
     for(int i = 0;i<9;i++){
         if(wid==eventbox[i]){
+            printf("ready to change!\n");
             changePix();char num[10];
             imageTest = i;
             gtk_image_clear(image[i]);
             strcpy(filea,"image/Annual/");strcat(filea,itoa(2*i+2,num,10));
             strcat(filea,".png");
             gtk_image_set_from_file(image[i],filea);
+            pipes->widget[4] = i;
+            printf("ready to change!2\n");
+            gtk_clist_clear(pipes->widget[3]);
+            StaticAnnual(NULL,pipes);
         }
-
     }
-
-
 }
 
 

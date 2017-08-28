@@ -2248,7 +2248,7 @@
 1328708100 d:\program files\codeblocks\gtk\include\gtk-2.0\gtk\gtktipsquery.h
 	<gtk/gtk.h>
 
-1503625148 source:c:\users\administrator\desktop\projectsmanage\loadandexit.c
+1503896031 source:c:\users\administrator\desktop\projectsmanage\loadandexit.c
 	"InfoAndType.h"
 
 1503713422 c:\users\administrator\desktop\projectsmanage\infoandtype.h
@@ -2257,15 +2257,16 @@
 	<stdlib.h>
 	<string.h>
 
-1503708901 c:\users\administrator\desktop\projectsmanage\util.h
+1503840683 c:\users\administrator\desktop\projectsmanage\util.h
 
 1503578498 c:\users\administrator\desktop\projectsmanage\mainpage.h
 
-1503799836 source:c:\users\administrator\desktop\projectsmanage\mainpage.c
+1503822781 source:c:\users\administrator\desktop\projectsmanage\mainpage.c
 	"InfoAndType.h"
 	"ShowPage.h"
 	"LoadAndExit.h"
 	"Util.h"
+	"Customized.h"
 
 1503705879 c:\users\administrator\desktop\projectsmanage\showpage.h
 
@@ -2276,33 +2277,34 @@
 	"CrtStaffPage.h"
 	"LoadAndExit.h"
 
-1503754649 source:c:\users\administrator\desktop\projectsmanage\util.c
+1503843370 source:c:\users\administrator\desktop\projectsmanage\util.c
 	"InfoAndType.h"
 	"Util.h"
 
-1503800161 source:c:\users\administrator\desktop\projectsmanage\crtprojectpage.c
+1503824555 source:c:\users\administrator\desktop\projectsmanage\crtprojectpage.c
 	"InfoAndType.h"
 	"Util.h"
 	"LoadAndExit.h"
 	"Project.h"
 
-1503800162 source:c:\users\administrator\desktop\projectsmanage\crtstaffpage.c
+1503824664 source:c:\users\administrator\desktop\projectsmanage\crtstaffpage.c
 	"InfoAndType.h"
 	"LoadAndExit.h"
 	"Staff.h"
 	"Util.h"
 
-1503754649 source:c:\users\administrator\desktop\projectsmanage\annual.c
+1503889847 source:c:\users\administrator\desktop\projectsmanage\annual.c
 	"InfoAndType.h"
 	"LoadAndExit.h"
+	"Annual.h"
 
-1503806113 source:c:\users\administrator\desktop\projectsmanage\crtannualpage.c
+1503839830 source:c:\users\administrator\desktop\projectsmanage\crtannualpage.c
 	"InfoAndType.h"
 	"Util.h"
 	"Annual.h"
 	"LoadAndExit.h"
 
-1503660381 c:\users\administrator\desktop\projectsmanage\annual.h
+1503832996 c:\users\administrator\desktop\projectsmanage\annual.h
 
 1503625429 c:\users\administrator\desktop\projectsmanage\loadandexit.h
 
@@ -2320,6 +2322,11 @@
 
 1503705209 c:\users\administrator\desktop\projectsmanage\staff.h
 
-1503754648 source:c:\users\administrator\desktop\projectsmanage\staff.c
+1503891273 source:c:\users\administrator\desktop\projectsmanage\staff.c
 	"InfoAndType.h"
+
+1503821078 source:c:\users\administrator\desktop\projectsmanage\customized.c
+	<gtk/gtk.h>
+
+1503821444 c:\users\administrator\desktop\projectsmanage\customized.h
 

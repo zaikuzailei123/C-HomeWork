@@ -2,15 +2,19 @@
 #include"ShowPage.h"
 #include"LoadAndExit.h"
 #include"Util.h"
+#include"Customized.h"
 
-static GtkWidget * button_add;
-static GtkWidget * button_change;
-static GtkWidget * button_query;
-static GtkWidget * button_static;
-static GtkWidget * button_tuoguan;
-static GtkWidget * button_dump;
+
 
 static GtkWidget * check[3];
+
+static GtkWidget * eventbox[6];
+static GtkWidget * image[6];
+
+static char filea[30];
+void on_press_event(GtkWidget *wid,gpointer data);
+void on_release_event(GtkWidget *wid,gpointer data);
+
 GtkWidget *CreateMainPage(){
 
 	GtkBuilder *builder = gtk_builder_new();
@@ -21,30 +25,63 @@ GtkWidget *CreateMainPage(){
 	//获得窗体
 	window = GTK_WIDGET(gtk_builder_get_object(builder,"window1"));
     g_signal_connect(G_OBJECT(window),"delete_event",G_CALLBACK(ExitEvent),NULL);
+
 	//获得检查框
 	printf("1");
 	check[0] = GTK_RADIO_BUTTON(gtk_builder_get_object(builder,"radiobutton1"));
 	check[1] = GTK_RADIO_BUTTON(gtk_builder_get_object(builder,"radiobutton2"));
 	check[2] = GTK_RADIO_BUTTON(gtk_builder_get_object(builder,"radiobutton3"));
     //获得按钮
-	button_add = GTK_BUTTON(gtk_builder_get_object(builder, "button1"));
-    g_signal_connect(G_OBJECT(button_add),"clicked",G_CALLBACK(ShowAddPage),check);
+    chang_background(check[0], 280, 400, "image/MainPage/background.jpg");
+    for(int i = 0;i<6;i++){
+        char aa[10];char num[10];
+        strcpy(aa,"image");strcat(aa,itoa(i+1,num,10));
+        image[i] = GTK_IMAGE(gtk_builder_get_object(builder,aa));
+        strcpy(filea,"image/MainPage/");strcat(filea,itoa(i*2+1,num,10));
+        strcat(filea,".png");
+        gtk_image_set_from_file(image[i],filea);
 
-	button_change = GTK_BUTTON(gtk_builder_get_object(builder, "button2"));
-    g_signal_connect(G_OBJECT(button_change),"clicked",G_CALLBACK(ShowChangePage),check);
-    printf("2");
-	button_query = GTK_BUTTON(gtk_builder_get_object(builder, "button3"));
-    g_signal_connect(G_OBJECT(button_query),"clicked",G_CALLBACK(ShowQueryPage),check);
-    printf("3");
-	button_static = GTK_BUTTON(gtk_builder_get_object(builder, "button5"));
-    g_signal_connect(G_OBJECT(button_static),"clicked",G_CALLBACK(ShowStaticPage),check);
-	button_tuoguan = GTK_BUTTON(gtk_builder_get_object(builder, "button6"));
-    g_signal_connect(G_OBJECT(button_tuoguan),"clicked",G_CALLBACK(ShowTuoguanPage),NULL);
-	button_dump = GTK_BUTTON(gtk_builder_get_object(builder, "button7"));
-    g_signal_connect(G_OBJECT(button_dump),"clicked",G_CALLBACK(ShowBeiFenPage),NULL);
+    }
+    for(int i = 0;i<6;i++){
+        char evn[10];char num[3];
+        strcpy(evn,"eventbox");strcat(evn,itoa(i+1,num,10));
+        eventbox[i] = GTK_EVENT_BOX(gtk_builder_get_object(builder,evn));
+        g_signal_connect (G_OBJECT (eventbox[i]), "button_press_event",G_CALLBACK(on_press_event), NULL);
+        g_signal_connect (G_OBJECT (eventbox[i]), "button_release_event",G_CALLBACK(on_release_event), NULL);
 
-
-
+    }
 	gtk_widget_show_all(window);
 	return window;
 }
+void on_press_event(GtkWidget *wid,gpointer data){
+    for(int i =0 ;i<6;i++){
+        if(wid==eventbox[i]){
+            char num[10];
+            gtk_image_clear(image[i]);
+            strcpy(filea,"image/MainPage/");strcat(filea,itoa(2*i+2,num,10));
+            strcat(filea,".png");
+            gtk_image_set_from_file(image[i],filea);
+        }
+    }
+}
+void on_release_event(GtkWidget *wid,gpointer data){
+    for(int i =0 ;i<6;i++){
+        if(wid==eventbox[i]){
+            char num[10];
+            gtk_image_clear(image[i]);
+            strcpy(filea,"image/MainPage/");strcat(filea,itoa(2*i+1,num,10));
+            strcat(filea,".png");
+            gtk_image_set_from_file(image[i],filea);
+            switch(i) {
+            case 0:ShowAddPage(eventbox[i],check);break;
+            case 1:ShowChangePage(eventbox[i],check);break;
+            case 2:ShowQueryPage(eventbox[i],check);break;
+            case 3:ShowStaticPage(eventbox[i],check);break;
+            case 4:ShowTuoguanPage(eventbox[i],check);break;
+            case 5:ShowBeiFenPage(eventbox[i],check);break;
+            }
+        }
+    }
+}
+
+

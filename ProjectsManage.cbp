@@ -77,6 +77,13 @@
 		<Unit filename="CrtStaffPage.h">
 			<Option virtualFolder="headers/" />
 		</Unit>
+		<Unit filename="Customized.c">
+			<Option compilerVar="CC" />
+			<Option virtualFolder="src/ui/" />
+		</Unit>
+		<Unit filename="Customized.h">
+			<Option virtualFolder="headers/" />
+		</Unit>
 		<Unit filename="InfoAndType.h">
 			<Option virtualFolder="headers/" />
 		</Unit>

@@ -60,7 +60,7 @@ void CreateAddProjectPage(){
 	button_ensure = GTK_BUTTON(gtk_builder_get_object(builder, "button1"));
     g_signal_connect(G_OBJECT(button_ensure),"clicked",G_CALLBACK(AddProject),pipes);
 	button_clear = GTK_BUTTON(gtk_builder_get_object(builder, "button2"));
-
+    chang_background(button_clear, 770, 480, "image/Project/Addbg.jpg");
     g_signal_connect(G_OBJECT(button_clear),"clicked",G_CALLBACK(ClearWindow),pipes);
 	gtk_widget_show_all(addwindow);
 
@@ -125,7 +125,7 @@ void CreateChangeProjectPage(){
     g_signal_connect(G_OBJECT(button_clear),"clicked",G_CALLBACK(ClearWindow),pipes);
     button_query = GTK_BUTTON(gtk_builder_get_object(builder, "button3"));
     g_signal_connect(G_OBJECT(button_query),"clicked",G_CALLBACK(FindProject),pipes);
-
+    chang_background(button_ensure, 770, 480, "image/Project/Addbg.jpg");
 	gtk_widget_show_all(addwindow);
 }
 void QueryProjectSwitch(GtkWidget *wid,gpointer data){
@@ -273,6 +273,7 @@ void CreateQueryProjectPage(){
     //获得按钮
 	button_ensure = GTK_BUTTON(gtk_builder_get_object(builder, "button1"));
     g_signal_connect(G_OBJECT(button_ensure),"clicked",G_CALLBACK(QueryProjectSwitch),pipes);
+    chang_background(button_ensure, 900, 800, "image/Project/Querybg.jpg");
 	button_clear = GTK_BUTTON(gtk_builder_get_object(builder, "button2"));
     g_signal_connect(G_OBJECT(button_clear),"clicked",G_CALLBACK(ClearWindow),pipes);
 	button_delete = GTK_BUTTON(gtk_builder_get_object(builder, "button3"));
