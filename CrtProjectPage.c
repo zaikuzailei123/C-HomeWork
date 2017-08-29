@@ -319,9 +319,6 @@ void CreateStaticProjectPage(){
 
     GtkWidget *entry;
 
-
-    GtkWidget ** button[2];
-
     GtkBuilder *builder = gtk_builder_new();
 	if ( !gtk_builder_add_from_file(builder,"config/StaticProjectPage.glade", NULL)) {
 		printf("connot load file!");return ;
@@ -337,6 +334,7 @@ void CreateStaticProjectPage(){
     radioButton2 = GTK_TOGGLE_BUTTON(gtk_builder_get_object(builder,"radiobutton2"));
     comboboxtext1 = GTK_COMBO_BOX_TEXT(gtk_builder_get_object(builder,"comboboxtext1"));
     comboboxtext2 = GTK_COMBO_BOX_TEXT(gtk_builder_get_object(builder,"comboboxtext2"));
+    chang_background(checkButton, 850, 600, "image/Project/Staticbg.jpg");
     printf("The toggle button is %d",radioButton1);
     entry = GTK_ENTRY(gtk_builder_get_object(builder,"entry1"));
     GtkWidget *scroll = GTK_SCROLLED_WINDOW(gtk_builder_get_object(builder,"scrolledwindow1"));

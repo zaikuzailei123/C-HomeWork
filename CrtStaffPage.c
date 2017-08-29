@@ -267,11 +267,82 @@ void DeleteStaffEnsure(GtkWidget* wid,gpointer data){
     }
     gtk_widget_destroy (dialog);
 }
-
+static void Changeto1(GtkWidget *wid,gpointer data);
+static void Changeto2(GtkWidget *wid,gpointer data);
+void StaticStaff(gboolean tag,pipe *pipes);
 void CreateStaticStaffPage(){
+    //check
+    GtkWidget * SNoCk;
 
+    //window
+    GtkWidget * addwindow;
+    //comboBox
+    GtkWidget * combobox1;
+    GtkWidget * combobox2;
 
+    GtkWidget * scroll;
+    //按钮
+    GtkWidget * eventbox;
+    GtkWidget * image;
+
+    GtkBuilder *builder = gtk_builder_new();
+	if ( !gtk_builder_add_from_file(builder,"config/StaticStaffPage.glade", NULL)) {
+		printf("connot load file!");return ;
+	}
+	printf("Load!\n");
+	//获得窗体
+	addwindow = GTK_WIDGET(gtk_builder_get_object(builder,"window1"));
+    g_signal_connect(G_OBJECT(addwindow),"delete_event",G_CALLBACK(SubExitEvent),addwindow);
+
+    //获得check
+    SNoCk = GTK_CHECK_BUTTON(gtk_builder_get_object(builder,"checkbutton1"));
+    //获得COMBOBOX
+    combobox1 = GTK_COMBO_BOX(gtk_builder_get_object(builder,"comboboxtext1"));
+    combobox2 = GTK_COMBO_BOX(gtk_builder_get_object(builder,"comboboxtext2"));
+
+    //scroll
+    scroll = GTK_SCROLLED_WINDOW(gtk_builder_get_object(builder,"scrolledwindow1"));
+    //产生表格
+    GtkWidget *clist=gtk_clist_new(2);
+    gtk_clist_set_column_title(GTK_CLIST(clist),0,"学院");
+    gtk_clist_set_column_title(GTK_CLIST(clist),1,"比例");
+    gtk_clist_column_titles_show(GTK_CLIST(clist));
+    gtk_clist_set_column_auto_resize(clist,0,TRUE);
+    gtk_clist_set_column_auto_resize(clist,1,TRUE);
+    gtk_container_add(GTK_CONTAINER(scroll),clist);
+
+    //设置按钮
+    eventbox = GTK_EVENT_BOX(gtk_builder_get_object(builder,"eventbox1"));
+    image = GTK_IMAGE(gtk_builder_get_object(builder,"image1"));
+    gtk_image_set_from_file(image,"image/Staff/static/1.png");
+    g_signal_connect (G_OBJECT (eventbox), "button_press_event",G_CALLBACK (Changeto1),NULL);
+    g_signal_connect (G_OBJECT (eventbox), "button_release_event",G_CALLBACK (Changeto2),NULL);
+    pipes->widget[0] = SNoCk;
+    pipes->widget[1] = combobox1;
+    pipes->widget[2] = combobox2;
+    pipes->widget[3] = clist;
+    pipes->widget[4] = image;
+    gtk_widget_show_all(addwindow);
 }
+
+static void Changeto1(GtkWidget *wid,gpointer data){
+    printf("1.");
+    GtkWidget * image = pipes->widget[4];
+    gtk_image_clear(image);
+    printf("2.");
+    gtk_image_set_from_file(image,"image/Staff/static/2.png");
+}
+static void Changeto2(GtkWidget *wid,gpointer data){
+    gtk_image_clear(pipes->widget[4]);
+    gtk_image_set_from_file(pipes->widget[4],"image/Staff/static/1.png");
+    gboolean tag = gtk_toggle_button_get_active(pipes->widget[0]);
+    gtk_clist_clear(pipes->widget[3]);
+    StaticStaff(tag,pipes);
+}
+
+
+
+
 
 
 

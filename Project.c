@@ -325,30 +325,31 @@ void DeleteProject(GtkWidget * wid,gpointer data){
     }
     SaveData();
 }
-statproject * StaticByProfession(pipe * A);
-statproject * StaticByName(pipe * A);
-statproject * sortStaticProject(int i);
+statproject * StaticByProfession(pipe * A,char *floor,char *ceil);
+statproject * StaticByName(pipe * A,char *floor ,char *ceil);
+statproject * sortStaticProject(statproject * head,int i);
 void StaticProject(int i,gboolean tag,pipe * A){
     GtkWidget * clist = A->widget[7];
-    char floor[5] = "0000";
-    char ceil[5] = "9999";
+    char floor[10] = "0000";
+    char ceil[10] = "9999";
+
     if(gtk_toggle_button_get_active(A->widget[0])){
-        if(strcmp(gtk_combo_box_get_active_text(A->widget[1]),"")==0||
-           strcmp(gtk_combo_box_get_active_text(A->widget[2]),"")==0
+        if(strcmp(gtk_combo_box_get_active_text(A->widget[3]),"")==0||
+           strcmp(gtk_combo_box_get_active_text(A->widget[4]),"")==0
            ){
             Msg(1,"请选择年份！");return ;
            }
-        strcpy(floor,gtk_combo_box_get_active_text(A->widget[1]));
-        strcpy(ceil,gtk_combo_box_get_active_text(A->widget[2]));
+        strcpy(floor,gtk_combo_box_get_active_text(A->widget[3]));
+        strcpy(ceil,gtk_combo_box_get_active_text(A->widget[4]));
     }
     if(strcmp(gtk_entry_get_text(A->widget[5]),"")==0) {
-        Msg(1,"统计信息的请输入关键字！"); return ;
+        Msg(1,"请输入统计信息的关键字！"); return ;
     }
     statproject * head = NULL;
     //tag = TRUE:按照姓名
     if(tag){
-        head = StaticByName(A);
-//        head = sortStaticProject(i);
+        head = StaticByName(A,floor,ceil);
+        head = sortStaticProject(head,i);//排序
         //输出信息
         statproject * cur = head;
         while(cur!=NULL){
@@ -358,7 +359,7 @@ void StaticProject(int i,gboolean tag,pipe * A){
             char total[5];char good[8];char hege[8];char fail[8];char pass[8];
             gcvt(cur->good*100.0,4,good);strcat(good,"%");
             gcvt(cur->fail*100.0,4,fail);strcat(fail,"%");
-            gcvt(cur->pass*100.0,4,good);strcat(pass,"%");
+            gcvt(cur->pass*100.0,4,pass);strcat(pass,"%");
             itoa(cur->total,total,10);
             char * text[8] = {
                 cur->SNo,
@@ -372,18 +373,19 @@ void StaticProject(int i,gboolean tag,pipe * A){
         }
     }
     else{
-        head = StaticByProfession(A);
-        sortStaticProject(i);
+        head = StaticByProfession(A,floor,ceil);
+        printf("head is %d",head);
+        head = sortStaticProject(head,i);
         //输出信息
         statproject * cur = head;
         while(cur!=NULL){
             cur->good = (float)(cur->goodnum)/(float)(cur->total);
             cur->fail = (float)(cur->failnum)/(float)(cur->total);
             cur->pass = 1.0-cur->fail;
-            char total[5];char good[8];char hege[8];char fail[8];char pass[8];
+            char total[5];char good[8];char fail[8];char pass[8];
             gcvt(cur->good*100.0,4,good);strcat(good,"%");
             gcvt(cur->fail*100.0,4,fail);strcat(fail,"%");
-            gcvt(cur->pass*100.0,4,good);strcat(pass,"%");
+            gcvt(cur->pass*100.0,4,pass);strcat(pass,"%");
             itoa(cur->total,total,10);
             char * text[8] = {
                 "",
@@ -404,16 +406,10 @@ void StaticProject(int i,gboolean tag,pipe * A){
     }
 }
 
-
 /*************************查找**********************************
 *        生成链表
 *
 */
-int containKey(project * headp,char * key,int mode){
-
-
-
-}
 statproject * Exist(statproject * head,char *SNo){
     while(head!=NULL){
         if(strcmp(head->SNo,SNo)==0) return head;
@@ -424,13 +420,18 @@ statproject * Exist(statproject * head,char *SNo){
 
 
 
-statproject * StaticByName(pipe * A){
+statproject * StaticByName(pipe * A,char * floor,char * ceil){
     char Name[40];
     strcpy(Name,gtk_entry_get_text(A->widget[5]));
     annual * heada = ahead;
     statproject * head = NULL;
     statproject * cur = NULL;
     while(heada!=NULL){
+            //不在年份内直接跳过下一个
+        if(!(strcmp(heada->data.CSNo,floor)>=0&&strcmp(heada->data.CSNo,ceil)<=0)){
+            heada = heada->next;
+            continue;
+        }
         project * headp = heada->pjhead;
         while(headp!=NULL){
             staff * heads = headp->sthead;
@@ -449,7 +450,7 @@ statproject * StaticByName(pipe * A){
                     else{
                         tmp = (statproject *)malloc(sizeof(statproject));
                         tmp->next = NULL;
-                        strcpy(tmp->SNo,heads->data.SNo);
+                        strcpy(tmp->SNo,heads->data.SNo);strcpy(tmp->profession,heads->data.profession);
                         strcpy(tmp->name,heads->data.name);
                         strcpy(tmp->pjname,headp->data.CNo);
                         tmp->total = 1;tmp->failnum = 0;tmp->goodnum = 0;
@@ -475,31 +476,43 @@ statproject * StaticByName(pipe * A){
 }
 
 /**判断同意项目下是否有重复记录***/
-int Recorded(char **a,int n,char *name){
+int Recorded(char a[][40],char *name){
     int flag = 0;
     for(int i = 0;i<=9;i++){
         if(strcmp(a[i],name)==0) flag = 1;
     }
     return flag;
 }
-
-statproject * StaticByProfession(pipe * A){
+statproject * Exist2(statproject * head,char *profession){
+    while(head!=NULL){
+        if(strcmp(head->profession,profession)==0) return head;
+        head = head->next;
+    }
+    return NULL;
+}
+statproject * StaticByProfession(pipe * A,char * floor,char * ceil){
     annual * heada = ahead;
     statproject * head = NULL;
     statproject * cur = NULL;
     char Name[40];
     strcpy(Name,gtk_entry_get_text(A->widget[5]));
     while(heada!=NULL){
+        if(!(strcmp(heada->data.CSNo,floor)>=0&&strcmp(heada->data.CSNo,ceil)<=0)){
+            heada = heada->next;
+            continue;
+        }
         project * headp = heada->pjhead;
         while(headp!=NULL){
+            char record[10][40];int i = 0;
+            for(int i = 0;i<=9;i++) strcpy(record[i],"");//初始化
             staff * heads = headp->sthead;
             while(heads!=NULL){
-                char record[10][40];int i = 0;
-                for(int i = 0;i<=9;i++) strcpy(record[i],"");//初始化
                 if(Correspond2(heads->data.profession,Name)){
-                    if(Recorded(record,10,Name)) continue;
+                    if(Recorded(record,heads->data.profession)){
+                          heads = heads->next;continue;
+                    }
                     //如果查询出来的专业已经记录，则只需要修改数据
-                    statproject * tmp = Exist(head,heads->data.profession);
+                    statproject * tmp = Exist2(head,heads->data.profession);
                     if(tmp!=NULL){
                         tmp->total++;
                         if(strcmp(headp->data.evaluate,"优")==0||strcmp(headp->data.evaluate,"良")==0) tmp->goodnum++;
@@ -521,7 +534,7 @@ statproject * StaticByProfession(pipe * A){
                             cur = cur->next;
                         }
                     }
-                    strcpy(record[i++],Name);
+                    strcpy(record[i++],heads->data.profession);
                 }
                 heads = heads->next;
             }
@@ -529,14 +542,44 @@ statproject * StaticByProfession(pipe * A){
         }
         heada = heada->next;
     }
+    return head;
 }
-statproject * sortStaticProject(int i){
 
-
-
-};
-
-
+int judgeP(int mode,statproject *ffff,statproject *llll);
+statproject * sortStaticProject(statproject * head,int mode){
+    statproject * cur = (statproject *)malloc(sizeof(statproject));
+    cur->next = head;statproject * tmp = head;int length = 0;
+    //获得表长
+    while(tmp!=NULL){
+        length++;tmp = tmp->next;
+    }
+    for(int i = 1;i<length;i++){
+        statproject * r = cur;
+        statproject * p = cur->next;statproject * q = p->next;
+        for(int j = 1;j<=length-i;j++,p = p->next,q = q->next,r = r->next){
+            if(judgeP(mode,p,q)<0){
+                r->next = q;
+                statproject * tmp = q->next;
+                q->next = p;
+                p->next = tmp;
+                tmp = q;q = p;p = tmp;
+            }
+        }
+    }
+    tmp = cur->next;
+    free(cur);
+    return tmp;
+}
+int judgeP(int mode,statproject *ffff,statproject *llll){
+    switch(mode){
+        case 0:return (strcmp(ffff->SNo,llll->SNo));
+        case 1:return  (strcmp(ffff->name,llll->name));
+        case 2:return (ffff->total-llll->total);
+        case 3:return (llll->failnum/(float)(llll->total)*100.0-ffff->failnum/(float)(ffff->total)*100.0);
+        case 4:return (ffff->goodnum/(float)(ffff->total)*100.0-llll->goodnum/(float)(llll->total)*100.0);
+        case 5:return (ffff->failnum/(float)(ffff->total)*100.0-llll->failnum/(float)(llll->total)*100.0);
+    }
+}
 
 
 

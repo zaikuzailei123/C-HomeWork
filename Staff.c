@@ -1,4 +1,5 @@
 #include"InfoAndType.h"
+#include "Staff.h"
 
 void AddStaff(GtkWidget *wid,gpointer data){
     pipe* A = (pipe *)data;
@@ -316,6 +317,155 @@ void DeleteStaff(GtkWidget* wid, gpointer data){
         }
     }
     SaveData();
-
 }
+statstaff *sortStaticStaff(statstaff * head);
+void Putin(char *profession,project * headp);
+statstaff *ExistS(statstaff * head,project * headp);
+void StaticStaff(gboolean tag,pipe* A){
+    char floor[10] = "0000";
+    char ceil[10] = "9999";
+    if(tag){
+        if(strcmp(gtk_combo_box_get_active_text(A->widget[1]),"")==0||
+           strcmp(gtk_combo_box_get_active_text(A->widget[2]),"")==0
+           ){
+            Msg(1,"请选择年份！");return ;
+           }
+        strcpy(floor,gtk_combo_box_get_active_text(A->widget[1]));
+        strcpy(ceil,gtk_combo_box_get_active_text(A->widget[2]));
+    }
+    int total = 0;
+    statstaff * head = NULL;
+    statstaff * cur = NULL;
+    annual * heada = ahead;
+    while(heada!=NULL){
+        if(!(strcmp(heada->data.CSNo,floor)>=0&&strcmp(heada->data.CSNo,ceil)<=0)){
+            heada = heada->next;
+            continue;
+        }
+        project * headp = heada->pjhead;
+        while(headp!=NULL){
+            if(headp->sthead==NULL){
+                headp = headp->next;
+                continue;
+            }
+            total ++;
+            statstaff * tmp = ExistS(head,headp);
+            if(tmp != NULL){
+                tmp->pjNum++;
+            }
+            else{
+                tmp = (statstaff *)malloc(sizeof(statstaff));
+                tmp->next = NULL;
+                tmp->pjNum = 1;
+                //将排名第一的人的专业加入到tmp中
+                Putin(tmp->profession,headp);
+                if(head==NULL){
+                    head = tmp;
+                    cur = tmp;
+                }
+                else{
+                    cur->next = tmp;
+                    cur = cur->next;
+                }
+            }
+            headp = headp->next;
+        }
+        heada = heada->next;
+    }
+    //计算相关比率
+    cur = head;
+    while(cur!=NULL){
+        cur->Ratio = (float)(cur->pjNum)/(float)(total);
+        cur = cur->next;
+    }
+    //排序
+    head = sortStaticStaff(head);
+    cur = head;
+    //打印输出
+    while(cur!=NULL){
+        char Ratio[6];
+        gcvt(cur->Ratio,3,Ratio);
+        char *text[2] = {cur->profession, Ratio};
+        gtk_clist_append(A->widget[3],text);
+        cur = cur->next;
+    }
+    while(head!=NULL){
+        statstaff * tmp = head;
+        head = head->next;
+        free(tmp);
+    }
+}
+statstaff *ExistS(statstaff * head,project * headp){
+    char * profession = NULL;
+    //获得排名第一的人员的专业字符串指针；
+    staff * heads = headp->sthead;
+    while(heads!=NULL){
+        if(heads->data.que==1){
+            profession = heads->data.profession;
+            break;
+        }
+        heads = heads->next;
+    }
+    int flag =0;
+    while(head!=NULL){
+        if(strcmp(head->profession,profession)==0){
+            return head;
+        }
+        head = head->next;
+    }
+    return flag;
+}
+
+void Putin(char *profession,project * headp){
+    staff * heads = headp->sthead;
+    while(heads!=NULL){
+        if(heads->data.que==1){
+            strcpy(profession,heads->data.profession);
+            break;
+        }
+        heads = heads->next;
+    }
+}
+
+statstaff *sortStaticStaff(statstaff * head){
+    statstaff * cur = (statstaff *)malloc(sizeof(statstaff));
+    cur->next = head;statstaff * tmp = head;int length = 0;
+    //获得表长
+    while(tmp!=NULL){
+        length++;tmp = tmp->next;
+    }
+    for(int i = 1;i<length;i++){
+        statstaff * r = cur;
+        statstaff * p = cur->next;statstaff * q = p->next;
+        for(int j = 1;j<=length-i;j++,p = p->next,q = q->next,r = r->next){
+            if(p->Ratio<q->Ratio){
+                r->next = q;
+                statstaff * tmp = q->next;
+                q->next = p;
+                p->next = tmp;
+                tmp = q;q = p;p = tmp;
+            }
+        }
+    }
+    tmp = cur->next;
+    free(cur);
+    return tmp;
+
+};
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
