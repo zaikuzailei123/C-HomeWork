@@ -69,6 +69,8 @@ void ShowStaticPage(GtkWidget *button, gpointer data){
         CreateStaticStaffPage();
     }
 }
+gboolean window_drag(GtkWidget *widget, GdkEventButton *event, GdkWindowEdge edge);
+static int drag = 0;
 void ShowTuoguanPage(GtkWidget *button, gpointer data){
     gtk_widget_destroy(window);
     //托管页面必须释放节点，然后调用gtk_main_quit
@@ -76,20 +78,33 @@ void ShowTuoguanPage(GtkWidget *button, gpointer data){
     gtk_widget_destroy(window);
     GtkWidget * addwindow;
     GtkWidget * image;
-
     GtkBuilder *builder = gtk_builder_new();
 	if ( !gtk_builder_add_from_file(builder,"config/Tuoguan.glade", NULL)) {
 		printf("connot load file!");return ;
 	}
     addwindow = GTK_WIDGET(gtk_builder_get_object(builder,"window1"));
+    printf("  %d  ",addwindow);
     g_signal_connect(G_OBJECT(addwindow),"delete_event",G_CALLBACK(ExitEvent),NULL);
+
+    //实现拖动小图标（棒呆了……）
+    gtk_widget_add_events(addwindow, GDK_BUTTON_PRESS_MASK);
+    g_signal_connect(G_OBJECT(addwindow), "button-press-event", G_CALLBACK(window_drag), NULL);
 
     image = GTK_IMAGE(gtk_builder_get_object(builder,"image1"));
     gtk_image_set_from_file (image,"image/Tuoguan.png");
     gtk_widget_show_all(addwindow);
 }
-
-
+gboolean window_drag(GtkWidget *widget, GdkEventButton *event, GdkWindowEdge edge){
+    if (event->button == 1){
+        gtk_window_begin_move_drag(GTK_WINDOW(gtk_widget_get_toplevel(widget)),
+                                   event->button,event->x_root, event->y_root, event->time);
+    }
+    if(event->type==GDK_2BUTTON_PRESS){
+        window = CreateMainPage();
+        gtk_widget_destroy(widget);
+    }
+    return FALSE;
+}
 
 
 
