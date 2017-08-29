@@ -46,8 +46,10 @@ int Correspond1(char * Main,char *beTest){
     }
     return flag;
 }
-
+//中文模糊查询
 int Correspond2(char * Main,char *beTest){
+    if(strcmp(Main,"")==0||strcmp(beTest,"")==0) return 0;
+    if(strstr(Main,beTest)!=NULL) return 1;
     char block[5];int i = 0;int count = 0;
     int suc = 0;int total = 0;
     while(beTest[i++]!='\0'){
@@ -68,39 +70,6 @@ int Correspond2(char * Main,char *beTest){
     else return 0;
 }
 
-char * ftoRatio(char * src,float n){
-    char * p = src;
-    if(n>=1.0){
-        src[0] = '1';src[1] = '0';src[2] = '0';
-        src[3] = '%';src[4] = '\0';
-        return src;
-    }
-    n = n*100;
-    if(n>1.0){
-
-        gcvt(n,6,src);printf("the char is %s",src);
-        strcat(src,"%");
-        return src;
-    }
-    src[0] = '0';src[1] = '.';
-    p = &src[2];int count = 2;
-    while(n<1&&count++<6){
-        n = n*10;
-        if(n = 0) break;
-        switch((int)n){
-            case 0:*p = '0';break;case 1:*p = '1';break;case 2:*p = '2';break;case 3:*p = '3';break;
-            case 4:*p = '4';break;case 5:*p = '5';break;case 6:*p = '6';break;case 7:*p = '7';break;
-            case 8:*p = '8';break;case 9:*p = '9';break;
-        }
-        n = n-(int)n;
-        p++;
-    }
-    *p = '%';
-    *(p+1) = '\0';
-    return src;
-
-
-}
 
 
 

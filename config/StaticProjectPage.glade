@@ -4,7 +4,7 @@
   <!-- interface-naming-policy project-wide -->
   <object class="GtkWindow" id="window1">
     <property name="width_request">850</property>
-    <property name="height_request">540</property>
+    <property name="height_request">600</property>
     <property name="can_focus">False</property>
     <property name="title" translatable="yes">修改人员信息</property>
     <property name="resizable">False</property>
@@ -44,7 +44,7 @@
             </child>
           </object>
           <packing>
-            <property name="y">169</property>
+            <property name="y">230</property>
           </packing>
         </child>
         <child>
@@ -152,7 +152,7 @@
             </child>
           </object>
           <packing>
-            <property name="y">119</property>
+            <property name="y">180</property>
           </packing>
         </child>
         <child>
@@ -173,8 +173,8 @@
             </child>
           </object>
           <packing>
-            <property name="x">100</property>
-            <property name="y">119</property>
+            <property name="x">160</property>
+            <property name="y">180</property>
           </packing>
         </child>
         <child>
@@ -195,8 +195,8 @@
             </child>
           </object>
           <packing>
-            <property name="x">200</property>
-            <property name="y">119</property>
+            <property name="x">320</property>
+            <property name="y">180</property>
           </packing>
         </child>
         <child>
@@ -217,8 +217,8 @@
             </child>
           </object>
           <packing>
-            <property name="x">300</property>
-            <property name="y">119</property>
+            <property name="x">480</property>
+            <property name="y">180</property>
           </packing>
         </child>
         <child>
@@ -239,8 +239,8 @@
             </child>
           </object>
           <packing>
-            <property name="x">400</property>
-            <property name="y">119</property>
+            <property name="x">640</property>
+            <property name="y">180</property>
           </packing>
         </child>
         <child>
@@ -261,74 +261,58 @@
             </child>
           </object>
           <packing>
-            <property name="x">500</property>
-            <property name="y">119</property>
-          </packing>
-        </child>
-        <child>
-          <object class="GtkEventBox" id="eventbox7">
-            <property name="width_request">50</property>
-            <property name="height_request">50</property>
-            <property name="visible">True</property>
-            <property name="can_focus">False</property>
-            <property name="visible_window">False</property>
-            <child>
-              <object class="GtkImage" id="image7">
-                <property name="width_request">50</property>
-                <property name="height_request">50</property>
-                <property name="visible">True</property>
-                <property name="can_focus">False</property>
-                <property name="stock">gtk-missing-image</property>
-              </object>
-            </child>
-          </object>
-          <packing>
-            <property name="x">600</property>
-            <property name="y">119</property>
-          </packing>
-        </child>
-        <child>
-          <object class="GtkEventBox" id="eventbox8">
-            <property name="width_request">50</property>
-            <property name="height_request">50</property>
-            <property name="visible">True</property>
-            <property name="can_focus">False</property>
-            <property name="visible_window">False</property>
-            <child>
-              <object class="GtkImage" id="image8">
-                <property name="width_request">50</property>
-                <property name="height_request">50</property>
-                <property name="visible">True</property>
-                <property name="can_focus">False</property>
-                <property name="stock">gtk-missing-image</property>
-              </object>
-            </child>
-          </object>
-          <packing>
-            <property name="x">700</property>
-            <property name="y">119</property>
-          </packing>
-        </child>
-        <child>
-          <object class="GtkEventBox" id="eventbox9">
-            <property name="width_request">50</property>
-            <property name="height_request">50</property>
-            <property name="visible">True</property>
-            <property name="can_focus">False</property>
-            <property name="visible_window">False</property>
-            <child>
-              <object class="GtkImage" id="image9">
-                <property name="width_request">50</property>
-                <property name="height_request">50</property>
-                <property name="visible">True</property>
-                <property name="can_focus">False</property>
-                <property name="stock">gtk-missing-image</property>
-              </object>
-            </child>
-          </object>
-          <packing>
             <property name="x">800</property>
-            <property name="y">119</property>
+            <property name="y">180</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkRadioButton" id="radiobutton1">
+            <property name="label" translatable="yes">按照姓名</property>
+            <property name="width_request">100</property>
+            <property name="height_request">30</property>
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="receives_default">False</property>
+            <property name="active">True</property>
+            <property name="draw_indicator">True</property>
+          </object>
+          <packing>
+            <property name="x">273</property>
+            <property name="y">120</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkRadioButton" id="radiobutton2">
+            <property name="label" translatable="yes">按照学院</property>
+            <property name="width_request">100</property>
+            <property name="height_request">30</property>
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="receives_default">False</property>
+            <property name="active">True</property>
+            <property name="draw_indicator">True</property>
+            <property name="group">radiobutton1</property>
+          </object>
+          <packing>
+            <property name="x">273</property>
+            <property name="y">152</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkEntry" id="entry1">
+            <property name="width_request">180</property>
+            <property name="height_request">35</property>
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="invisible_char">●</property>
+            <property name="primary_icon_activatable">False</property>
+            <property name="secondary_icon_activatable">False</property>
+            <property name="primary_icon_sensitive">True</property>
+            <property name="secondary_icon_sensitive">True</property>
+          </object>
+          <packing>
+            <property name="x">412</property>
+            <property name="y">132</property>
           </packing>
         </child>
       </object>

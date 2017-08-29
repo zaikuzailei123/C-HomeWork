@@ -295,10 +295,133 @@ void DeleteProjectEnsure(GtkWidget* wid,gpointer data){
     gtk_widget_destroy (dialog);
 }
 
+
+/**************************统计页面*************************/
+GtkWidget *image[6];
+GtkWidget *eventbox[6];
+int curImage;
+
+
+char filea[40];
+void Changeto1(GtkWidget * wid,gpointer *data);
+void Changeto2(GtkWidget * wid,gpointer *data);
+
+
 void CreateStaticProjectPage(){
+    GtkWidget * addwindow;
+
+    GtkWidget * checkButton;
+    GtkWidget * radioButton1;
+    GtkWidget * radioButton2;
+
+    GtkWidget * comboboxtext1;
+    GtkWidget * comboboxtext2;
+
+    GtkWidget *entry;
+
+
+    GtkWidget ** button[2];
+
+    GtkBuilder *builder = gtk_builder_new();
+	if ( !gtk_builder_add_from_file(builder,"config/StaticProjectPage.glade", NULL)) {
+		printf("connot load file!");return ;
+	}
+	printf("Load!\n");
+	//获得窗体
+	addwindow = GTK_WIDGET(gtk_builder_get_object(builder,"window1"));
+    g_signal_connect(G_OBJECT(addwindow),"delete_event",G_CALLBACK(SubExitEvent),addwindow);
+
+
+    checkButton = GTK_CHECK_BUTTON(gtk_builder_get_object(builder,"checkbutton1"));
+    radioButton1 = GTK_TOGGLE_BUTTON(gtk_builder_get_object(builder,"radiobutton1"));
+    radioButton2 = GTK_TOGGLE_BUTTON(gtk_builder_get_object(builder,"radiobutton2"));
+    comboboxtext1 = GTK_COMBO_BOX_TEXT(gtk_builder_get_object(builder,"comboboxtext1"));
+    comboboxtext2 = GTK_COMBO_BOX_TEXT(gtk_builder_get_object(builder,"comboboxtext2"));
+    printf("The toggle button is %d",radioButton1);
+    entry = GTK_ENTRY(gtk_builder_get_object(builder,"entry1"));
+    GtkWidget *scroll = GTK_SCROLLED_WINDOW(gtk_builder_get_object(builder,"scrolledwindow1"));
+    GtkWidget *clist2=gtk_clist_new(8);
+    gtk_clist_set_column_title(GTK_CLIST(clist2),0,"姓名");
+    gtk_clist_set_column_title(GTK_CLIST(clist2),1,"学号");
+    gtk_clist_set_column_title(GTK_CLIST(clist2),2,"专业");
+    gtk_clist_set_column_title(GTK_CLIST(clist2),3,"项目编号");
+    gtk_clist_set_column_title(GTK_CLIST(clist2),4,"项目数量");
+    gtk_clist_set_column_title(GTK_CLIST(clist2),5,"通过率");
+    gtk_clist_set_column_title(GTK_CLIST(clist2),6,"优良率");
+    gtk_clist_set_column_title(GTK_CLIST(clist2),7,"未结题率");
+
+    gtk_clist_column_titles_show(GTK_CLIST(clist2));
+    gtk_clist_set_column_auto_resize(clist2,0,TRUE);gtk_clist_set_column_auto_resize(clist2,1,TRUE);
+    gtk_clist_set_column_auto_resize(clist2,2,TRUE);gtk_clist_set_column_auto_resize(clist2,3,TRUE);
+    gtk_clist_set_column_auto_resize(clist2,4,TRUE);gtk_clist_set_column_auto_resize(clist2,5,TRUE);
+    gtk_clist_set_column_auto_resize(clist2,6,TRUE);gtk_clist_set_column_auto_resize(clist2,7,TRUE);
+    gtk_container_add(GTK_CONTAINER(scroll),clist2);
+
+    pipes->widget[0] = checkButton;
+    pipes->widget[1] = radioButton1;
+    printf("The toggle button is %d",pipes->widget[1]);
+    pipes->widget[2] = radioButton2;
+    pipes->widget[3] = comboboxtext1;
+    pipes->widget[4] = comboboxtext2;
+    pipes->widget[5] = entry;
+    pipes->widget[6] = eventbox;
+    pipes->widget[7] = clist2;
+    //装载图片
+    for(int i = 0;i<6;i++){
+        char aa[10];char num[10];
+        strcpy(aa,"image");strcat(aa,itoa(i+1,num,10));
+        image[i] = GTK_IMAGE(gtk_builder_get_object(builder,aa));
+        strcpy(filea,"image/Project/static/");strcat(filea,itoa(i*2+1,num,10));
+        strcat(filea,".png");
+        gtk_image_set_from_file(image[i],filea);
+    }
+
+    for(int i = 0;i<6;i++){
+        char evn[10];char num[3];
+        strcpy(evn,"eventbox");strcat(evn,itoa(i+1,num,10));
+        eventbox[i] = GTK_EVENT_BOX(gtk_builder_get_object(builder,evn));
+
+        //Changeto1函数用于处理各个按钮按下后图片改变，Changeto2用于处理按下后的事件
+        g_signal_connect (G_OBJECT (eventbox[i]), "button_press_event",G_CALLBACK (Changeto1),NULL);
+    }
+
+    for(int i = 0;i<=5;i++){
+        printf("   %d   ",pipes->widget[1]);
+        g_signal_connect (G_OBJECT (eventbox[i]), "button_release_event",G_CALLBACK (Changeto2), NULL);
+    }
+    gtk_widget_show_all(addwindow);
+
+
 
 }
-
+void Changeto1(GtkWidget * wid,gpointer *data){
+    char num[10];
+    strcpy(filea,"image/Project/static/");strcat(filea,itoa(curImage*2+1,num,10));
+    strcat(filea,".png");
+    gtk_image_set_from_file(image[curImage],filea);
+    for(int i = 0;i<=5;i++){
+        if(wid==eventbox[i]){
+            gtk_image_clear(image[i]);
+            char num[10];
+            strcpy(filea,"image/Project/static/");strcat(filea,itoa(i*2+2,num,10));
+            strcat(filea,".png");
+            gtk_image_set_from_file(image[i],filea);
+            curImage = i;
+            break;
+        }
+    }
+}
+void Changeto2(GtkWidget * wid,gpointer *data){
+    gboolean tag = gtk_toggle_button_get_active(pipes->widget[1]);
+    gtk_clist_clear(pipes->widget[7]);
+    for(int i = 0;i<=5;i++){
+        if(wid==eventbox[i]){
+            //开始查询
+            StaticProject(i,tag,pipes);
+            break;
+        }
+    }
+}
 
 
 

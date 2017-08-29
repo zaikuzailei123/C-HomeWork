@@ -345,7 +345,7 @@ void StaticAnnual(GtkWidget *wid,gpointer data) {
             }
             printf("4.\n");
             tmp->support = heada->data.pjSupportNum;
-            tmp->fail = (float)(fail)/(float)(heada->data.pjSupportNum);
+            tmp->fail = (float)(fail)/(float)(heada->data.pjSupportNum);//未结题率
             tmp->good = (float)(good)/(float)(heada->data.pjSupportNum);
             tmp->hege = (float)(hege)/(float)(heada->data.pjSupportNum);
             tmp->money = heada->data.moneyInput;
@@ -385,10 +385,10 @@ void outputStatic(statannual * head,pipe * data) {
         char hege[10];char fail[10]; char peop[10];
         printf("!!!!!%f!!!!!",head->supportRatio);
         gcvt(head->supportRatio*100.0,4,sr); strcat(sr,"%");
-        ftoRatio(pr,head->passRatio);
-        ftoRatio(good,head->good);
-        ftoRatio(hege,head->hege);
-        ftoRatio(fail,head->fail);
+        gcvt(head->passRatio*100.0,4,pr); strcat(pr,"%");
+        gcvt(head->good*100.0,4,good); strcat(good,"%");
+        gcvt(head->hege*100.0,4,hege); strcat(hege,"%");
+        gcvt(head->fail*100.0,4,fail); strcat(fail,"%");
         char *text[10] = {
             head->ann->data.CSNo,
             itoa(head->ann->data.pjApplyNum,pja,10),
