@@ -384,7 +384,8 @@ void StaticStaff(gboolean tag,pipe* A){
     //打印输出
     while(cur!=NULL){
         char Ratio[6];
-        gcvt(cur->Ratio,3,Ratio);
+        gcvt(cur->Ratio*100,3,Ratio);
+        strcat(Ratio,"%");
         char *text[2] = {cur->profession, Ratio};
         gtk_clist_append(A->widget[3],text);
         cur = cur->next;

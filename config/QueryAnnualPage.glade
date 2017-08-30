@@ -237,6 +237,8 @@
             <property name="visible">True</property>
             <property name="can_focus">True</property>
             <property name="receives_default">True</property>
+            <property name="tooltip_text" translatable="yes">查询（ENTER）</property>
+            <accelerator key="Return" signal="clicked"/>
           </object>
           <packing>
             <property name="x">282</property>
@@ -251,6 +253,7 @@
             <property name="visible">True</property>
             <property name="can_focus">True</property>
             <property name="receives_default">True</property>
+            <property name="tooltip_text" translatable="yes">清除</property>
           </object>
           <packing>
             <property name="x">551</property>
@@ -311,6 +314,7 @@
             <property name="visible">True</property>
             <property name="can_focus">True</property>
             <property name="receives_default">True</property>
+            <property name="tooltip_text" translatable="yes">删除列表中所有的数据</property>
           </object>
           <packing>
             <property name="x">828</property>

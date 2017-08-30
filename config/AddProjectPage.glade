@@ -244,6 +244,7 @@
             <property name="visible">True</property>
             <property name="can_focus">True</property>
             <property name="receives_default">True</property>
+            <property name="tooltip_text" translatable="yes">清除输入框</property>
           </object>
           <packing>
             <property name="x">424</property>

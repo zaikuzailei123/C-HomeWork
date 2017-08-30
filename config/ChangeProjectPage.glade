@@ -228,7 +228,7 @@
             <property name="visible">True</property>
             <property name="can_focus">True</property>
             <property name="receives_default">True</property>
-            <property name="tooltip_text" translatable="yes">增加</property>
+            <property name="tooltip_text" translatable="yes">修改</property>
           </object>
           <packing>
             <property name="x">237</property>
@@ -243,6 +243,7 @@
             <property name="visible">True</property>
             <property name="can_focus">True</property>
             <property name="receives_default">True</property>
+            <property name="tooltip_text" translatable="yes">清除</property>
           </object>
           <packing>
             <property name="x">424</property>
@@ -449,6 +450,7 @@
             <property name="visible">True</property>
             <property name="can_focus">True</property>
             <property name="receives_default">True</property>
+            <property name="tooltip_text" translatable="yes">立即查询</property>
             <accelerator key="Return" signal="clicked"/>
           </object>
           <packing>

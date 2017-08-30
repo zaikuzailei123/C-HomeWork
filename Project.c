@@ -475,7 +475,7 @@ statproject * StaticByName(pipe * A,char * floor,char * ceil){
     return head;
 }
 
-/**判断同意项目下是否有重复记录***/
+/**判断同一项目下是否有重复记录***/
 int Recorded(char a[][40],char *name){
     int flag = 0;
     for(int i = 0;i<=9;i++){

@@ -25,7 +25,8 @@ GtkWidget *CreateMainPage(){
 	//获得窗体
 	window = GTK_WIDGET(gtk_builder_get_object(builder,"window1"));
     g_signal_connect(G_OBJECT(window),"delete_event",G_CALLBACK(ExitEvent),NULL);
-
+    GtkWidget * imagetitle = GTK_IMAGE(gtk_builder_get_object(builder,"image7"));
+    gtk_image_set_from_file(imagetitle,"image/MainPage/title.png");
 	//获得检查框
 	printf("1");
 	check[0] = GTK_RADIO_BUTTON(gtk_builder_get_object(builder,"radiobutton1"));

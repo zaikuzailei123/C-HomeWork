@@ -140,6 +140,7 @@
             <property name="height_request">50</property>
             <property name="visible">True</property>
             <property name="can_focus">False</property>
+            <property name="tooltip_text" translatable="yes">按照学号排名</property>
             <property name="visible_window">False</property>
             <child>
               <object class="GtkImage" id="image1">
@@ -161,6 +162,7 @@
             <property name="height_request">50</property>
             <property name="visible">True</property>
             <property name="can_focus">False</property>
+            <property name="tooltip_text" translatable="yes">按照姓名排名</property>
             <property name="visible_window">False</property>
             <child>
               <object class="GtkImage" id="image2">
@@ -183,6 +185,7 @@
             <property name="height_request">50</property>
             <property name="visible">True</property>
             <property name="can_focus">False</property>
+            <property name="tooltip_text" translatable="yes">按照项目数量排名</property>
             <property name="visible_window">False</property>
             <child>
               <object class="GtkImage" id="image3">
@@ -205,6 +208,7 @@
             <property name="height_request">50</property>
             <property name="visible">True</property>
             <property name="can_focus">False</property>
+            <property name="tooltip_text" translatable="yes">按照验收通过率排名</property>
             <property name="visible_window">False</property>
             <child>
               <object class="GtkImage" id="image4">
@@ -227,6 +231,7 @@
             <property name="height_request">50</property>
             <property name="visible">True</property>
             <property name="can_focus">False</property>
+            <property name="tooltip_text" translatable="yes">按照优良率排名</property>
             <property name="visible_window">False</property>
             <child>
               <object class="GtkImage" id="image5">
@@ -249,6 +254,7 @@
             <property name="height_request">50</property>
             <property name="visible">True</property>
             <property name="can_focus">False</property>
+            <property name="tooltip_text" translatable="yes">按照未结题率排名</property>
             <property name="visible_window">False</property>
             <child>
               <object class="GtkImage" id="image6">
@@ -304,6 +310,7 @@
             <property name="height_request">35</property>
             <property name="visible">True</property>
             <property name="can_focus">True</property>
+            <property name="tooltip_text" translatable="yes">输入关键字</property>
             <property name="invisible_char">●</property>
             <property name="primary_icon_activatable">False</property>
             <property name="secondary_icon_activatable">False</property>

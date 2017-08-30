@@ -16,20 +16,18 @@
         <property name="can_focus">False</property>
         <child>
           <object class="GtkLabel" id="label1">
-            <property name="width_request">160</property>
+            <property name="width_request">150</property>
             <property name="height_request">30</property>
             <property name="visible">True</property>
             <property name="can_focus">False</property>
-            <property name="xpad">1</property>
-            <property name="ypad">1</property>
             <property name="label" translatable="yes">录 入 年 度 信 息</property>
             <attributes>
-              <attribute name="weight" value="semibold"/>
-              <attribute name="size" value="100"/>
+              <attribute name="absolute-size" value="100"/>
+              <attribute name="foreground" value="#e66ce49f0e25"/>
             </attributes>
           </object>
           <packing>
-            <property name="x">125</property>
+            <property name="x">130</property>
             <property name="y">19</property>
           </packing>
         </child>
@@ -42,6 +40,7 @@
             <property name="label" translatable="yes">年度编号：</property>
             <attributes>
               <attribute name="absolute-size" value="2"/>
+              <attribute name="foreground" value="#e66ce49f0e25"/>
               <attribute name="scale" value="2"/>
             </attributes>
           </object>
@@ -76,6 +75,7 @@
             <property name="label" translatable="yes">投入资金：</property>
             <attributes>
               <attribute name="absolute-size" value="2"/>
+              <attribute name="foreground" value="#e66ce49f0e25"/>
               <attribute name="scale" value="2"/>
             </attributes>
           </object>
@@ -93,6 +93,7 @@
             <property name="label" translatable="yes">负责人：</property>
             <attributes>
               <attribute name="absolute-size" value="2"/>
+              <attribute name="foreground" value="#e66ce49f0e25"/>
               <attribute name="scale" value="2"/>
             </attributes>
           </object>
@@ -127,6 +128,7 @@
             <property name="label" translatable="yes">申请项目数：</property>
             <attributes>
               <attribute name="absolute-size" value="2"/>
+              <attribute name="foreground" value="#e66ce49f0e25"/>
               <attribute name="scale" value="2"/>
             </attributes>
           </object>
@@ -161,6 +163,7 @@
             <property name="label" translatable="yes">结题项目数：</property>
             <attributes>
               <attribute name="absolute-size" value="2"/>
+              <attribute name="foreground" value="#e66ce49f0e25"/>
               <attribute name="scale" value="2"/>
             </attributes>
           </object>
@@ -195,6 +198,7 @@
             <property name="label" translatable="yes">计划开始时间：</property>
             <attributes>
               <attribute name="absolute-size" value="2"/>
+              <attribute name="foreground" value="#e66ce49f0e25"/>
               <attribute name="scale" value="2"/>
             </attributes>
           </object>
@@ -228,6 +232,7 @@
             <property name="label" translatable="yes">计划结束时间：</property>
             <attributes>
               <attribute name="absolute-size" value="2"/>
+              <attribute name="foreground" value="#e66ce49f0e25"/>
               <attribute name="scale" value="2"/>
             </attributes>
           </object>

@@ -9,6 +9,7 @@
     <property name="title" translatable="yes">大创项目信息管理系统</property>
     <property name="resizable">False</property>
     <property name="window_position">center</property>
+    <property name="icon">..\\image\\icon.png</property>
     <child>
       <object class="GtkLayout" id="layout1">
         <property name="visible">True</property>
@@ -28,23 +29,6 @@
           <packing>
             <property name="x">16</property>
             <property name="y">78</property>
-          </packing>
-        </child>
-        <child>
-          <object class="GtkLabel" id="label1">
-            <property name="width_request">230</property>
-            <property name="height_request">30</property>
-            <property name="visible">True</property>
-            <property name="can_focus">False</property>
-            <property name="label" translatable="yes">大创项目信息管理小助手</property>
-            <attributes>
-              <attribute name="weight" value="bold"/>
-              <attribute name="size" value="100"/>
-            </attributes>
-          </object>
-          <packing>
-            <property name="x">27</property>
-            <property name="y">31</property>
           </packing>
         </child>
         <child>
@@ -89,12 +73,12 @@
             <property name="height_request">80</property>
             <property name="visible">True</property>
             <property name="can_focus">False</property>
+            <property name="tooltip_text" translatable="yes">录入信息</property>
             <property name="visible_window">False</property>
             <child>
               <object class="GtkImage" id="image1">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
-                <property name="tooltip_text" translatable="yes">录入信息（Alt + A）</property>
                 <property name="stock">gtk-missing-image</property>
               </object>
             </child>
@@ -110,6 +94,7 @@
             <property name="height_request">80</property>
             <property name="visible">True</property>
             <property name="can_focus">False</property>
+            <property name="tooltip_text" translatable="yes">修改信息</property>
             <property name="visible_window">False</property>
             <child>
               <object class="GtkImage" id="image2">
@@ -135,6 +120,7 @@
               <object class="GtkImage" id="image3">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
+                <property name="tooltip_text" translatable="yes">查询信息</property>
                 <property name="stock">gtk-missing-image</property>
               </object>
             </child>
@@ -150,6 +136,7 @@
             <property name="height_request">80</property>
             <property name="visible">True</property>
             <property name="can_focus">False</property>
+            <property name="tooltip_text" translatable="yes">统计信息</property>
             <property name="visible_window">False</property>
             <child>
               <object class="GtkImage" id="image4">
@@ -170,6 +157,7 @@
             <property name="height_request">80</property>
             <property name="visible">True</property>
             <property name="can_focus">False</property>
+            <property name="tooltip_text" translatable="yes">托管成图表</property>
             <property name="visible_window">False</property>
             <child>
               <object class="GtkImage" id="image5">
@@ -190,6 +178,7 @@
             <property name="height_request">80</property>
             <property name="visible">True</property>
             <property name="can_focus">False</property>
+            <property name="tooltip_text" translatable="yes">备份与恢复</property>
             <property name="visible_window">False</property>
             <child>
               <object class="GtkImage" id="image6">
@@ -202,6 +191,19 @@
           <packing>
             <property name="x">151</property>
             <property name="y">301</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkImage" id="image7">
+            <property name="width_request">230</property>
+            <property name="height_request">40</property>
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+            <property name="stock">gtk-missing-image</property>
+          </object>
+          <packing>
+            <property name="x">24</property>
+            <property name="y">20</property>
           </packing>
         </child>
       </object>
