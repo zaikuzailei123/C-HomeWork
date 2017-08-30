@@ -299,7 +299,7 @@ void CreateStaticStaffPage(){
     //获得COMBOBOX
     combobox1 = GTK_COMBO_BOX(gtk_builder_get_object(builder,"comboboxtext1"));
     combobox2 = GTK_COMBO_BOX(gtk_builder_get_object(builder,"comboboxtext2"));
-
+    chang_background(combobox2, 850, 550, "image/Staff/static/bg.jpg");
     //scroll
     scroll = GTK_SCROLLED_WINDOW(gtk_builder_get_object(builder,"scrolledwindow1"));
     //产生表格

@@ -69,8 +69,72 @@ int Correspond2(char * Main,char *beTest){
     if(a/b>=0.4) return 1;
     else return 0;
 }
+//备份数据
+void BeiFen(char * filename){
+    FILE * fa1,*fa2;
+    fa1 = fopen("data/annual.bin","rb");
+    struct dataa da;
+    char file[40];
+    //备份年度信息
+    strcpy(file,filename);strcat(file,"\\annual.bin");
+    fa2 = fopen(file,"wb");
+    while(fread(&da,1,sizeof(struct dataa),fa1)!=0){
+        fwrite(&da,1,sizeof(struct dataa),fa2);
+    }
+    fclose(fa1);fclose(fa2);
+    //备份项目信息
+    fa1 = fopen("data\\project.bin","rb");
+    strcpy(file,filename);strcat(file,"\\project.bin");
+    fa2 = fopen(file,"wb");
+    struct datap dp;
+    while(fread(&dp,1,sizeof(struct datap),fa1)!=0){
+        fwrite(&dp,1,sizeof(struct datap),fa2);
+    }
+    fclose(fa1);fclose(fa2);
+    //备份人员信息
+    fa1 = fopen("data\\staff.bin","rb");
+    strcpy(file,filename);strcat(file,"\\staff.bin");
+    fa2 = fopen(file,"wb");
+    struct datas ds;
+    while(fread(&ds,1,sizeof(struct datas),fa1)!=0){
+        fwrite(&ds,1,sizeof(struct datas),fa2);
+    }
+    fclose(fa1);fclose(fa2);
+}
+//恢复信息
+void HuiFu(char * filename){
+    FILE * fa1,*fa2;
+    char file[40];
+    strcpy(file,filename);
+    strcat(file,"\\annual.bin");
+    fa1 = fopen(file,"rb");
+    fa2 = fopen("data\\annual.bin","wb");
+    struct dataa da;
+    while(fread(&da,1,sizeof(struct dataa),fa1)!=0){
+        fwrite(&da,1,sizeof(struct dataa),fa2);
+    }
+    fclose(fa1);fclose(fa2);
 
+    strcpy(file,filename);
+    strcat(file,"\\project.bin");
+    fa1 = fopen(file,"rb");
+    fa2 = fopen("data\\project.bin","wb");
+    struct datap dp;
+    while(fread(&dp,1,sizeof(struct datap),fa1)!=0){
+        fwrite(&dp,1,sizeof(struct datap),fa2);
+    }
+    fclose(fa1);fclose(fa2);
 
+    strcpy(file,filename);
+    strcat(file,"\\staff.bin");
+    fa1 = fopen(file,"rb");
+    fa2 = fopen("data\\staff.bin","wb");
+    struct datas ds;
+    while(fread(&ds,1,sizeof(struct datas),fa1)!=0){
+        fwrite(&ds,1,sizeof(struct datas),fa2);
+    }
+    fclose(fa1);fclose(fa2);
+}
 
 
 
