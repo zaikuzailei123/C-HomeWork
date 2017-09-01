@@ -166,6 +166,20 @@ void ShowTuoguanPage(GtkWidget *button, gpointer data){
 
     image = GTK_IMAGE(gtk_builder_get_object(builder,"image1"));
     gtk_image_set_from_file (image,"image/Tuoguan.png");
+
+    GdkPixbuf *pixbuf = NULL;
+    GdkBitmap *bitmap = NULL;
+    GdkPixmap *pixmap = NULL;
+    gtk_widget_set_app_paintable(addwindow, TRUE);
+    gtk_widget_realize(addwindow);
+    pixbuf = gdk_pixbuf_new_from_file("image/Tuoguan.png", NULL); // gdk 函数读取 png 文件
+    gdk_pixbuf_render_pixmap_and_mask(pixbuf, &pixmap, &bitmap, 128); // alpha 小于 128 认为透明
+    gtk_widget_shape_combine_mask(addwindow, bitmap, 0, 0); // 设置透明蒙板
+    gdk_window_set_back_pixmap(addwindow->window, pixmap, FALSE); // 设置窗口背景
+    g_object_unref(pixbuf);
+    g_object_unref(bitmap);
+    g_object_unref(pixmap);
+
     gtk_widget_show_all(addwindow);
 }
 gboolean window_drag(GtkWidget *widget, GdkEventButton *event, GdkWindowEdge edge){

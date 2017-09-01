@@ -10,6 +10,7 @@
     <property name="resizable">False</property>
     <property name="modal">True</property>
     <property name="window_position">center</property>
+    <property name="icon">..\\image\\icon.png</property>
     <child>
       <object class="GtkLayout" id="layout1">
         <property name="visible">True</property>
@@ -20,12 +21,14 @@
             <property name="height_request">30</property>
             <property name="visible">True</property>
             <property name="can_focus">False</property>
+            <property name="yalign">0.47999998927116394</property>
             <property name="xpad">1</property>
             <property name="ypad">1</property>
             <property name="label" translatable="yes">录 入 人 员 信 息</property>
             <attributes>
               <attribute name="weight" value="semibold"/>
               <attribute name="size" value="100"/>
+              <attribute name="foreground" value="#e6e6e4e40e0e"/>
             </attributes>
           </object>
           <packing>
@@ -42,6 +45,7 @@
             <property name="label" translatable="yes">年度编号：</property>
             <attributes>
               <attribute name="absolute-size" value="2"/>
+              <attribute name="foreground" value="#e6e6e4e40e0e"/>
               <attribute name="scale" value="2"/>
             </attributes>
           </object>
@@ -76,6 +80,7 @@
             <property name="label" translatable="yes">学号：</property>
             <attributes>
               <attribute name="absolute-size" value="2"/>
+              <attribute name="foreground" value="#e6e6e4e40e0e"/>
               <attribute name="scale" value="2"/>
             </attributes>
           </object>
@@ -110,6 +115,7 @@
             <property name="label" translatable="yes">年龄：</property>
             <attributes>
               <attribute name="absolute-size" value="2"/>
+              <attribute name="foreground" value="#e6e6e4e40e0e"/>
               <attribute name="scale" value="2"/>
             </attributes>
           </object>
@@ -144,6 +150,7 @@
             <property name="label" translatable="yes">类别：</property>
             <attributes>
               <attribute name="absolute-size" value="2"/>
+              <attribute name="foreground" value="#e6e6e4e40e0e"/>
               <attribute name="scale" value="2"/>
             </attributes>
           </object>
@@ -161,6 +168,7 @@
             <property name="label" translatable="yes">学院专业：</property>
             <attributes>
               <attribute name="absolute-size" value="2"/>
+              <attribute name="foreground" value="#e6e6e4e40e0e"/>
               <attribute name="scale" value="2"/>
             </attributes>
           </object>
@@ -195,6 +203,7 @@
             <property name="label" translatable="yes">班级：</property>
             <attributes>
               <attribute name="absolute-size" value="2"/>
+              <attribute name="foreground" value="#e6e6e4e40e0e"/>
               <attribute name="scale" value="2"/>
             </attributes>
           </object>
@@ -278,6 +287,7 @@
             <property name="label" translatable="yes">项目编号：</property>
             <attributes>
               <attribute name="absolute-size" value="2"/>
+              <attribute name="foreground" value="#e6e6e4e40e0e"/>
               <attribute name="scale" value="2"/>
             </attributes>
           </object>
@@ -295,6 +305,7 @@
             <property name="label" translatable="yes">姓名：</property>
             <attributes>
               <attribute name="absolute-size" value="2"/>
+              <attribute name="foreground" value="#e6e6e4e40e0e"/>
               <attribute name="scale" value="2"/>
             </attributes>
           </object>
@@ -347,6 +358,7 @@
             <property name="label" translatable="yes">本人特长：</property>
             <attributes>
               <attribute name="absolute-size" value="2"/>
+              <attribute name="foreground" value="#e6e6e4e40e0e"/>
               <attribute name="scale" value="2"/>
             </attributes>
           </object>
@@ -382,6 +394,7 @@
             <property name="label" translatable="yes">承担任务：</property>
             <attributes>
               <attribute name="absolute-size" value="2"/>
+              <attribute name="foreground" value="#e6e6e4e40e0e"/>
               <attribute name="scale" value="2"/>
             </attributes>
           </object>
@@ -435,6 +448,7 @@
             <property name="label" translatable="yes">联系电话：</property>
             <attributes>
               <attribute name="absolute-size" value="2"/>
+              <attribute name="foreground" value="#e6e6e4e40e0e"/>
               <attribute name="scale" value="2"/>
             </attributes>
           </object>
@@ -452,6 +466,7 @@
             <property name="label" translatable="yes">项目排名：</property>
             <attributes>
               <attribute name="absolute-size" value="2"/>
+              <attribute name="foreground" value="#e6e6e4e40e0e"/>
               <attribute name="scale" value="2"/>
             </attributes>
           </object>

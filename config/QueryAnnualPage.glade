@@ -10,6 +10,7 @@
     <property name="resizable">False</property>
     <property name="modal">True</property>
     <property name="window_position">center</property>
+    <property name="icon">..\\image\\icon.png</property>
     <child>
       <object class="GtkLayout" id="layout1">
         <property name="visible">True</property>
@@ -59,8 +60,8 @@
             <property name="tooltip_text" translatable="yes">Ctri+1</property>
             <property name="border_width">1</property>
             <property name="draw_indicator">True</property>
-            <accelerator key="KP_1" signal="clicked" modifiers="GDK_CONTROL_MASK"/>
             <accelerator key="1" signal="clicked" modifiers="GDK_CONTROL_MASK"/>
+            <accelerator key="KP_1" signal="clicked" modifiers="GDK_CONTROL_MASK"/>
           </object>
           <packing>
             <property name="x">93</property>
@@ -76,8 +77,8 @@
             <property name="can_focus">True</property>
             <property name="receives_default">False</property>
             <property name="draw_indicator">True</property>
-            <accelerator key="KP_2" signal="clicked" modifiers="GDK_CONTROL_MASK"/>
             <accelerator key="2" signal="clicked" modifiers="GDK_CONTROL_MASK"/>
+            <accelerator key="KP_2" signal="clicked" modifiers="GDK_CONTROL_MASK"/>
           </object>
           <packing>
             <property name="x">357</property>
@@ -93,8 +94,8 @@
             <property name="can_focus">True</property>
             <property name="receives_default">False</property>
             <property name="draw_indicator">True</property>
-            <accelerator key="KP_3" signal="clicked" modifiers="GDK_CONTROL_MASK"/>
             <accelerator key="3" signal="clicked" modifiers="GDK_CONTROL_MASK"/>
+            <accelerator key="KP_3" signal="clicked" modifiers="GDK_CONTROL_MASK"/>
           </object>
           <packing>
             <property name="x">600</property>

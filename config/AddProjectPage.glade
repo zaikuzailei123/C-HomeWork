@@ -10,6 +10,7 @@
     <property name="resizable">False</property>
     <property name="modal">True</property>
     <property name="window_position">center</property>
+    <property name="icon">..\\image\\icon.png</property>
     <child>
       <object class="GtkLayout" id="layout1">
         <property name="visible">True</property>
@@ -26,6 +27,7 @@
             <attributes>
               <attribute name="weight" value="semibold"/>
               <attribute name="size" value="100"/>
+              <attribute name="foreground" value="#e6e6e4e40e0e"/>
             </attributes>
           </object>
           <packing>
@@ -42,6 +44,7 @@
             <property name="label" translatable="yes">年度编号：</property>
             <attributes>
               <attribute name="absolute-size" value="2"/>
+              <attribute name="foreground" value="#e6e6e4e40e0e"/>
               <attribute name="scale" value="2"/>
             </attributes>
           </object>
@@ -76,6 +79,7 @@
             <property name="label" translatable="yes">项目名称：</property>
             <attributes>
               <attribute name="absolute-size" value="2"/>
+              <attribute name="foreground" value="#e6e6e4e40e0e"/>
               <attribute name="scale" value="2"/>
             </attributes>
           </object>
@@ -110,6 +114,7 @@
             <property name="label" translatable="yes">立项时间：</property>
             <attributes>
               <attribute name="absolute-size" value="2"/>
+              <attribute name="foreground" value="#e6e6e4e40e0e"/>
               <attribute name="scale" value="2"/>
             </attributes>
           </object>
@@ -144,6 +149,7 @@
             <property name="label" translatable="yes">结题时间：</property>
             <attributes>
               <attribute name="absolute-size" value="2"/>
+              <attribute name="foreground" value="#e6e6e4e40e0e"/>
               <attribute name="scale" value="2"/>
             </attributes>
           </object>
@@ -161,6 +167,7 @@
             <property name="label" translatable="yes">完成评价：</property>
             <attributes>
               <attribute name="absolute-size" value="2"/>
+              <attribute name="foreground" value="#e6e6e4e40e0e"/>
               <attribute name="scale" value="2"/>
             </attributes>
           </object>
@@ -195,6 +202,7 @@
             <property name="label" translatable="yes">负责人：</property>
             <attributes>
               <attribute name="absolute-size" value="2"/>
+              <attribute name="foreground" value="#e6e6e4e40e0e"/>
               <attribute name="scale" value="2"/>
             </attributes>
           </object>
@@ -278,6 +286,7 @@
             <property name="label" translatable="yes">项目编号：</property>
             <attributes>
               <attribute name="absolute-size" value="2"/>
+              <attribute name="foreground" value="#e6e6e4e40e0e"/>
               <attribute name="scale" value="2"/>
             </attributes>
           </object>
@@ -295,6 +304,7 @@
             <property name="label" translatable="yes">经费数：</property>
             <attributes>
               <attribute name="absolute-size" value="2"/>
+              <attribute name="foreground" value="#e6e6e4e40e0e"/>
               <attribute name="scale" value="2"/>
             </attributes>
           </object>
@@ -347,6 +357,7 @@
             <property name="label" translatable="yes">负责人电话：</property>
             <attributes>
               <attribute name="absolute-size" value="2"/>
+              <attribute name="foreground" value="#e6e6e4e40e0e"/>
               <attribute name="scale" value="2"/>
             </attributes>
           </object>
@@ -382,6 +393,7 @@
             <property name="label" translatable="yes">结果形式：</property>
             <attributes>
               <attribute name="absolute-size" value="2"/>
+              <attribute name="foreground" value="#e6e6e4e40e0e"/>
               <attribute name="scale" value="2"/>
             </attributes>
           </object>
@@ -435,6 +447,7 @@
             <property name="label" translatable="yes">结果名称：</property>
             <attributes>
               <attribute name="absolute-size" value="2"/>
+              <attribute name="foreground" value="#e6e6e4e40e0e"/>
               <attribute name="scale" value="2"/>
             </attributes>
           </object>

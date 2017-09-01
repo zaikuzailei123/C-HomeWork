@@ -10,6 +10,7 @@
     <property name="resizable">False</property>
     <property name="modal">True</property>
     <property name="window_position">center</property>
+    <property name="icon">..\\image\\icon.png</property>
     <child>
       <object class="GtkLayout" id="layout1">
         <property name="visible">True</property>
@@ -24,7 +25,7 @@
             <attributes>
               <attribute name="weight" value="semibold"/>
               <attribute name="size" value="100"/>
-              <attribute name="foreground" value="#e66ce49f0e25"/>
+              <attribute name="foreground" value="#e6e6e4e40e0e"/>
             </attributes>
           </object>
           <packing>

@@ -11,6 +11,7 @@
     <property name="window_position">center-always</property>
     <property name="default_width">50</property>
     <property name="default_height">50</property>
+    <property name="icon">..\\image\\icon.png</property>
     <property name="skip_taskbar_hint">True</property>
     <property name="skip_pager_hint">True</property>
     <property name="accept_focus">False</property>
