@@ -53,7 +53,7 @@ int Correspond2(char * Main,char *beTest){
     char block[5];int i = 0;int count = 0;
     int suc = 0;int total = 0;
     while(beTest[i++]!='\0'){
-        if(count <=2){
+        if(count <=1){
             block[count++] = beTest[i];
         }
         else{
@@ -66,7 +66,7 @@ int Correspond2(char * Main,char *beTest){
     }
     double a = (double)suc;
     double b= (double)total;
-    if(a/b>=0.4) return 1;
+    if(a/b>=0.6) return 1;
     else return 0;
 }
 //备份数据
@@ -76,15 +76,15 @@ void BeiFen(char * filename){
     struct dataa da;
     char file[40];
     //备份年度信息
-    strcpy(file,filename);strcat(file,"\\annual.bin");
+    strcpy(file,filename);strcat(file,"/annual.bin");
     fa2 = fopen(file,"wb");
     while(fread(&da,1,sizeof(struct dataa),fa1)!=0){
         fwrite(&da,1,sizeof(struct dataa),fa2);
     }
     fclose(fa1);fclose(fa2);
     //备份项目信息
-    fa1 = fopen("data\\project.bin","rb");
-    strcpy(file,filename);strcat(file,"\\project.bin");
+    fa1 = fopen("data/project.bin","rb");
+    strcpy(file,filename);strcat(file,"/project.bin");
     fa2 = fopen(file,"wb");
     struct datap dp;
     while(fread(&dp,1,sizeof(struct datap),fa1)!=0){
@@ -92,8 +92,8 @@ void BeiFen(char * filename){
     }
     fclose(fa1);fclose(fa2);
     //备份人员信息
-    fa1 = fopen("data\\staff.bin","rb");
-    strcpy(file,filename);strcat(file,"\\staff.bin");
+    fa1 = fopen("data/staff.bin","rb");
+    strcpy(file,filename);strcat(file,"/staff.bin");
     fa2 = fopen(file,"wb");
     struct datas ds;
     while(fread(&ds,1,sizeof(struct datas),fa1)!=0){
@@ -106,9 +106,9 @@ void HuiFu(char * filename){
     FILE * fa1,*fa2;
     char file[40];
     strcpy(file,filename);
-    strcat(file,"\\annual.bin");
+    strcat(file,"/annual.bin");
     fa1 = fopen(file,"rb");
-    fa2 = fopen("data\\annual.bin","wb");
+    fa2 = fopen("data/annual.bin","wb");
     struct dataa da;
     while(fread(&da,1,sizeof(struct dataa),fa1)!=0){
         fwrite(&da,1,sizeof(struct dataa),fa2);
@@ -116,9 +116,9 @@ void HuiFu(char * filename){
     fclose(fa1);fclose(fa2);
 
     strcpy(file,filename);
-    strcat(file,"\\project.bin");
+    strcat(file,"/project.bin");
     fa1 = fopen(file,"rb");
-    fa2 = fopen("data\\project.bin","wb");
+    fa2 = fopen("data/project.bin","wb");
     struct datap dp;
     while(fread(&dp,1,sizeof(struct datap),fa1)!=0){
         fwrite(&dp,1,sizeof(struct datap),fa2);
@@ -126,9 +126,9 @@ void HuiFu(char * filename){
     fclose(fa1);fclose(fa2);
 
     strcpy(file,filename);
-    strcat(file,"\\staff.bin");
+    strcat(file,"/staff.bin");
     fa1 = fopen(file,"rb");
-    fa2 = fopen("data\\staff.bin","wb");
+    fa2 = fopen("data/staff.bin","wb");
     struct datas ds;
     while(fread(&ds,1,sizeof(struct datas),fa1)!=0){
         fwrite(&ds,1,sizeof(struct datas),fa2);

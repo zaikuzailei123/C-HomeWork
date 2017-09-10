@@ -21,6 +21,9 @@
             <property name="can_focus">False</property>
             <property name="yalign">0.4699999988079071</property>
             <property name="label" translatable="yes">参与创新活动的比例</property>
+            <attributes>
+              <attribute name="size" value="100"/>
+            </attributes>
           </object>
           <packing>
             <property name="x">320</property>

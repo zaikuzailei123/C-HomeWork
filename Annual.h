@@ -11,9 +11,6 @@ void DeleteAnnual(GtkWidget * wid , gpointer data);
 void QueryAnnual(GtkWidget * wid , gpointer data);
 void StaticAnnual(GtkWidget *wid,gpointer data);
 
-
-
-
 typedef struct statannual{
     annual * ann;
     int apply;

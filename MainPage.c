@@ -15,6 +15,7 @@ static char filea[30];
 void on_press_event(GtkWidget *wid,gpointer data);
 void on_release_event(GtkWidget *wid,gpointer data);
 
+/*创建主界面*/
 GtkWidget *CreateMainPage(){
 
 	GtkBuilder *builder = gtk_builder_new();
@@ -34,6 +35,7 @@ GtkWidget *CreateMainPage(){
 	check[2] = GTK_RADIO_BUTTON(gtk_builder_get_object(builder,"radiobutton3"));
     //获得按钮
     chang_background(check[0], 280, 400, "image/MainPage/background.jpg");
+    //创建图片按钮
     for(int i = 0;i<6;i++){
         char aa[10];char num[10];
         strcpy(aa,"image");strcat(aa,itoa(i+1,num,10));
@@ -43,6 +45,7 @@ GtkWidget *CreateMainPage(){
         gtk_image_set_from_file(image[i],filea);
 
     }
+    //为图片按钮绑定事件
     for(int i = 0;i<6;i++){
         char evn[10];char num[3];
         strcpy(evn,"eventbox");strcat(evn,itoa(i+1,num,10));
@@ -54,6 +57,7 @@ GtkWidget *CreateMainPage(){
 	gtk_widget_show_all(window);
 	return window;
 }
+//按钮点击事件
 void on_press_event(GtkWidget *wid,gpointer data){
     for(int i =0 ;i<6;i++){
         if(wid==eventbox[i]){
@@ -74,6 +78,7 @@ void on_release_event(GtkWidget *wid,gpointer data){
             strcat(filea,".png");
             gtk_image_set_from_file(image[i],filea);
             switch(i) {
+            //响应不同事件
             case 0:ShowAddPage(eventbox[i],check);break;
             case 1:ShowChangePage(eventbox[i],check);break;
             case 2:ShowQueryPage(eventbox[i],check);break;

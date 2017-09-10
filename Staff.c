@@ -338,6 +338,7 @@ void StaticStaff(gboolean tag,pipe* A){
     statstaff * cur = NULL;
     annual * heada = ahead;
     while(heada!=NULL){
+        //不在范围内直接跳过
         if(!(strcmp(heada->data.CSNo,floor)>=0&&strcmp(heada->data.CSNo,ceil)<=0)){
             heada = heada->next;
             continue;
@@ -348,9 +349,10 @@ void StaticStaff(gboolean tag,pipe* A){
                 headp = headp->next;
                 continue;
             }
-            total ++;
+            total ++;//总项目数+1
             statstaff * tmp = ExistS(head,headp);
             if(tmp != NULL){
+
                 tmp->pjNum++;
             }
             else{
@@ -407,14 +409,13 @@ statstaff *ExistS(statstaff * head,project * headp){
         }
         heads = heads->next;
     }
-    int flag =0;
     while(head!=NULL){
         if(strcmp(head->profession,profession)==0){
             return head;
         }
         head = head->next;
     }
-    return flag;
+    return NULL;
 }
 
 void Putin(char *profession,project * headp){

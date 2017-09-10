@@ -3,10 +3,6 @@
 #include"Annual.h"
 #include"LoadAndExit.h"
 
-
-
-
-
 void CreateAddAnnualPage(){
     GtkWidget * button_ensure;
     GtkWidget * button_clear;

@@ -88,6 +88,7 @@ void ShowBeiFenPage(GtkWidget *button, gpointer data){
     pipes->widget[1] = eventbox[1];pipes->widget[3] = image[1];
     pipes->widget[4] = image[2];pipes->widget[5] = image[3];
     pipes->widget[6] = filechooser1;pipes->widget[7] = filechooser2;
+    pipes->widget[10] = addwindow;
     gtk_widget_show_all(addwindow);
 }
 static void buttonPress(GtkWidget * wid,gpointer data){
@@ -117,7 +118,7 @@ static void buttonRelease(GtkWidget * wid,gpointer data){
 }
 //给出是否要恢复信息的确认
 void HuiFuEnsure(GtkWidget* wid,gpointer data){
-    GtkWidget*dialog = gtk_dialog_new_with_buttons ("恢复信息", wid,GTK_DIALOG_MODAL,
+    GtkWidget*dialog = gtk_dialog_new_with_buttons ("恢复信息", pipes->widget[10],GTK_DIALOG_MODAL,
                                           GTK_STOCK_OK, GTK_RESPONSE_OK,GTK_STOCK_CANCEL, GTK_RESPONSE_CANCEL,NULL);
     GtkWidget * label = gtk_label_new ("          确定要恢复信息吗？         \n                  (原有信息将会被覆盖！)    ");
     gtk_box_pack_start_defaults (GTK_BOX (GTK_DIALOG (dialog)->vbox), label);
